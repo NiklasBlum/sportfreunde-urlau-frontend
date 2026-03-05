@@ -1,0 +1,19 @@
+interface StatItemProps {
+  value: string | number;
+  unit?: string;
+  label: string;
+}
+
+export default function StatItem({ value, unit, label }: StatItemProps) {
+  return (
+    <div className="text-center">
+      <div className="font-serif text-[2.3rem] font-bold text-white leading-none">
+        {value}
+        {unit && <span className="text-[1.1rem] text-[#f0c060]">{unit}</span>}
+      </div>
+      <div className="text-[#f0dde0] text-[0.72rem] tracking-[0.08em] uppercase mt-[3px]">
+        {label}
+      </div>
+    </div>
+  );
+}

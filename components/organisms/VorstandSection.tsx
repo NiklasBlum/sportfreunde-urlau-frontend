@@ -2,7 +2,7 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import VorstandCard from "@/components/molecules/VorstandCard";
 import Section from "../atoms/Section";
 
-const vorstand = [
+export const vorstand = [
   {
     role: "1. Vorsitzender",
     name: "Michael Tronsberg",

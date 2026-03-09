@@ -85,14 +85,11 @@ export default function SportmaedelsPage() {
       <Navbar />
       <main id="main-content">
         {/* Hero */}
-        <Section className="bg-[#7a0b14] py-10">
+        <Section className="bg-[#7a0b14]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <SectionLabel light>Abteilung</SectionLabel>
               <h1 className="font-serif text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold text-white leading-[1.1] mb-4">
-                <span className="mr-4" aria-hidden="true">
-                  🤸
-                </span>
                 Sportmädels
               </h1>
               <p className="text-[#f0dde0] text-[1rem] leading-[1.75] max-w-[480px]">

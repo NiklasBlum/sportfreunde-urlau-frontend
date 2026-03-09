@@ -3,23 +3,26 @@ import HeroSection from "@/components/organisms/HeroSection";
 import WelcomeSection from "@/components/organisms/WelcomeSection";
 import AbteilungenSection from "@/components/organisms/AbteilungenSection";
 import TermineSection from "@/components/organisms/TermineSection";
-import VorstandSection from "@/components/organisms/VorstandSection";
 import NewsSection from "@/components/organisms/NewsSection";
 import Footer from "@/components/organisms/Footer";
+import Section from "@/components/atoms/Section";
+import SectionLabel from "@/components/atoms/SectionLabel";
+import VorstandCard from "@/components/molecules/VorstandCard";
+import { vorstand } from "@/components/organisms/VorstandSection";
 
 export default function Home() {
   return (
     <>
-      <a href="#main-content" className="skip-link">
-        Zum Inhalt springen
-      </a>
       <Navbar />
       <main id="main-content">
         <HeroSection />
+
         <WelcomeSection />
+
         <AbteilungenSection />
+
         <TermineSection />
-        <VorstandSection />
+
         <NewsSection />
       </main>
       <Footer />

@@ -40,7 +40,7 @@ export default function Navbar() {
   return (
     <nav
       aria-label="Hauptnavigation"
-      className="fixed top-0 left-0 right-0 z-[100] bg-[rgba(143,13,23,0.97)] backdrop-blur-[12px] px-8 flex items-center justify-between h-[72px] shadow-[0_2px_20px_rgba(0,0,0,0.35)]"
+      className="sticky top-0 left-0 right-0 z-[100] bg-[rgba(143,13,23,0.97)] backdrop-blur-[12px] px-8 flex items-center justify-between h-[72px] shadow-[0_2px_20px_rgba(0,0,0,0.35)]"
     >
       <NavLogo />
       <ul className="hidden lg:flex list-none">

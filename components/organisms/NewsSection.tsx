@@ -25,7 +25,7 @@ const newsItems = [
 
 export default function NewsSection() {
   return (
-    <Section id="news">
+    <Section id="news" className="bg-[#f2eeeb]">
       <SectionLabel>Neuigkeiten</SectionLabel>
       <h2 className="font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-[0.9rem]">
         Aktuelles aus dem Verein

@@ -53,6 +53,7 @@ export default function TischtennisPage() {
   return (
     <>
       <Navbar />
+
       <main id="main-content">
         {/* Hero */}
         <Section className="bg-[#7a0b14]">

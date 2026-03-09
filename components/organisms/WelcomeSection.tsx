@@ -25,8 +25,8 @@ export default function WelcomeSection() {
             liegt uns die Förderung des Sports bei Kindern und Jugendlichen
             besonders am Herzen.
           </p>
-          <Button href="#vorstand" variant="primary">
-            Vorstand kennenlernen →
+          <Button href="/verein" variant="primary">
+            Mehr über den Verein →
           </Button>
         </div>
         {/* Image of Urlau */}

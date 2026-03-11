@@ -4,6 +4,7 @@ import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
+import { Headline } from "@/components/atoms/Headline";
 
 export const metadata: Metadata = {
   title: "Tischtennis – Sportfreunde Urlau e.V.",
@@ -56,15 +57,11 @@ export default function TischtennisPage() {
 
       <main id="main-content">
         {/* Hero */}
-        <Section className="bg-[#7a0b14]">
+        <Section className="bg-blue">
           <SectionLabel light>Abteilung</SectionLabel>
-          <h1 className="font-serif text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold text-white leading-[1.1] mb-4">
-            <span className="mr-4" aria-hidden="true">
-              🏓
-            </span>
-            Tischtennis
-          </h1>
-          <p className="text-[#f0dde0] text-[1rem] leading-[1.75] ">
+          <Headline level="h1">Tischtennis</Headline>
+
+          <p className="text-[#f0dde0] text-[1rem] leading-[1.75]">
             Wettkampfsport und Freizeitspiel für jedes Alter – von den Bambinis
             bis zu den Aktiven.
           </p>

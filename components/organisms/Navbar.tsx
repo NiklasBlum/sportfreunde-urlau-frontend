@@ -1,12 +1,16 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
 import NavLogo from "@/components/molecules/NavLogo";
 import NavItem from "@/components/molecules/NavItem";
 import { abteilungen } from "@/lib/abteilungen";
 
 const navItems = [
-  { label: "Startseite", href: "#", active: true },
+  { label: "Startseite", href: "#", active: false },
   {
-    label: "Verein ▾",
-    href: "#verein",
+    label: "Verein",
+    href: "/#verein",
     dropdown: [
       { label: "Termine", href: "#termine" },
       { label: "Vorstand", href: "#vorstand" },
@@ -18,42 +22,135 @@ const navItems = [
     ],
   },
   {
-    label: "Veranstaltungen ▾",
+    label: "Abteilungen",
+    href: "/#abteilungen",
+    dropdown: abteilungen.map((a) => ({
+      label: a.name,
+      href: `/abteilungen/${a.slug}`,
+    })),
+  },
+  {
+    label: "Veranstaltungen",
     href: "#",
     dropdown: [
       { label: "Faschingsnachmittag", href: "#" },
       { label: "9 Meter Turnier", href: "#" },
     ],
   },
-  {
-    label: "Abteilungen ▾",
-    href: "/#abteilungen",
-    dropdown: abteilungen.map((a) => ({
-      label: `${a.name}`,
-      href: `/abteilungen/${a.slug}`,
-    })),
-  },
-  { label: "Impressum", href: "/impressum" },
 ];
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [openSection, setOpenSection] = useState<string | null>(null);
+
+  const close = () => {
+    setMenuOpen(false);
+    setOpenSection(null);
+  };
+
+  const toggleSection = (label: string) =>
+    setOpenSection((prev) => (prev === label ? null : label));
+
   return (
-    <nav
-      aria-label="Hauptnavigation"
-      className="sticky top-0 left-0 right-0 z-[100] bg-[rgba(143,13,23,0.97)] backdrop-blur-[12px] px-8 flex items-center justify-between h-[72px] shadow-[0_2px_20px_rgba(0,0,0,0.35)]"
-    >
-      <NavLogo />
-      <ul className="hidden lg:flex list-none">
-        {navItems.map((item) => (
-          <NavItem
-            key={item.label}
-            label={item.label}
-            href={item.href}
-            active={item.active}
-            dropdown={item.dropdown}
+    <>
+      <nav
+        aria-label="Hauptnavigation"
+        className="sticky top-0 left-0 right-0 z-100 bg-red backdrop-blur-md px-6 lg:px-8 flex items-center justify-between h-16 lg:h-18 shadow-[0_2px_20px_rgba(0,0,0,0.35)]"
+      >
+        <NavLogo />
+
+        {/* Desktop nav */}
+        <ul className="hidden lg:flex list-none">
+          {navItems.map((item) => (
+            <NavItem
+              key={item.label}
+              label={item.dropdown ? `${item.label} ▾` : item.label}
+              href={item.href}
+              // active={item.active}
+              dropdown={item.dropdown}
+            />
+          ))}
+        </ul>
+
+        {/* Hamburger */}
+        <button
+          className="lg:hidden cursor-pointer flex flex-col justify-center items-center w-10 h-10 gap-1.25 rounded-md hover-animation focus-visible:outline-[3px] focus-visible:outline-[#f0c060] focus-visible:outline-offset-[3px]"
+          aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((o) => !o)}
+        >
+          <span
+            className={`block w-6 h-[2px] bg-white rounded-full transition-all duration-200 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`}
           />
-        ))}
-      </ul>
-    </nav>
+          <span
+            className={`block w-6 h-[2px] bg-white rounded-full transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`}
+          />
+          <span
+            className={`block w-6 h-[2px] bg-white rounded-full transition-all duration-200 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
+          />
+        </button>
+      </nav>
+
+      {/* Mobile drawer */}
+      {menuOpen && (
+        <div
+          className="lg:hidden fixed inset-0 z-99 flex flex-col"
+          style={{ top: 64 }}
+        >
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={close}
+            aria-hidden="true"
+          />
+
+          {/* Panel */}
+          <div className="relative bg-[#7a0b14] w-full overflow-y-auto max-h-[calc(100dvh-64px)] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+            {navItems.map((item) => (
+              <div key={item.label} className="border-b border-white/[0.08]">
+                {item.dropdown ? (
+                  <>
+                    <button
+                      className="w-full cursor-pointer flex items-center justify-between px-6 py-4 text-white text-[0.88rem] font-semibold uppercase tracking-[0.07em] hover:bg-black/20 transition-colors duration-150"
+                      onClick={() => toggleSection(item.label)}
+                      aria-expanded={openSection === item.label}
+                    >
+                      {item.label}
+                      <span
+                        className={`text-[#f0c060] transition-transform duration-200 ${openSection === item.label ? "rotate-180" : ""}`}
+                      >
+                        ▾
+                      </span>
+                    </button>
+                    {openSection === item.label && (
+                      <div className="bg-black/20">
+                        {item.dropdown.map((sub, i) => (
+                          <Link
+                            key={`${sub.href}-${i}`}
+                            href={sub.href}
+                            onClick={close}
+                            className="block px-8 py-3 text-[#f5d0d3] text-[0.85rem] border-b border-white/[0.05] last:border-b-0 hover:text-[#f0c060] hover:bg-black/10 transition-colors duration-150 no-underline"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={close}
+                    className={`block px-6 py-4 text-[0.88rem] font-semibold uppercase tracking-[0.07em] transition-colors duration-150 no-underline hover:bg-black/20 ${item.active ? "text-[#f0c060]" : "text-white"}`}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 }

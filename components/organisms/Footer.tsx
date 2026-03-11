@@ -20,11 +20,8 @@ const abteilungsLinks = [
 ];
 
 const veranstaltungsLinks = [
-  { label: "Termine", href: "#termine" },
   { label: "Faschingsnachmittag", href: "#" },
   { label: "9 Meter Turnier", href: "#" },
-  { label: "Kontakt", href: "#kontakt" },
-  { label: "Impressum", href: "#" },
 ];
 
 function FooterColumn({
@@ -54,12 +51,12 @@ function FooterColumn({
 
 export default function Footer() {
   return (
-    <footer id="kontakt" className="bg-[#100304] text-white/55 pt-16 pb-8 px-8">
-      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
+    <footer id="kontakt" className="bg-[#100304] text-white/55 pt-12 pb-8 px-8">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-12">
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <SfuLogo className="w-[42px] h-[42px]" />
+            <SfuLogo className="w-12 h-12" />
             <div className="font-serif text-white text-[0.95rem] leading-[1.3]">
               Sportfreunde Urlau e.V.
             </div>
@@ -78,8 +75,8 @@ export default function Footer() {
         <FooterColumn title="Veranstaltungen" links={veranstaltungsLinks} />
       </div>
 
-      <div className="container pt-[1.8rem] border-t border-white/[0.12] flex flex-col sm:flex-row justify-between items-center gap-4 text-[0.76rem] text-[#c8b8ba]">
-        <span>© 2025 Sportfreunde Urlau e.V. · Alle Rechte vorbehalten</span>
+      <div className="pt-[1.8rem] border-t border-white/[0.12] flex flex-col sm:flex-row justify-between items-center gap-4 text-[0.76rem] text-[#c8b8ba]">
+        <span>© 2026 Sportfreunde Urlau e.V. · Alle Rechte vorbehalten</span>
         <div className="flex gap-6">
           {["Impressum", "Datenschutz", "Kontakt"].map((label) => (
             <Link

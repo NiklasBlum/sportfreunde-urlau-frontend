@@ -1,34 +1,28 @@
 import SectionLabel from "@/components/atoms/SectionLabel";
 import TerminCard from "@/components/molecules/TerminCard";
 import Section from "../atoms/Section";
+import { Headline } from "../atoms/Headline";
 
 const termine = [
   {
-    day: "15",
-    month: "Feb",
-    title: "Faschingsnachmittag",
-    info: "📍 Sportheim Urlau · 14:00 Uhr",
-    tag: "Veranstaltung",
-  },
-  {
-    day: "22",
-    month: "Mär",
-    title: "9 Meter Turnier",
-    info: "📍 Sporthalle Urlau · 10:00 Uhr",
-    tag: "Turnier",
-  },
-  {
-    day: "12",
-    month: "Apr",
-    title: "Jahreshauptversammlung 2025",
-    info: "📍 Sportheim Urlau · 19:30 Uhr · Alle Mitglieder herzlich eingeladen",
+    day: "20",
+    month: "März",
+    title: "Jahreshauptversammlung 2026",
+    info: "📍 Sporthalle Urlau · 19:30 Uhr · Alle Mitglieder sind herzlich eingeladen",
     tag: "Verein",
   },
   {
-    day: "08",
-    month: "Jun",
-    title: "Sommerfest der Sportfreunde",
-    info: "📍 Sportgelände Urlau · Ab 15:00 Uhr",
+    day: "17",
+    month: "März",
+    title: "Abteilungsversammlung Tischtennis",
+    info: "📍 Sporthalle Stube Urlau · 19:30 Uhr · Alle Mitglieder sind herzlich eingeladen",
+    tag: "Verein",
+  },
+  {
+    day: "14",
+    month: "Feb",
+    title: "Faschingsnachmittag",
+    info: "📍 Sporthalle Urlau · 14:00 Uhr",
     tag: "Veranstaltung",
   },
 ];
@@ -37,10 +31,10 @@ export default function TermineSection() {
   return (
     <Section id="termine">
       <SectionLabel>Aktuelles</SectionLabel>
-      <h2 className="font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-[0.9rem]">
-        Termine &amp; Veranstaltungen
-      </h2>
-      <p className="text-[#4a5260] text-[0.98rem] leading-[1.75] max-w-[540px] mb-[2.8rem]">
+
+      <Headline level="h2"> Termine &amp; Veranstaltungen</Headline>
+
+      <p className="text-[#4a5260] text-[0.98rem] leading-[1.75] mb-[2.8rem]">
         Was ist bei den Sportfreunden Urlau geplant? Hier findet ihr alle
         wichtigen Termine.
       </p>

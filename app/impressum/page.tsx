@@ -3,6 +3,7 @@ import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
+import { Headline } from "@/components/atoms/Headline";
 
 export const metadata: Metadata = {
   title: "Impressum – Sportfreunde Urlau e.V.",
@@ -48,9 +49,7 @@ export default function ImpressumPage() {
         {/* Hero */}
         <Section className="bg-[#7a0b14] py-10">
           <SectionLabel light>Rechtliches</SectionLabel>
-          <h1 className="font-serif text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold text-white leading-[1.1] mb-4">
-            Impressum
-          </h1>
+          <Headline level="h1">Impressum</Headline>
           <p className="text-[#f0dde0] text-[1rem] leading-[1.75]">
             Angaben gemäß § 5 TMG – Sportfreunde Urlau e.V.
           </p>

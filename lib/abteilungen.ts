@@ -13,6 +13,6 @@ export const abteilungen: Abteilung[] = [
   { icon: "🏐", name: "Winter-Volleyballer", slug: "winter-volleyballer" },
   { icon: "💃", name: "Mittwochsmädels", slug: "mittwochsmaedels" },
   { icon: "🧒", name: "Kinderturnen", slug: "kinderturnen" },
-  { icon: "🎹", name: "Piano", slug: "piano" },
+  { icon: "🤸🏻", name: "Piano", slug: "piano" },
   { icon: "⛷️", name: "Langlauf", slug: "langlauf" },
 ];

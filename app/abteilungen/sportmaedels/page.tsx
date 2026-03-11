@@ -5,6 +5,7 @@ import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
+import { Headline } from "@/components/atoms/Headline";
 
 export const metadata: Metadata = {
   title: "Sportmädels – Sportfreunde Urlau e.V.",
@@ -85,13 +86,12 @@ export default function SportmaedelsPage() {
       <Navbar />
       <main id="main-content">
         {/* Hero */}
-        <Section className="bg-[#7a0b14]">
+        <Section className="bg-blue">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <SectionLabel light>Abteilung</SectionLabel>
-              <h1 className="font-serif text-[clamp(2.4rem,4.5vw,3.6rem)] font-bold text-white leading-[1.1] mb-4">
-                Sportmädels
-              </h1>
+              <Headline level="h1">Sportmädels</Headline>
+
               <p className="text-[#f0dde0] text-[1rem] leading-[1.75] max-w-[480px]">
                 Sport, Gemeinschaft und Spaß – die Sportmädels sind immer in
                 Bewegung. Vom Faschingstanz über MTB-Touren bis zur

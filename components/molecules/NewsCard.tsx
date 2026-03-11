@@ -8,7 +8,7 @@ interface NewsCardProps {
 export default function NewsCard({ icon, meta, title, text }: NewsCardProps) {
   return (
     <div className="bg-white rounded-xl overflow-hidden border border-black/[0.07] transition-all duration-200 cursor-pointer hover:-translate-y-1 hover:shadow-[0_14px_36px_rgba(192,17,31,0.1)]">
-      <div className="h-[170px] bg-gradient-to-br from-[#7a0b14] to-[#b00e1b] flex items-center justify-center text-[2.8rem]">
+      <div className="h-42.5 bg-linear-to-br from-[#7a0b14] to-[#b00e1b] flex items-center justify-center text-[2.8rem]">
         {icon}
       </div>
       <div className="p-[1.3rem]">

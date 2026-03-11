@@ -2,6 +2,7 @@ import Image from "next/image";
 import Button from "@/components/atoms/Button";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
+import { Headline } from "../atoms/Headline";
 
 export default function WelcomeSection() {
   return (
@@ -10,9 +11,8 @@ export default function WelcomeSection() {
         {/* Text */}
         <div>
           <SectionLabel>Unser Verein</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-[0.9rem]">
-            Die Heimat der SFU
-          </h2>
+          <Headline level="h2">Die Heimat der SFU</Headline>
+
           <p className="text-[#4a5260] text-[0.98rem] leading-[1.75] mb-[1rem]">
             Der Sportverein Sportfreunde Urlau e.V. ist fest in der Gemeinschaft
             von Urlau verwurzelt. Mit rund 240 aktiven Mitgliedern bieten wir

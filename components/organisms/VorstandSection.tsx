@@ -1,6 +1,7 @@
 import SectionLabel from "@/components/atoms/SectionLabel";
 import VorstandCard from "@/components/molecules/VorstandCard";
 import Section from "../atoms/Section";
+import { Headline } from "../atoms/Headline";
 
 export const vorstand = [
   {
@@ -37,11 +38,11 @@ export const vorstand = [
 
 export default function VorstandSection() {
   return (
-    <Section id="vorstand" className="bg-[#7a0b14]">
+    <Section id="vorstand" className="bg-blue">
       <SectionLabel light>Führung</SectionLabel>
-      <h2 className="font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] font-bold text-white leading-[1.15] mb-[0.9rem]">
-        Unser Vorstand
-      </h2>
+
+      <Headline level="h1">Unser Vorstand</Headline>
+
       <p className="text-[#f0dde0] text-[0.98rem] leading-[1.75] mb-[2.8rem]">
         Die Sportfreunde Urlau werden von einem engagierten Vorstandsteam
         geleitet.

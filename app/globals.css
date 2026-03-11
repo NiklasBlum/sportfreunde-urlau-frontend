@@ -10,6 +10,11 @@
   --foreground: #1a1a1a;
 }
 
+@theme {
+  --color-blue: rgb(11 38 102);
+  --color-red: rgb(143 13 23);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -19,6 +24,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
+}
+
+.hover-animation {
+  @apply cursor-pointer duration-200 ease-in-out hover:brightness-85;
 }
 
 @keyframes fadeUp {
@@ -67,4 +76,18 @@ button:focus-visible {
 
 .skip-link:focus {
   top: 0;
+}
+
+/* Utility helpers for brand colors */
+.bg-sfu-blue {
+  background-color: rgb(var(--sfu-blue-rgb) / 0.97);
+}
+.bg-sfu-red {
+  background-color: rgb(var(--sfu-red-rgb) / 0.97);
+}
+.text-sfu-blue {
+  color: var(--sfu-blue);
+}
+.text-sfu-red {
+  color: var(--sfu-red);
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
@@ -96,7 +96,7 @@ export default function RadsportHerrenPage() {
               <SectionLabel light>Abteilung</SectionLabel>
               <Headline level="h1"> Radsport Herren (VFB)</Headline>
 
-              <p className="text-[#f0dde0] text-[1rem] leading-[1.75]">
+              <p className="text-red-tint text-[1rem] leading-[1.75]">
                 MTB-Touren für jeden Fahrstil – von Pro bis Komfort, immer
                 montags von April bis September.
               </p>
@@ -120,16 +120,16 @@ export default function RadsportHerrenPage() {
             {/* Übungszeiten */}
             <div>
               <SectionLabel>Übungszeiten</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
                 Trainingszeiten
               </h2>
               <div className="flex flex-col gap-6">
                 {uebungszeiten.map(({ season, slots }) => (
                   <div
                     key={season}
-                    className="bg-[#f2eeeb] rounded-xl p-6 border border-black/[0.06]"
+                    className="bg-surface rounded-xl p-6 border border-black/[0.06]"
                   >
-                    <div className="font-serif font-bold text-[#7a0b14] text-[1.05rem] mb-4">
+                    <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                       {season}
                     </div>
                     <ul className="flex flex-col gap-2.5">
@@ -138,10 +138,10 @@ export default function RadsportHerrenPage() {
                           key={time}
                           className="flex items-baseline gap-3 text-[0.9rem]"
                         >
-                          <span className="font-semibold text-[#1a1a1a] whitespace-nowrap">
+                          <span className="font-semibold text-foreground whitespace-nowrap">
                             {time}
                           </span>
-                          <span className="text-[#4a5260]">{label}</span>
+                          <span className="text-muted">{label}</span>
                         </li>
                       ))}
                     </ul>
@@ -153,19 +153,19 @@ export default function RadsportHerrenPage() {
             {/* Kontakt */}
             <div>
               <SectionLabel>Kontakt</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
                 Abteilungsleiter
               </h2>
-              <div className="bg-[#f2eeeb] rounded-xl p-6 border border-black/[0.06]">
+              <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-[#7a0b14]/10 flex items-center justify-center text-[1.5rem]">
+                  <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
                     🚵
                   </div>
                   <div>
-                    <div className="font-semibold text-[#1a1a1a] text-[1rem]">
+                    <div className="font-semibold text-foreground text-[1rem]">
                       Roland Krug
                     </div>
-                    <div className="text-[0.8rem] text-[#4a5260] uppercase tracking-[0.1em] font-semibold mt-0.5">
+                    <div className="text-[0.8rem] text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
                       Abteilungsleiter Radsport
                     </div>
                   </div>
@@ -176,9 +176,9 @@ export default function RadsportHerrenPage() {
         </Section>
 
         {/* Gruppen */}
-        <Section className="bg-[#f2eeeb] border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/[0.06]">
           <SectionLabel>Gruppen</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             MTB-Gruppen
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -187,10 +187,10 @@ export default function RadsportHerrenPage() {
                 key={name}
                 className="bg-white rounded-xl p-6 border border-black/[0.06]"
               >
-                <div className="font-serif font-bold text-[#7a0b14] text-[1rem] mb-2">
+                <div className="font-serif font-bold text-red-dark text-[1rem] mb-2">
                   {name}
                 </div>
-                <p className="text-[0.88rem] text-[#4a5260] leading-[1.65]">
+                <p className="text-[0.88rem] text-muted leading-[1.65]">
                   {description}
                 </p>
               </div>
@@ -201,7 +201,7 @@ export default function RadsportHerrenPage() {
         {/* Regeln */}
         <Section>
           <SectionLabel>Sicherheit</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             Regeln & Tabus
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -210,12 +210,12 @@ export default function RadsportHerrenPage() {
               {regeln.map(({ title, text }) => (
                 <div
                   key={title}
-                  className="bg-[#f2eeeb] rounded-xl p-6 border border-black/[0.06]"
+                  className="bg-surface rounded-xl p-6 border border-black/[0.06]"
                 >
-                  <div className="font-semibold text-[#1a1a1a] text-[0.95rem] mb-1">
+                  <div className="font-semibold text-foreground text-[0.95rem] mb-1">
                     {title}
                   </div>
-                  <p className="text-[0.88rem] text-[#4a5260] leading-[1.65]">
+                  <p className="text-[0.88rem] text-muted leading-[1.65]">
                     {text}
                   </p>
                 </div>
@@ -224,18 +224,18 @@ export default function RadsportHerrenPage() {
 
             {/* Tabus */}
             <div>
-              <div className="bg-[#7a0b14]/5 border border-[#7a0b14]/20 rounded-xl p-6">
-                <div className="font-serif font-bold text-[#7a0b14] text-[1.05rem] mb-4">
+              <div className="bg-red-dark/5 border border-red-dark/20 rounded-xl p-6">
+                <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                   Tabus
                 </div>
                 <ul className="flex flex-col gap-3">
                   {tabus.map((tabu) => (
                     <li
                       key={tabu}
-                      className="flex items-start gap-3 text-[0.88rem] text-[#4a5260] leading-[1.65]"
+                      className="flex items-start gap-3 text-[0.88rem] text-muted leading-[1.65]"
                     >
                       <span
-                        className="mt-[0.25em] text-[#7a0b14] font-bold shrink-0"
+                        className="mt-[0.25em] text-red-dark font-bold shrink-0"
                         aria-hidden="true"
                       >
                         ✕
@@ -250,10 +250,10 @@ export default function RadsportHerrenPage() {
         </Section>
 
         {/* Back */}
-        <Section className="bg-[#f2eeeb] border-t border-black/[0.06]">
+        <Section className="bg-surface border-t border-black/[0.06]">
           <Link
             href="/#abteilungen"
-            className="inline-flex items-center gap-2 text-[#b00e1b] font-semibold text-[0.9rem] hover:underline"
+            className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
           >
             ← Alle Abteilungen
           </Link>

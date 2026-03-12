@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
@@ -45,12 +45,13 @@ export default function ImpressumPage() {
   return (
     <>
       <Navbar />
+
       <main id="main-content">
         {/* Hero */}
-        <Section className="bg-[#7a0b14] py-10">
+        <Section className="bg-blue">
           <SectionLabel light>Rechtliches</SectionLabel>
           <Headline level="h1">Impressum</Headline>
-          <p className="text-[#f0dde0] text-[1rem] leading-[1.75]">
+          <p className="text-red-tint text-[1rem] leading-[1.75]">
             Angaben gemäß § 5 TMG – Sportfreunde Urlau e.V.
           </p>
         </Section>
@@ -58,7 +59,7 @@ export default function ImpressumPage() {
         {/* Vorstand */}
         <Section>
           <SectionLabel>Verantwortlich</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             Vorstandschaft SF Urlau
           </h2>
           <div className="flex flex-col gap-px bg-black/[0.06] rounded-xl overflow-hidden border border-black/[0.08] max-w-2xl">
@@ -67,10 +68,10 @@ export default function ImpressumPage() {
                 key={role}
                 className="flex flex-col sm:flex-row sm:items-center bg-white px-6 py-4 gap-1 sm:gap-6"
               >
-                <span className="text-[0.8rem] text-[#4a5260] uppercase tracking-[0.08em] font-semibold w-48 shrink-0">
+                <span className="text-[0.8rem] text-muted uppercase tracking-[0.08em] font-semibold w-48 shrink-0">
                   {role}
                 </span>
-                <span className="font-semibold text-[0.95rem] text-[#1a1a1a]">
+                <span className="font-semibold text-[0.95rem] text-foreground">
                   {name}
                 </span>
               </div>
@@ -79,9 +80,9 @@ export default function ImpressumPage() {
         </Section>
 
         {/* Haftungsausschluss */}
-        <Section className="bg-[#f2eeeb] border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/[0.06]">
           <SectionLabel>Haftungsausschluss</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             Rechtliche Hinweise
           </h2>
           <div className="flex flex-col gap-4 max-w-3xl">
@@ -90,10 +91,10 @@ export default function ImpressumPage() {
                 key={title}
                 className="bg-white rounded-xl p-6 border border-black/[0.06]"
               >
-                <div className="font-semibold text-[#1a1a1a] text-[0.95rem] mb-1">
+                <div className="font-semibold text-foreground text-[0.95rem] mb-1">
                   {title}
                 </div>
-                <p className="text-[0.88rem] text-[#4a5260] leading-[1.7]">
+                <p className="text-[0.88rem] text-muted leading-[1.7]">
                   {text}
                 </p>
               </div>

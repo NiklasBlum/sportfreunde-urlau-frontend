@@ -1,4 +1,4 @@
-import SectionLabel from "@/components/atoms/SectionLabel";
+﻿import SectionLabel from "@/components/atoms/SectionLabel";
 import NewsCard from "@/components/molecules/NewsCard";
 import Section from "../atoms/Section";
 import { Headline } from "../atoms/Headline";
@@ -26,11 +26,11 @@ const newsItems = [
 
 export default function NewsSection() {
   return (
-    <Section id="news" className="bg-[#f2eeeb]">
+    <Section id="news" className="bg-surface">
       <SectionLabel>Neuigkeiten</SectionLabel>
       <Headline level="h2">Aktuelles aus dem Verein</Headline>
 
-      <p className="text-[#4a5260] text-[0.98rem] leading-[1.75] max-w-[540px] mb-[2.8rem]">
+      <p className="text-muted text-[0.98rem] leading-[1.75] max-w-[540px] mb-[2.8rem]">
         Neuigkeiten, Berichte und Ankündigungen der Sportfreunde Urlau.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[1.4rem]">

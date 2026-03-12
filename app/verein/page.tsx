@@ -1,6 +1,7 @@
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import VorstandSection from "@/components/organisms/VorstandSection";
+import AusschussSection from "@/components/organisms/AusschussSection";
 
 export default function VereinPage() {
   return (
@@ -9,7 +10,7 @@ export default function VereinPage() {
 
       <main id="main-content">
         <VorstandSection />
-        {/* Weitere Vereins-Inhalte (Termine, Satzung, Downloads, Chronik) können hier ergänzt werden */}
+        <AusschussSection />
       </main>
       <Footer />
     </>

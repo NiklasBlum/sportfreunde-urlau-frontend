@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
@@ -61,7 +61,7 @@ export default function TischtennisPage() {
           <SectionLabel light>Abteilung</SectionLabel>
           <Headline level="h1">Tischtennis</Headline>
 
-          <p className="text-[#f0dde0] text-[1rem] leading-[1.75]">
+          <p className="text-red-tint text-[1rem] leading-[1.75]">
             Wettkampfsport und Freizeitspiel für jedes Alter – von den Bambinis
             bis zu den Aktiven.
           </p>
@@ -73,16 +73,16 @@ export default function TischtennisPage() {
             {/* Training times */}
             <div>
               <SectionLabel>Training</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
                 Trainingszeiten
               </h2>
               <div className="flex flex-col gap-6">
                 {trainingDays.map(({ day, slots }) => (
                   <div
                     key={day}
-                    className="bg-[#f2eeeb] rounded-xl p-6 border border-black/[0.06]"
+                    className="bg-surface rounded-xl p-6 border border-black/[0.06]"
                   >
-                    <div className="font-serif font-bold text-[#7a0b14] text-[1.05rem] mb-4">
+                    <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                       {day}
                     </div>
                     <ul className="flex flex-col gap-2.5">
@@ -91,10 +91,10 @@ export default function TischtennisPage() {
                           key={time}
                           className="flex items-baseline gap-3 text-[0.9rem]"
                         >
-                          <span className="font-semibold text-[#1a1a1a] tabular-nums whitespace-nowrap">
+                          <span className="font-semibold text-foreground tabular-nums whitespace-nowrap">
                             {time}
                           </span>
-                          <span className="text-[#4a5260]">{label}</span>
+                          <span className="text-muted">{label}</span>
                         </li>
                       ))}
                     </ul>
@@ -106,26 +106,26 @@ export default function TischtennisPage() {
             {/* Contact */}
             <div>
               <SectionLabel>Kontakt</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
                 Abteilungsleiter
               </h2>
-              <div className="bg-[#f2eeeb] rounded-xl p-6 border border-black/[0.06]">
+              <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-full bg-[#7a0b14]/10 flex items-center justify-center text-[1.5rem]">
+                  <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
                     🏓
                   </div>
                   <div>
-                    <div className="font-semibold text-[#1a1a1a] text-[1rem]">
+                    <div className="font-semibold text-foreground text-[1rem]">
                       Jakob Butscher
                     </div>
-                    <div className="text-[0.8rem] text-[#4a5260] uppercase tracking-[0.1em] font-semibold mt-0.5">
+                    <div className="text-[0.8rem] text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
                       Abteilungsleiter Tischtennis
                     </div>
                   </div>
                 </div>
                 <a
                   href="mailto:jakob.butscher@web.de"
-                  className="inline-flex items-center gap-2 text-[#b00e1b] font-semibold text-[0.9rem] hover:underline"
+                  className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
                 >
                   jakob.butscher@web.de
                 </a>
@@ -135,9 +135,9 @@ export default function TischtennisPage() {
         </Section>
 
         {/* Teams */}
-        <Section className="bg-[#f2eeeb] border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/[0.06]">
           <SectionLabel>Saison 2025/2026</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             Mannschaften
           </h2>
           <div className="flex flex-col gap-px bg-black/[0.06] rounded-xl overflow-hidden border border-black/[0.08]">
@@ -147,17 +147,17 @@ export default function TischtennisPage() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-between bg-white px-6 py-4 no-underline group hover:bg-[#fff8f8] transition-colors duration-150"
+                className="flex items-center justify-between bg-white px-6 py-4 no-underline group hover:bg-surface-hover transition-colors duration-150"
               >
                 <div>
-                  <span className="font-semibold text-[0.95rem] text-[#1a1a1a] group-hover:text-[#b00e1b] transition-colors">
+                  <span className="font-semibold text-[0.95rem] text-foreground group-hover:text-red-accent transition-colors">
                     {name}
                   </span>
-                  <span className="ml-3 text-[0.85rem] text-[#4a5260]">
+                  <span className="ml-3 text-[0.85rem] text-muted">
                     {liga}
                   </span>
                 </div>
-                <span className="text-[#b00e1b] text-[0.8rem] font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-red-accent text-[0.8rem] font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">
                   Spielplan →
                 </span>
               </a>
@@ -169,7 +169,7 @@ export default function TischtennisPage() {
         <Section>
           <Link
             href="/#abteilungen"
-            className="inline-flex items-center gap-2 text-[#b00e1b] font-semibold text-[0.9rem] hover:underline"
+            className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
           >
             ← Alle Abteilungen
           </Link>

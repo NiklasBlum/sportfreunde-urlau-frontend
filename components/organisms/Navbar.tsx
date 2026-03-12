@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import NavItem from "@/components/molecules/NavItem";
 import { abteilungen } from "@/lib/abteilungen";
 
 const navItems = [
-  { label: "Startseite", href: "#", active: false },
+  { label: "Startseite", href: "/", active: false },
   {
     label: "Verein",
     href: "/#verein",
@@ -16,9 +16,9 @@ const navItems = [
       { label: "Vorstand", href: "#vorstand" },
       { label: "Ausschuss", href: "#" },
       { label: "Jahreshauptversammlung", href: "#" },
-      { label: "Satzung", href: "#" },
-      { label: "Chronik", href: "#" },
-      { label: "Downloads", href: "#" },
+      { label: "Satzung", href: "/downloads#satzung" },
+      { label: "Chronik", href: "/downloads#chronik" },
+      { label: "Downloads", href: "/downloads" },
     ],
   },
   {
@@ -74,7 +74,7 @@ export default function Navbar() {
 
         {/* Hamburger */}
         <button
-          className="lg:hidden cursor-pointer flex flex-col justify-center items-center w-10 h-10 gap-1.25 rounded-md hover-animation focus-visible:outline-[3px] focus-visible:outline-[#f0c060] focus-visible:outline-offset-[3px]"
+          className="lg:hidden cursor-pointer flex flex-col justify-center items-center w-10 h-10 gap-1.25 rounded-md hover-animation focus-visible:outline-[3px] focus-visible:outline-gold-highlight focus-visible:outline-offset-[3px]"
           aria-label={menuOpen ? "Menü schließen" : "Menü öffnen"}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((o) => !o)}
@@ -105,7 +105,7 @@ export default function Navbar() {
           />
 
           {/* Panel */}
-          <div className="relative bg-[#7a0b14] w-full overflow-y-auto max-h-[calc(100dvh-64px)] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+          <div className="relative bg-red-dark w-full overflow-y-auto max-h-[calc(100dvh-64px)] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
             {navItems.map((item) => (
               <div key={item.label} className="border-b border-white/[0.08]">
                 {item.dropdown ? (
@@ -117,7 +117,7 @@ export default function Navbar() {
                     >
                       {item.label}
                       <span
-                        className={`text-[#f0c060] transition-transform duration-200 ${openSection === item.label ? "rotate-180" : ""}`}
+                        className={`text-gold-highlight transition-transform duration-200 ${openSection === item.label ? "rotate-180" : ""}`}
                       >
                         ▾
                       </span>
@@ -129,7 +129,7 @@ export default function Navbar() {
                             key={`${sub.href}-${i}`}
                             href={sub.href}
                             onClick={close}
-                            className="block px-8 py-3 text-[#f5d0d3] text-[0.85rem] border-b border-white/[0.05] last:border-b-0 hover:text-[#f0c060] hover:bg-black/10 transition-colors duration-150 no-underline"
+                            className="block px-8 py-3 text-red-subtle text-[0.85rem] border-b border-white/[0.05] last:border-b-0 hover:text-gold-highlight hover:bg-black/10 transition-colors duration-150 no-underline"
                           >
                             {sub.label}
                           </Link>
@@ -141,7 +141,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={close}
-                    className={`block px-6 py-4 text-[0.88rem] font-semibold uppercase tracking-[0.07em] transition-colors duration-150 no-underline hover:bg-black/20 ${item.active ? "text-[#f0c060]" : "text-white"}`}
+                    className={`block px-6 py-4 text-[0.88rem] font-semibold uppercase tracking-[0.07em] transition-colors duration-150 no-underline hover:bg-black/20 ${item.active ? "text-gold-highlight" : "text-white"}`}
                   >
                     {item.label}
                   </Link>

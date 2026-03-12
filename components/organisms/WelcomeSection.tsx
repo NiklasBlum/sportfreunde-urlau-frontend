@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import Button from "@/components/atoms/Button";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
@@ -13,19 +13,19 @@ export default function WelcomeSection() {
           <SectionLabel>Unser Verein</SectionLabel>
           <Headline level="h2">Die Heimat der SFU</Headline>
 
-          <p className="text-[#4a5260] text-[0.98rem] leading-[1.75] mb-[1rem]">
+          <p className="text-muted text-[0.98rem] leading-[1.75] mb-[1rem]">
             Der Sportverein Sportfreunde Urlau e.V. ist fest in der Gemeinschaft
             von Urlau verwurzelt. Mit rund 240 aktiven Mitgliedern bieten wir
             für jeden etwas – von Kinderturnen bis Radsport, von Tischtennis bis
             Langlauf.
           </p>
-          <p className="text-[#4a5260] text-[0.94rem] leading-[1.8] mb-8">
+          <p className="text-muted text-[0.94rem] leading-[1.8] mb-8">
             Unser Verein hat es sich zur Aufgabe gemacht, ein möglichst
             umfangreiches Angebot im Breiten- und Freizeitsport zu bieten. Zudem
             liegt uns die Förderung des Sports bei Kindern und Jugendlichen
             besonders am Herzen.
           </p>
-          <Button href="/verein" variant="primary">
+          <Button href="/verein" variant="blue">
             Mehr über den Verein →
           </Button>
         </div>
@@ -40,7 +40,7 @@ export default function WelcomeSection() {
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
-          <div className="hidden lg:block absolute -bottom-6 -right-6 bg-[#a87628] text-white rounded-xl px-[1.4rem] py-[1.1rem] text-center shadow-[0_8px_24px_rgba(200,151,58,0.4)]">
+          <div className="block absolute -bottom-6 -right-6 bg-blue text-white rounded-xl px-[1.4rem] py-[1.1rem] text-center shadow-[0_8px_24px_rgba(200,151,58,0.4)]">
             <div className="font-serif text-[1.9rem] font-bold leading-none">
               240
             </div>

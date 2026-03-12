@@ -1,4 +1,4 @@
-import Tag from "@/components/atoms/Tag";
+﻿import Tag from "@/components/atoms/Tag";
 
 interface TerminCardProps {
   day: string;
@@ -16,20 +16,20 @@ export default function TerminCard({
   tag,
 }: TerminCardProps) {
   return (
-    <div className="bg-white px-6 py-[1.2rem] grid grid-cols-[65px_1fr_auto] gap-[1.4rem] items-center transition-colors duration-150 hover:bg-[#fdf8f8]">
+    <div className="bg-white px-6 py-[1.2rem] grid grid-cols-[65px_1fr_auto] gap-[1.4rem] items-center transition-colors duration-150 hover:bg-surface-hover">
       <div className="text-center">
-        <div className="font-serif text-[2rem] font-bold text-[#b00e1b] leading-none">
+        <div className="font-serif text-[2rem] font-bold text-red-accent leading-none">
           {day}
         </div>
-        <div className="text-[0.72rem] font-semibold tracking-[0.1em] uppercase text-[#4a5260]">
+        <div className="text-[0.72rem] font-semibold tracking-[0.1em] uppercase text-muted">
           {month}
         </div>
       </div>
       <div>
-        <div className="font-semibold text-[0.93rem] text-[#1a1a1a] mb-[3px]">
+        <div className="font-semibold text-[0.93rem] text-foreground mb-[3px]">
           {title}
         </div>
-        <div className="text-[0.78rem] text-[#4a5260]">{info}</div>
+        <div className="text-[0.78rem] text-muted">{info}</div>
       </div>
       <div className="hidden sm:block">
         <Tag>{tag}</Tag>

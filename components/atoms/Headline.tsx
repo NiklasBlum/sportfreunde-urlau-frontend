@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 
 interface HeadlineProps {
   level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -22,7 +22,7 @@ export const Headline: React.FC<HeadlineProps> = ({
 
   if (level === "h2")
     return (
-      <h2 className="font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-[0.9rem]">
+      <h2 className="font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] font-bold text-foreground leading-[1.15] mb-[0.9rem]">
         {children}
       </h2>
     );

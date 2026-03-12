@@ -11,8 +11,30 @@
 }
 
 @theme {
+  /* ── Brand ── */
   --color-blue: rgb(11 38 102);
+  --color-blue-mid: rgb(55 88 186); /* hero gradient midpoint */
   --color-red: rgb(143 13 23);
+
+  /* ── Red family ── */
+  --color-red-dark: rgb(122 11 20); /* dropdowns, dark hover bg   */
+  --color-red-accent: rgb(176 14 27); /* links, section accents      */
+  --color-red-tint: rgb(240 221 224); /* body text on dark-red bg   */
+  --color-red-subtle: rgb(245 208 211); /* nav sub-link text           */
+  --color-red-blush: rgb(200 184 186); /* footer muted text           */
+
+  /* ── Gold accent ── */
+  --color-gold: rgb(168 118 40); /* decorative line, badge bg   */
+  --color-gold-dark: rgb(61 26 0); /* gold-button hover text      */
+  --color-gold-light: rgb(200 151 58); /* gold-button hover bg        */
+  --color-gold-highlight: rgb(240 192 96); /* focus rings, active nav    */
+
+  /* ── Neutrals ── */
+  --color-surface: rgb(242 238 235); /* alternate-section bg        */
+  --color-surface-hover: rgb(255 248 248); /* card hover on white bg     */
+  --color-surface-hover-warm: rgb(253 246 240); /* download-card hover   */
+  --color-muted: rgb(74 82 96); /* secondary / caption text    */
+  --color-foreground: rgb(26 26 26); /* primary body text           */
 }
 
 html {
@@ -54,40 +76,7 @@ body {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 3px solid #f0c060;
+  outline: 3px solid var(--color-gold-highlight);
   outline-offset: 3px;
   border-radius: 4px;
-}
-
-.skip-link {
-  position: absolute;
-  top: -100px;
-  left: 1rem;
-  background: #1a1a1a;
-  color: white;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0 0 6px 6px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  z-index: 9999;
-  text-decoration: none;
-  transition: top 0.2s;
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
-/* Utility helpers for brand colors */
-.bg-sfu-blue {
-  background-color: rgb(var(--sfu-blue-rgb) / 0.97);
-}
-.bg-sfu-red {
-  background-color: rgb(var(--sfu-red-rgb) / 0.97);
-}
-.text-sfu-blue {
-  color: var(--sfu-blue);
-}
-.text-sfu-red {
-  color: var(--sfu-red);
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
@@ -92,7 +92,7 @@ export default function SportmaedelsPage() {
               <SectionLabel light>Abteilung</SectionLabel>
               <Headline level="h1">Sportmädels</Headline>
 
-              <p className="text-[#f0dde0] text-[1rem] leading-[1.75] max-w-[480px]">
+              <p className="text-red-tint text-[1rem] leading-[1.75] max-w-[480px]">
                 Sport, Gemeinschaft und Spaß – die Sportmädels sind immer in
                 Bewegung. Vom Faschingstanz über MTB-Touren bis zur
                 Weihnachtsfeier ist jede Saison ein Erlebnis.
@@ -114,22 +114,22 @@ export default function SportmaedelsPage() {
         {/* Activities */}
         <Section>
           <SectionLabel>Was wir machen</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             Unsere Aktivitäten
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {activities.map(({ icon, label, desc }) => (
               <div
                 key={label}
-                className="bg-[#f2eeeb] rounded-xl p-6 border border-black/[0.06]"
+                className="bg-surface rounded-xl p-6 border border-black/[0.06]"
               >
                 <div className="text-[1.8rem] mb-3" aria-hidden="true">
                   {icon}
                 </div>
-                <div className="font-semibold text-[#1a1a1a] text-[0.95rem] mb-1.5">
+                <div className="font-semibold text-foreground text-[0.95rem] mb-1.5">
                   {label}
                 </div>
-                <p className="text-[#4a5260] text-[0.87rem] leading-[1.7]">
+                <p className="text-muted text-[0.87rem] leading-[1.7]">
                   {desc}
                 </p>
               </div>
@@ -138,9 +138,9 @@ export default function SportmaedelsPage() {
         </Section>
 
         {/* Recent events */}
-        <Section className="bg-[#f2eeeb] border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/[0.06]">
           <SectionLabel>Rückblick</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             Aktuelle Berichte
           </h2>
           <div className="flex flex-col gap-px bg-black/[0.06] rounded-xl overflow-hidden border border-black/[0.08]">
@@ -150,15 +150,15 @@ export default function SportmaedelsPage() {
                 className="bg-white px-6 py-5 flex gap-6 items-start"
               >
                 <div className="shrink-0 w-[4.5rem] text-center pt-0.5">
-                  <span className="inline-block text-[0.72rem] font-semibold tracking-[0.1em] uppercase text-[#b00e1b] bg-[#b00e1b]/[0.08] rounded-md px-2 py-1 leading-none">
+                  <span className="inline-block text-[0.72rem] font-semibold tracking-[0.1em] uppercase text-red-accent bg-red-accent/[0.08] rounded-md px-2 py-1 leading-none">
                     {date}
                   </span>
                 </div>
                 <div>
-                  <div className="font-semibold text-[0.95rem] text-[#1a1a1a] mb-1">
+                  <div className="font-semibold text-[0.95rem] text-foreground mb-1">
                     {title}
                   </div>
-                  <p className="text-[#4a5260] text-[0.87rem] leading-[1.7]">
+                  <p className="text-muted text-[0.87rem] leading-[1.7]">
                     {desc}
                   </p>
                 </div>
@@ -170,22 +170,22 @@ export default function SportmaedelsPage() {
         {/* Team */}
         <Section>
           <SectionLabel>Das Team</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-[#1a1a1a] leading-[1.15] mb-8">
+          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             Leitung & Organisation
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-[640px]">
             {team.map(({ role, name }) => (
               <div
                 key={name}
-                className="bg-[#f2eeeb] rounded-xl p-5 border border-black/[0.06] text-center"
+                className="bg-surface rounded-xl p-5 border border-black/[0.06] text-center"
               >
-                <div className="w-12 h-12 rounded-full bg-[#7a0b14]/10 flex items-center justify-center text-[1.3rem] mx-auto mb-3">
+                <div className="w-12 h-12 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.3rem] mx-auto mb-3">
                   🤸
                 </div>
-                <div className="font-semibold text-[#1a1a1a] text-[0.95rem]">
+                <div className="font-semibold text-foreground text-[0.95rem]">
                   {name}
                 </div>
-                <div className="text-[0.75rem] text-[#4a5260] mt-1 leading-[1.4]">
+                <div className="text-[0.75rem] text-muted mt-1 leading-[1.4]">
                   {role}
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function SportmaedelsPage() {
           <div className="container px-8">
             <Link
               href="/#abteilungen"
-              className="inline-flex items-center gap-2 text-[#b00e1b] font-semibold text-[0.9rem] hover:underline"
+              className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
             >
               ← Alle Abteilungen
             </Link>

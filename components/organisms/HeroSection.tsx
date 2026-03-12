@@ -1,4 +1,4 @@
-import Button from "@/components/atoms/Button";
+﻿import Button from "@/components/atoms/Button";
 import StatItem from "@/components/atoms/StatItem";
 import SfuLogo from "@/components/atoms/SfuLogo";
 
@@ -20,7 +20,7 @@ export default function HeroSection() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, var(--color-blue) 0%, #3758ba 50%, var(--color-red) 100%)",
+            "linear-gradient(135deg, var(--color-blue) 0%, var(--color-blue-mid) 50%, var(--color-red) 100%)",
         }}
       />
 
@@ -31,21 +31,18 @@ export default function HeroSection() {
           <h1 className="font-serif text-[clamp(2.8rem,4.5vw,4.2rem)] font-black text-white leading-[1.05] mb-6 animate-[fadeUp_0.8s_0.1s_ease_both]">
             Griaß di und
             <br />
-            <span className="text-[#f0c060]">herzlich willkommen!</span>
+            <span className="text-gold-highlight">herzlich willkommen!</span>
           </h1>
-          <p className="text-[#f0dde0] text-[1.05rem] leading-[1.8] mb-10 max-w-110 animate-[fadeUp_0.8s_0.2s_ease_both]">
+          <p className="text-red-tint text-[1.05rem] leading-[1.8] mb-10 max-w-110 animate-[fadeUp_0.8s_0.2s_ease_both]">
             Wir bieten ein umfangreiches Angebot im Breiten- und Freizeitsport
             und fördern aktiv den Sport bei Kindern und Jugendlichen. Bleibe fit
             und gesund mit uns!
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-[fadeUp_0.8s_0.3s_ease_both]">
-            <Button
-              href="#abteilungen"
-              variant="outline"
-              className="justify-center sm:justify-start"
-            >
-              Unsere Abteilungen →
+            <Button href="#abteilungen" variant="red">
+              Unsere Abteilungen <span className="ml-1">→</span>
             </Button>
+
             <Button
               href="#verein"
               variant="outline"
@@ -66,7 +63,7 @@ export default function HeroSection() {
                 <div className="font-serif text-[1.1rem] font-bold text-white">
                   Sportfreunde Urlau
                 </div>
-                <div className="text-[0.67rem] tracking-[0.12em] uppercase text-[#f0c060] mt-0.75">
+                <div className="text-[0.67rem] tracking-[0.12em] uppercase text-gold-highlight mt-0.75">
                   e.V. - Gegründet 1921 - Allgäu
                 </div>
               </div>
@@ -85,12 +82,12 @@ export default function HeroSection() {
             </div>
 
             {/* Quote */}
-            <div className="bg-[rgba(200,151,58,0.1)] border-l-[3px] border-[#a87628] pl-[1.1rem] pr-[1.1rem] py-[0.9rem] rounded-r-lg">
-              <p className="text-[#f0dde0] leading-[1.6] italic">
+            <div className="bg-gold-light/10 border-l-[3px] border-gold pl-[1.1rem] pr-[1.1rem] py-[0.9rem] rounded-r-lg">
+              <p className="text-red-tint leading-[1.6] italic">
                 „Wir animieren Dich zu sportlichen Aktivitäten und freuen uns
                 über jedes neue Mitglied."
               </p>
-              <cite className="block mt-1.5 text-[#f0c060] text-[0.8rem] not-italic font-semibold">
+              <cite className="block mt-1.5 text-gold-highlight text-[0.8rem] not-italic font-semibold">
                 Michael Tronsberg, 1. Vorsitzender
               </cite>
             </div>

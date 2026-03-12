@@ -1,4 +1,4 @@
-import SectionLabel from "@/components/atoms/SectionLabel";
+﻿import SectionLabel from "@/components/atoms/SectionLabel";
 import VorstandCard from "@/components/molecules/VorstandCard";
 import Section from "../atoms/Section";
 import { Headline } from "../atoms/Headline";
@@ -43,7 +43,7 @@ export default function VorstandSection() {
 
       <Headline level="h1">Unser Vorstand</Headline>
 
-      <p className="text-[#f0dde0] text-[0.98rem] leading-[1.75] mb-[2.8rem]">
+      <p className="text-red-tint text-[0.98rem] leading-[1.75] mb-[2.8rem]">
         Die Sportfreunde Urlau werden von einem engagierten Vorstandsteam
         geleitet.
       </p>
@@ -59,12 +59,12 @@ export default function VorstandSection() {
       </div>
 
       <div className="mt-10 text-center">
-        <p className="text-[#f0dde0] text-[0.95rem] mb-2">
+        <p className="text-red-tint text-[0.95rem] mb-2">
           Nachricht an den Vorstand
         </p>
         <a
           href="mailto:vorstand@sportfreunde-urlau.de"
-          className="text-white font-semibold underline underline-offset-4 hover:text-[#f0dde0] transition-colors"
+          className="text-white font-semibold underline underline-offset-4 hover:text-red-tint transition-colors"
         >
           vorstand@sportfreunde-urlau.de
         </a>

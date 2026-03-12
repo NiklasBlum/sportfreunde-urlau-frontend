@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 interface VorstandCardProps {
   role: string;
@@ -13,7 +13,7 @@ export default function VorstandCard({
 }: VorstandCardProps) {
   return (
     <div className="bg-white/[0.07] border border-white/10 rounded-xl p-[1.8rem] transition-all duration-200 hover:bg-white/[0.11] hover:-translate-y-[3px]">
-      <div className="w-20 h-20 rounded-full bg-white/10 border-[3px] border-[rgba(200,151,58,0.5)] flex items-center justify-center text-[1.5rem] mb-4 overflow-hidden">
+      <div className="w-20 h-20 rounded-full bg-white/10 border-[3px] border-gold-light/50 flex items-center justify-center text-[1.5rem] mb-4 overflow-hidden">
         {avatar ? (
           <Image
             src={avatar}
@@ -26,7 +26,7 @@ export default function VorstandCard({
           <span>👤</span>
         )}
       </div>
-      <div className="text-[#f0c060] text-[0.7rem] font-semibold tracking-[0.1em] uppercase mb-1">
+      <div className="text-gold-highlight text-[0.7rem] font-semibold tracking-[0.1em] uppercase mb-1">
         {role}
       </div>
       <div className="font-serif text-[1.1rem] text-white font-bold">

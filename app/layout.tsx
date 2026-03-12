@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Sportfreunde Urlau e.V.",
@@ -26,7 +27,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased min-h-screen flex flex-col">{children}</body>
+      <body className="antialiased min-h-screen flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

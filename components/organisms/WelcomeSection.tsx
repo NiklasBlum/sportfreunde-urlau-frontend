@@ -25,7 +25,7 @@ export default function WelcomeSection() {
             liegt uns die Förderung des Sports bei Kindern und Jugendlichen
             besonders am Herzen.
           </p>
-          <Button href="/verein" variant="blue">
+          <Button href="/verein" variant="red">
             Mehr über den Verein →
           </Button>
         </div>
@@ -40,7 +40,7 @@ export default function WelcomeSection() {
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
-          <div className="block absolute -bottom-6 -right-6 bg-blue text-white rounded-xl px-[1.4rem] py-[1.1rem] text-center shadow-[0_8px_24px_rgba(200,151,58,0.4)]">
+          <div className="block absolute -bottom-6 -right-6 bg-red text-white rounded-xl px-[1.4rem] py-[1.1rem] text-center shadow-[0_8px_24px_rgba(200,151,58,0.4)]">
             <div className="font-serif text-[1.9rem] font-bold leading-none">
               240
             </div>

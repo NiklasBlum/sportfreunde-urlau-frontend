@@ -27,13 +27,13 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
         {/* Left */}
-        <div>
+        <div className="justify-items-center lg:justify-items-start">
           <h1 className="font-serif text-[clamp(2.8rem,4.5vw,4.2rem)] font-black text-white leading-[1.05] mb-6 animate-[fadeUp_0.8s_0.1s_ease_both]">
             Griaß di und
             <br />
             <span className="text-gold-highlight">herzlich willkommen!</span>
           </h1>
-          <p className="text-red-tint text-[1.05rem] leading-[1.8] mb-10 max-w-110 animate-[fadeUp_0.8s_0.2s_ease_both]">
+          <p className="text-red-tint text-[1.05rem] leading-[1.8] mb-10 w-full md:max-w-110 animate-[fadeUp_0.8s_0.2s_ease_both]">
             Wir bieten ein umfangreiches Angebot im Breiten- und Freizeitsport
             und fördern aktiv den Sport bei Kindern und Jugendlichen. Bleibe fit
             und gesund mit uns!

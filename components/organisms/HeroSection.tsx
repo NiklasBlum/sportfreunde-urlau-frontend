@@ -12,7 +12,7 @@ const stats = [
 export default function HeroSection() {
   return (
     <section
-      className="min-h-[95vh] relative flex items-center overflow-hidden"
+      className="min-h-screen md:min-h-[95vh] relative flex items-center overflow-hidden pt-20 pb-25 md:py-0"
       aria-label="Willkommen"
     >
       {/* Background: clean diagonal gradient, brand blue → brand red */}
@@ -27,7 +27,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
         {/* Left */}
-        <div className="py-20 lg:py-0">
+        <div>
           <h1 className="font-serif text-[clamp(2.8rem,4.5vw,4.2rem)] font-black text-white leading-[1.05] mb-6 animate-[fadeUp_0.8s_0.1s_ease_both]">
             Griaß di und
             <br />
@@ -38,7 +38,7 @@ export default function HeroSection() {
             und fördern aktiv den Sport bei Kindern und Jugendlichen. Bleibe fit
             und gesund mit uns!
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-[fadeUp_0.8s_0.3s_ease_both]">
+          <div className="flex gap-3 sm:gap-4 animate-[fadeUp_0.8s_0.3s_ease_both]">
             <Button href="#abteilungen" variant="red">
               Unsere Abteilungen <span className="ml-1">→</span>
             </Button>
@@ -54,7 +54,7 @@ export default function HeroSection() {
         </div>
 
         {/* Right card */}
-        <div className="hidden lg:block animate-[fadeLeft_0.9s_0.2s_ease_both]">
+        <div className="animate-[fadeLeft_0.9s_0.2s_ease_both]">
           <div className="bg-white/[0.07] border border-white/13 rounded-2xl p-[2.2rem] backdrop-blur-[10px]">
             {/* Logo row */}
             <div className="flex items-center gap-4 pb-[1.4rem] mb-[1.4rem] border-b border-white/10">
@@ -96,7 +96,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll hint */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 text-[0.68rem] tracking-[0.15em] uppercase animate-bounce after:content-[''] after:w-px after:h-9 after:bg-gradient-to-b after:from-white/40 after:to-transparent">
+      <div className="flex absolute bottom-2 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/40 text-[0.68rem] tracking-[0.15em] uppercase animate-bounce after:content-[''] after:w-px after:h-9 after:bg-gradient-to-b after:from-white/40 after:to-transparent">
         Scroll
       </div>
     </section>

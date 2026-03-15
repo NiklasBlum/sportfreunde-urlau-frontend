@@ -169,6 +169,9 @@ export default async function RadsportHerrenPage() {
                     <th className="text-left px-4 py-3 font-semibold w-[7.5rem]">
                       Datum
                     </th>
+                    <th className="text-left px-4 py-3 font-semibold w-[7rem]">
+                      Abfahrt
+                    </th>
                     <th className="text-left px-4 py-3 font-semibold">Route</th>
                     <th className="text-right px-4 py-3 font-semibold w-[6rem]">
                       Status
@@ -178,13 +181,16 @@ export default async function RadsportHerrenPage() {
                 <tbody>
                   {bySeason
                     .get(season)!
-                    .map(({ _id, date, route, status }, i) => (
+                    .map(({ _id, date, route, departureTime, status }, i) => (
                       <tr
                         key={_id}
                         className={`border-t border-black/[0.06] ${i % 2 === 0 ? "bg-white" : "bg-surface"}`}
                       >
                         <td className="px-4 py-3 font-semibold text-foreground whitespace-nowrap">
                           {formatDate(date)}
+                        </td>
+                        <td className="px-4 py-3 text-muted whitespace-nowrap">
+                          {departureTime ?? "—"}
                         </td>
                         <td className="px-4 py-3 text-muted">
                           {status === "cancelled" ? (

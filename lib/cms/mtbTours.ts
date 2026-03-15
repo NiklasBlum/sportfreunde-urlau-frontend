@@ -4,6 +4,7 @@ export type MtbTour = {
   _id: string;
   date: string;
   route: string | null;
+  departureTime: string | null;
   status: "tour" | "cancelled" | "pause";
   season: number;
 };
@@ -18,6 +19,7 @@ export async function getMtbTours(season?: number): Promise<MtbTour[]> {
       _id,
       date,
       route,
+      departureTime,
       status,
       season
     }`,

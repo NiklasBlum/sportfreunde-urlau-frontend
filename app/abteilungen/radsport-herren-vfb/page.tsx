@@ -6,6 +6,7 @@ import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
+import { getMtbTours, type MtbTour } from "@/lib/cms/mtbTours";
 
 export const metadata: Metadata = {
   title: "Radsport Herren (VFB) – Sportfreunde Urlau e.V.",
@@ -84,7 +85,24 @@ const tabus = [
   "Überholen des Guides ohne Streckenfreigabe ist untersagt. Der Guide gibt das Tempo vor.",
 ];
 
-export default function RadsportHerrenPage() {
+function formatDate(iso: string): string {
+  const [y, m, d] = iso.split("-");
+  return `${d}.${m}.${y}`;
+}
+
+function groupBySeason(tours: MtbTour[]): Map<number, MtbTour[]> {
+  return tours.reduce((map, tour) => {
+    const list = map.get(tour.season) ?? [];
+    list.push(tour);
+    map.set(tour.season, list);
+    return map;
+  }, new Map<number, MtbTour[]>());
+}
+
+export default async function RadsportHerrenPage() {
+  const tours = await getMtbTours();
+  const bySeason = groupBySeason(tours);
+  const seasons = Array.from(bySeason.keys()).sort((a, b) => b - a);
   return (
     <>
       <Navbar />
@@ -101,7 +119,7 @@ export default function RadsportHerrenPage() {
                 montags von April bis September.
               </p>
             </div>
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden hidden lg:block">
+            <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden hidden lg:block">
               <Image
                 src="/abteilungen/vfb.webp"
                 alt="Radsport Herren VFB"
@@ -113,6 +131,94 @@ export default function RadsportHerrenPage() {
             </div>
           </div>
         </Section>
+
+        {/* Tourenplan */}
+        {seasons.map((season) => (
+          <Section
+            key={season}
+            className="bg-surface border-t border-b border-black/[0.06]"
+          >
+            <SectionLabel>Saison {season}</SectionLabel>
+            <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-6">
+              MTB-Tourenplan {season}
+            </h2>
+            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8 text-[0.88rem] text-amber-900 leading-[1.65]">
+              <p>
+                Falls die aktuelle Tour aufgrund des Wetters verschoben oder
+                abgesagt werden muss, steht es hier am Montagabend bis
+                spätestens 17:00 Uhr. Wenn hier nichts steht, findet die Tour
+                statt!
+              </p>
+              <p className="mt-2">
+                Für die aktuelle Wettervorhersage{" "}
+                <a
+                  href="http://wetterstationen.meteomedia.de/station=109440&wahl=vorhersage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold underline hover:text-amber-700"
+                >
+                  hier klicken
+                </a>
+                .
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-xl border border-black/[0.06]">
+              <table className="w-full text-[0.88rem]">
+                <thead>
+                  <tr className="bg-red-dark text-white">
+                    <th className="text-left px-4 py-3 font-semibold w-[7.5rem]">
+                      Datum
+                    </th>
+                    <th className="text-left px-4 py-3 font-semibold">Route</th>
+                    <th className="text-right px-4 py-3 font-semibold w-[6rem]">
+                      Status
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bySeason
+                    .get(season)!
+                    .map(({ _id, date, route, status }, i) => (
+                      <tr
+                        key={_id}
+                        className={`border-t border-black/[0.06] ${i % 2 === 0 ? "bg-white" : "bg-surface"}`}
+                      >
+                        <td className="px-4 py-3 font-semibold text-foreground whitespace-nowrap">
+                          {formatDate(date)}
+                        </td>
+                        <td className="px-4 py-3 text-muted">
+                          {status === "cancelled" ? (
+                            <span className="italic text-muted/60">
+                              Abgesagt
+                            </span>
+                          ) : (
+                            route
+                          )}
+                        </td>
+                        <td className="px-4 py-3 text-right">
+                          {status === "tour" && (
+                            <span className="inline-block bg-green-100 text-green-800 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                              Tour
+                            </span>
+                          )}
+                          {status === "cancelled" && (
+                            <span className="inline-block bg-red-100 text-red-700 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                              Abgesagt
+                            </span>
+                          )}
+                          {status === "pause" && (
+                            <span className="inline-block bg-gray-100 text-gray-600 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                              Pause
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+          </Section>
+        ))}
 
         {/* Übungszeiten & Kontakt */}
         <Section>

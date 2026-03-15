@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
@@ -6,52 +6,22 @@ import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
-import { getMtbTours, type MtbTour } from "@/lib/cms/mtbTours";
+import { getMtbToursLadies, type MtbTourLady } from "@/lib/cms/mtbToursLadies";
+import {
+  getMtbEventsLadies,
+  type MtbEventLady,
+} from "@/lib/cms/mtbEventsLadies";
 
 export const metadata: Metadata = {
-  title: "Radsport Herren (VFB) – Sportfreunde Urlau e.V.",
+  title: "MTB-Ladies – Sportfreunde Urlau e.V.",
   description:
-    "MTB-Touren, Trainingszeiten und Infos zur Radsport-Herrenabteilung (VFB) der Sportfreunde Urlau e.V.",
+    "MTB-Touren, Trainingszeiten und Infos zur Radsport-Damenabteilung (MTB-Ladies) der Sportfreunde Urlau e.V.",
 };
 
 const uebungszeiten = [
   {
     season: "April – September",
-    slots: [
-      { time: "Montags", label: "MTB-Touren – Abfahrtszeiten individuell" },
-    ],
-  },
-  {
-    season: "Oktober – März",
-    slots: [
-      {
-        time: "Montags, 20:00 – 22:00 Uhr",
-        label: "Volleyball (Winterbetrieb)",
-      },
-    ],
-  },
-];
-
-const gruppen = [
-  {
-    name: "MTB – Pro",
-    description:
-      "Fahrtechnisch und konditionell anspruchsvoll. Zum Teil mit Trail-, Trage- und Schiebepassagen.",
-  },
-  {
-    name: "MTB – Sport",
-    description:
-      "Fahrtechnisch und konditionell sportlich. Zum Teil mit Trail-, Trage- und Schiebepassagen.",
-  },
-  {
-    name: "MTB – Klassik",
-    description:
-      "Fahrtechnisch und konditionell gut fahrbar. Trailpassagen sind möglich. Trage- und Schiebepassagen werden möglichst vermieden. Auch für erfahrene E-Biker geeignet.",
-  },
-  {
-    name: "MTB – Komfort / Komfort-E",
-    description:
-      "Fahrtechnisch und konditionell einfach. Keine Trail-, Trage- und Schiebepassagen. Für E-Biker bestens geeignet.",
+    slots: [{ time: "Montags", label: "MTB-Touren – Abfahrt 18:00 Uhr" }],
   },
 ];
 
@@ -90,19 +60,25 @@ function formatDate(iso: string): string {
   return `${d}.${m}.${y}`;
 }
 
-function groupBySeason(tours: MtbTour[]): Map<number, MtbTour[]> {
+function groupBySeason(tours: MtbTourLady[]): Map<number, MtbTourLady[]> {
   return tours.reduce((map, tour) => {
     const list = map.get(tour.season) ?? [];
     list.push(tour);
     map.set(tour.season, list);
     return map;
-  }, new Map<number, MtbTour[]>());
+  }, new Map<number, MtbTourLady[]>());
 }
 
-export default async function RadsportHerrenPage() {
-  const tours = await getMtbTours();
+export default async function MtbLadiesPage() {
+  const [tours, events] = await Promise.all([
+    getMtbToursLadies(),
+    getMtbEventsLadies(),
+  ]);
   const bySeason = groupBySeason(tours);
   const seasons = Array.from(bySeason.keys()).sort((a, b) => b - a);
+
+  console.log(events);
+
   return (
     <>
       <Navbar />
@@ -112,17 +88,15 @@ export default async function RadsportHerrenPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <SectionLabel light>Abteilung</SectionLabel>
-              <Headline level="h1"> Radsport Herren (VFB)</Headline>
-
+              <Headline level="h1">MTB-Ladies</Headline>
               <p className="text-red-tint text-[1rem] leading-[1.75]">
-                MTB-Touren für jeden Fahrstil – von Pro bis Komfort, immer
-                montags von April bis September.
+                MTB-Touren für Damen – immer montags von April bis September.
               </p>
             </div>
             <div className="relative w-full aspect-video rounded-2xl overflow-hidden hidden lg:block">
               <Image
-                src="/abteilungen/vfb_herren.webp"
-                alt="Radsport Herren VFB"
+                src="/abteilungen/vfb_damen.webp"
+                alt="MTB-Ladies"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1200px) 50vw, 600px"
@@ -266,19 +240,19 @@ export default async function RadsportHerrenPage() {
             <div>
               <SectionLabel>Kontakt</SectionLabel>
               <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-                Abteilungsleiter
+                Abteilungsleitung
               </h2>
               <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
-                    🚵
+                    🚴‍♀️
                   </div>
                   <div>
                     <div className="font-semibold text-foreground text-[1rem]">
-                      Roland Krug
+                      MTB-Ladies
                     </div>
                     <div className="text-[0.8rem] text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
-                      Abteilungsleiter Radsport
+                      Radsport Damen
                     </div>
                   </div>
                 </div>
@@ -287,31 +261,8 @@ export default async function RadsportHerrenPage() {
           </div>
         </Section>
 
-        {/* Gruppen */}
-        <Section className="bg-surface border-t border-b border-black/[0.06]">
-          <SectionLabel>Gruppen</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            MTB-Gruppen
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {gruppen.map(({ name, description }) => (
-              <div
-                key={name}
-                className="bg-white rounded-xl p-6 border border-black/[0.06]"
-              >
-                <div className="font-serif font-bold text-red-dark text-[1rem] mb-2">
-                  {name}
-                </div>
-                <p className="text-[0.88rem] text-muted leading-[1.65]">
-                  {description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
         {/* Regeln */}
-        <Section>
+        <Section className="bg-surface border-t border-b border-black/[0.06]">
           <SectionLabel>Sicherheit</SectionLabel>
           <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
             Regeln & Tabus
@@ -322,7 +273,7 @@ export default async function RadsportHerrenPage() {
               {regeln.map(({ title, text }) => (
                 <div
                   key={title}
-                  className="bg-surface rounded-xl p-6 border border-black/[0.06]"
+                  className="bg-white rounded-xl p-6 border border-black/[0.06]"
                 >
                   <div className="font-semibold text-foreground text-[0.95rem] mb-1">
                     {title}
@@ -360,6 +311,56 @@ export default async function RadsportHerrenPage() {
             </div>
           </div>
         </Section>
+
+        {/* Events */}
+        {events.length > 0 && (
+          <Section>
+            <SectionLabel>Berichte & Rückblicke</SectionLabel>
+            <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
+              Events & Highlights
+            </h2>
+            <div className="flex flex-col gap-12">
+              {events.map((event: MtbEventLady) => (
+                <div key={event._id}>
+                  <h3 className="font-serif font-bold text-foreground text-[1.2rem] mb-3">
+                    {event.headline}
+                  </h3>
+                  {event.beschreibung && (
+                    <div className="text-[0.9rem] text-muted leading-[1.75] mb-6 flex flex-col gap-3">
+                      {event.beschreibung
+                        .replace(/\r\n/g, "\n")
+                        .split(/\n{2,}/)
+                        .filter((p) => p.trim())
+                        .map((p, i) => (
+                          <p key={i} className="whitespace-pre-line">
+                            {p.trim()}
+                          </p>
+                        ))}
+                    </div>
+                  )}
+                  {event.images.length > 0 && (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                      {event.images.map((img) => (
+                        <div
+                          key={img._key}
+                          className="relative aspect-square rounded-xl overflow-hidden bg-surface"
+                        >
+                          <Image
+                            src={img.url}
+                            alt={img.alt ?? event.headline}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </Section>
+        )}
 
         {/* Back */}
         <Section className="bg-surface border-t border-black/[0.06]">

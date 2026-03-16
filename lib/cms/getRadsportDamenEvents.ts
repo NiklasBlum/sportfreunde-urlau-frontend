@@ -1,6 +1,6 @@
 import { client } from "./client";
 
-export type MtbEventLady = {
+export type RadsportDamenEvent = {
   _id: string;
   headline: string;
   beschreibung: string | null;
@@ -11,7 +11,7 @@ export type MtbEventLady = {
   }[];
 };
 
-export async function getMtbEventsLadies(): Promise<MtbEventLady[]> {
+export async function getRadsportDamenEvents(): Promise<RadsportDamenEvent[]> {
   return client.fetch(
     `*[_type == "mtbEventsLadies"] | order(_createdAt desc) {
       _id,

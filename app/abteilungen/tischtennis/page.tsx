@@ -5,6 +5,7 @@ import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
+import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
 
 export const metadata: Metadata = {
   title: "Tischtennis – Sportfreunde Urlau e.V.",
@@ -59,7 +60,9 @@ export default function TischtennisPage() {
         {/* Hero */}
         <Section className="bg-blue">
           <SectionLabel light>Abteilung</SectionLabel>
-          <Headline level="h1">Tischtennis</Headline>
+          <Headline level="h1" light>
+            Tischtennis
+          </Headline>
 
           <p className="text-red-tint text-[1rem] leading-[1.75]">
             Wettkampfsport und Freizeitspiel für jedes Alter – von den Bambinis
@@ -73,14 +76,12 @@ export default function TischtennisPage() {
             {/* Training times */}
             <div>
               <SectionLabel>Training</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-                Trainingszeiten
-              </h2>
+              <Headline level="h2">Trainingszeiten</Headline>
               <div className="flex flex-col gap-6">
                 {trainingDays.map(({ day, slots }) => (
                   <div
                     key={day}
-                    className="bg-surface rounded-xl p-6 border border-black/[0.06]"
+                    className="bg-surface rounded-xl p-6 border border-black/6"
                   >
                     <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                       {day}
@@ -106,10 +107,8 @@ export default function TischtennisPage() {
             {/* Contact */}
             <div>
               <SectionLabel>Kontakt</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-                Abteilungsleiter
-              </h2>
-              <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
+              <Headline level="h2">Abteilungsleiter</Headline>
+              <div className="bg-surface rounded-xl p-6 border border-black/6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
                     🏓
@@ -118,29 +117,25 @@ export default function TischtennisPage() {
                     <div className="font-semibold text-foreground text-[1rem]">
                       Jakob Butscher
                     </div>
-                    <div className="text-[0.8rem] text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
-                      Abteilungsleiter Tischtennis
-                    </div>
+                    <a
+                      href="mailto:jakob.butscher@web.de"
+                      className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
+                    >
+                      jakob.butscher@web.de
+                    </a>
                   </div>
                 </div>
-                <a
-                  href="mailto:jakob.butscher@web.de"
-                  className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
-                >
-                  jakob.butscher@web.de
-                </a>
               </div>
             </div>
           </div>
         </Section>
 
         {/* Teams */}
-        <Section className="bg-surface border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Saison 2025/2026</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Mannschaften
-          </h2>
-          <div className="flex flex-col gap-px bg-black/[0.06] rounded-xl overflow-hidden border border-black/[0.08]">
+          <Headline level="h2"> Mannschaften</Headline>
+
+          <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8">
             {mannschaften.map(({ name, liga, href }) => (
               <a
                 key={name}
@@ -153,9 +148,7 @@ export default function TischtennisPage() {
                   <span className="font-semibold text-[0.95rem] text-foreground group-hover:text-red-accent transition-colors">
                     {name}
                   </span>
-                  <span className="ml-3 text-[0.85rem] text-muted">
-                    {liga}
-                  </span>
+                  <span className="ml-3 text-[0.85rem] text-muted">{liga}</span>
                 </div>
                 <span className="text-red-accent text-[0.8rem] font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">
                   Spielplan →
@@ -166,14 +159,7 @@ export default function TischtennisPage() {
         </Section>
 
         {/* Back */}
-        <Section>
-          <Link
-            href="/#abteilungen"
-            className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
-          >
-            ← Alle Abteilungen
-          </Link>
-        </Section>
+        <AbteilungLinkSection sectionClassName="bg-white" />
       </main>
       <Footer />
     </>

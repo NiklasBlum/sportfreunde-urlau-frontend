@@ -10,14 +10,10 @@ const navItems = [
   { label: "Startseite", href: "/", active: false },
   {
     label: "Verein",
-    href: "/#verein",
+    href: "/verein",
     dropdown: [
-      { label: "Termine", href: "#termine" },
-      { label: "Vorstand", href: "#vorstand" },
-      { label: "Ausschuss", href: "#" },
-      { label: "Jahreshauptversammlung", href: "#" },
-      { label: "Satzung", href: "/downloads#satzung" },
-      { label: "Chronik", href: "/downloads#chronik" },
+      { label: "Vorstand", href: "/verein#vorstand" },
+      { label: "Ausschuss", href: "/verein#ausschuss" },
       { label: "Downloads", href: "/downloads" },
     ],
   },
@@ -31,11 +27,7 @@ const navItems = [
   },
   {
     label: "Veranstaltungen",
-    href: "#",
-    dropdown: [
-      { label: "Faschingsnachmittag", href: "#" },
-      { label: "9 Meter Turnier", href: "#" },
-    ],
+    href: "/veranstaltungen",
   },
 ];
 
@@ -95,7 +87,7 @@ export default function Navbar() {
       {menuOpen && (
         <div
           className="lg:hidden fixed inset-0 z-99 flex flex-col"
-          style={{ top: 64 }}
+          style={{ top: "var(--navbar-height-mobile)" }}
         >
           {/* Backdrop */}
           <div
@@ -105,7 +97,10 @@ export default function Navbar() {
           />
 
           {/* Panel */}
-          <div className="relative bg-red-dark w-full overflow-y-auto max-h-[calc(100dvh-64px)] shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
+          <div
+            className="relative bg-red-dark w-full overflow-y-auto shadow-[0_8px_30px_rgba(0,0,0,0.4)]"
+            style={{ maxHeight: "calc(100dvh - var(--navbar-height-mobile))" }}
+          >
             {navItems.map((item) => (
               <div key={item.label} className="border-b border-white/[0.08]">
                 {item.dropdown ? (

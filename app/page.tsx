@@ -1,10 +1,10 @@
 import Navbar from "@/components/organisms/Navbar";
 import HeroSection from "@/components/organisms/HeroSection";
-import WelcomeSection from "@/components/organisms/WelcomeSection";
 import AbteilungenSection from "@/components/organisms/AbteilungenSection";
 import TermineSection from "@/components/organisms/TermineSection";
 import NewsSection from "@/components/organisms/NewsSection";
 import Footer from "@/components/organisms/Footer";
+import WelcomeSection from "@/components/organisms/WelcomeSection";
 
 export default function Home() {
   return (
@@ -21,6 +21,7 @@ export default function Home() {
 
         <NewsSection />
       </main>
+
       <Footer />
     </>
   );

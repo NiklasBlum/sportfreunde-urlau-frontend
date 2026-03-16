@@ -84,8 +84,8 @@ export default function HeroSection() {
             {/* Quote */}
             <div className="bg-gold-light/10 border-l-[3px] border-gold pl-[1.1rem] pr-[1.1rem] py-[0.9rem] rounded-r-lg">
               <p className="text-red-tint leading-[1.6] italic">
-                „Wir animieren Dich zu sportlichen Aktivitäten und freuen uns
-                über jedes neue Mitglied."
+                &bdquo;Wir animieren Dich zu sportlichen Aktivitäten und freuen
+                uns über jedes neue Mitglied.&ldquo;
               </p>
               <cite className="block mt-1.5 text-gold-highlight text-[0.8rem] not-italic font-semibold">
                 Michael Tronsberg, 1. Vorsitzender

@@ -47,10 +47,11 @@ export default function ImpressumPage() {
       <Navbar />
 
       <main id="main-content">
-        {/* Hero */}
         <Section className="bg-blue">
           <SectionLabel light>Rechtliches</SectionLabel>
-          <Headline level="h1">Impressum</Headline>
+          <Headline level="h1" light>
+            Impressum
+          </Headline>
           <p className="text-red-tint text-[1rem] leading-[1.75]">
             Angaben gemäß § 5 TMG – Sportfreunde Urlau e.V.
           </p>
@@ -59,10 +60,8 @@ export default function ImpressumPage() {
         {/* Vorstand */}
         <Section>
           <SectionLabel>Verantwortlich</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Vorstandschaft SF Urlau
-          </h2>
-          <div className="flex flex-col gap-px bg-black/[0.06] rounded-xl overflow-hidden border border-black/[0.08] max-w-2xl">
+          <Headline level="h2"> Vorstandschaft SF Urlau </Headline>
+          <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8 max-w-2xl">
             {vorstand.map(({ role, name }) => (
               <div
                 key={role}
@@ -80,16 +79,14 @@ export default function ImpressumPage() {
         </Section>
 
         {/* Haftungsausschluss */}
-        <Section className="bg-surface border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Haftungsausschluss</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Rechtliche Hinweise
-          </h2>
+          <Headline level="h2">Rechtliche Hinweise</Headline>
           <div className="flex flex-col gap-4 max-w-3xl">
             {haftungsabschnitte.map(({ title, text }) => (
               <div
                 key={title}
-                className="bg-white rounded-xl p-6 border border-black/[0.06]"
+                className="bg-white rounded-xl p-6 border border-black/6"
               >
                 <div className="font-semibold text-foreground text-[0.95rem] mb-1">
                   {title}

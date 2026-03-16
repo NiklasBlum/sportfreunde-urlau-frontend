@@ -12,12 +12,17 @@ export default function AbteilungCard({
   return (
     <a
       href={href}
-      className="bg-white rounded-xl px-[1.2rem] py-6 text-center border border-black/[0.07] transition-all duration-200 cursor-pointer no-underline text-inherit block hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(192,17,31,0.12)] hover:border-red-accent group focus-visible:outline-[3px] focus-visible:outline-red-accent focus-visible:outline-offset-[3px]"
+      className="group block rounded-xl border border-white/12 bg-blue px-5 py-6 text-center no-underline transition-all duration-200 hover:-translate-y-1 hover:border-gold-highlight/45 hover:shadow-[0_16px_34px_rgba(0,0,70,0.34)] focus-visible:-translate-y-1 focus-visible:border-gold-highlight/60"
     >
-      <div className="w-20 h-20 bg-surface rounded-full flex items-center justify-center text-[1.5rem] mx-auto mb-[0.85rem] transition-colors duration-200 group-hover:bg-red-accent/8">
+      <div className="mx-auto mb-3 flex h-18 w-18 items-center justify-center rounded-full bg-linear-to-br from-red-dark to-red-accent text-[1.85rem] shadow-[0_10px_24px_rgba(122,11,20,0.28)] transition-transform duration-200 group-hover:scale-105">
         {icon}
       </div>
-      <div className="font-semibold text-[0.87rem] text-foreground">{name}</div>
+      <div className="min-h-11 text-[0.92rem] font-semibold leading-tight text-white">
+        {name}
+      </div>
+      <div className="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-white/75 transition-colors duration-200 group-hover:text-gold-highlight">
+        Zur Abteilung <span aria-hidden="true">→</span>
+      </div>
     </a>
   );
 }

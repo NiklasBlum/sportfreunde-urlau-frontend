@@ -38,15 +38,14 @@ export const vorstand = [
 
 export default function VorstandSection() {
   return (
-    <Section id="vorstand" className="bg-blue">
-      <SectionLabel light>Führung</SectionLabel>
+    <Section id="vorstand">
+      <Headline level="h2">Unser Vorstand</Headline>
 
-      <Headline level="h1">Unser Vorstand</Headline>
-
-      <p className="text-red-tint text-[0.98rem] leading-[1.75] mb-[2.8rem]">
+      <p className=" text-[0.98rem] leading-[1.75] mb-[2.8rem]">
         Die Sportfreunde Urlau werden von einem engagierten Vorstandsteam
         geleitet.
       </p>
+
       <div className="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-6">
         {vorstand.map((v) => (
           <VorstandCard
@@ -59,12 +58,10 @@ export default function VorstandSection() {
       </div>
 
       <div className="mt-10 text-center">
-        <p className="text-red-tint text-[0.95rem] mb-2">
-          Nachricht an den Vorstand
-        </p>
+        <p className="text-[0.95rem] mb-2">Nachricht an den Vorstand</p>
         <a
           href="mailto:vorstand@sportfreunde-urlau.de"
-          className="text-white font-semibold underline underline-offset-4 hover:text-red-tint transition-colors"
+          className="font-semibold underline underline-offset-4"
         >
           vorstand@sportfreunde-urlau.de
         </a>

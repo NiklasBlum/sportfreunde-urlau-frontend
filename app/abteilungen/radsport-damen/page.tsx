@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
-import { getMtbToursLadies, type MtbTourLady } from "@/lib/cms/mtbToursLadies";
 import {
-  getMtbEventsLadies,
-  type MtbEventLady,
-} from "@/lib/cms/mtbEventsLadies";
+  getRadsportDamenTours,
+  type RadsportDamenTour,
+} from "@/lib/cms/getRadsportDamenTours";
+import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import {
+  getRadsportDamenEvents,
+  RadsportDamenEvent,
+} from "@/lib/cms/getRadsportDamenEvents";
 
 export const metadata: Metadata = {
   title: "MTB-Ladies – Sportfreunde Urlau e.V.",
@@ -60,24 +63,24 @@ function formatDate(iso: string): string {
   return `${d}.${m}.${y}`;
 }
 
-function groupBySeason(tours: MtbTourLady[]): Map<number, MtbTourLady[]> {
+function groupBySeason(
+  tours: RadsportDamenTour[],
+): Map<number, RadsportDamenTour[]> {
   return tours.reduce((map, tour) => {
     const list = map.get(tour.season) ?? [];
     list.push(tour);
     map.set(tour.season, list);
     return map;
-  }, new Map<number, MtbTourLady[]>());
+  }, new Map<number, RadsportDamenTour[]>());
 }
 
 export default async function MtbLadiesPage() {
   const [tours, events] = await Promise.all([
-    getMtbToursLadies(),
-    getMtbEventsLadies(),
+    getRadsportDamenTours(),
+    getRadsportDamenEvents(),
   ]);
   const bySeason = groupBySeason(tours);
   const seasons = Array.from(bySeason.keys()).sort((a, b) => b - a);
-
-  console.log(events);
 
   return (
     <>
@@ -88,7 +91,9 @@ export default async function MtbLadiesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <SectionLabel light>Abteilung</SectionLabel>
-              <Headline level="h1">MTB-Ladies</Headline>
+              <Headline level="h1" light>
+                MTB-Ladies
+              </Headline>
               <p className="text-red-tint text-[1rem] leading-[1.75]">
                 MTB-Touren für Damen – immer montags von April bis September.
               </p>
@@ -113,9 +118,8 @@ export default async function MtbLadiesPage() {
             className="bg-surface border-t border-b border-black/[0.06]"
           >
             <SectionLabel>Saison {season}</SectionLabel>
-            <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-6">
-              MTB-Tourenplan {season}
-            </h2>
+            <Headline level="h2"> MTB-Tourenplan {season}</Headline>
+
             <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8 text-[0.88rem] text-amber-900 leading-[1.65]">
               <p>
                 Falls die aktuelle Tour aufgrund des Wetters verschoben oder
@@ -206,9 +210,7 @@ export default async function MtbLadiesPage() {
             {/* Übungszeiten */}
             <div>
               <SectionLabel>Übungszeiten</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-                Trainingszeiten
-              </h2>
+              <Headline level="h2">Trainingszeiten</Headline>
               <div className="flex flex-col gap-6">
                 {uebungszeiten.map(({ season, slots }) => (
                   <div
@@ -239,9 +241,7 @@ export default async function MtbLadiesPage() {
             {/* Kontakt */}
             <div>
               <SectionLabel>Kontakt</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-                Abteilungsleitung
-              </h2>
+              <Headline level="h2">Abteilungsleitung</Headline>
               <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
@@ -264,9 +264,7 @@ export default async function MtbLadiesPage() {
         {/* Regeln */}
         <Section className="bg-surface border-t border-b border-black/[0.06]">
           <SectionLabel>Sicherheit</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Regeln & Tabus
-          </h2>
+          <Headline level="h2">Regeln & Tabus</Headline>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Regeln */}
             <div className="flex flex-col gap-4">
@@ -316,11 +314,9 @@ export default async function MtbLadiesPage() {
         {events.length > 0 && (
           <Section>
             <SectionLabel>Berichte & Rückblicke</SectionLabel>
-            <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-              Events & Highlights
-            </h2>
+            <Headline level="h2">Events & Highlights</Headline>
             <div className="flex flex-col gap-12">
-              {events.map((event: MtbEventLady) => (
+              {events.map((event: RadsportDamenEvent) => (
                 <div key={event._id}>
                   <h3 className="font-serif font-bold text-foreground text-[1.2rem] mb-3">
                     {event.headline}
@@ -363,14 +359,7 @@ export default async function MtbLadiesPage() {
         )}
 
         {/* Back */}
-        <Section className="bg-surface border-t border-black/[0.06]">
-          <Link
-            href="/#abteilungen"
-            className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
-          >
-            ← Alle Abteilungen
-          </Link>
-        </Section>
+        <AbteilungLinkSection />
       </main>
       <Footer />
     </>

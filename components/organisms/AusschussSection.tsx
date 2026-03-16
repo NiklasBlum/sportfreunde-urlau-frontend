@@ -54,11 +54,10 @@ export default function AusschussSection() {
   return (
     <Section id="ausschuss" className="bg-surface border-t border-black/6">
       {/* Header row: text + image side by side on lg */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10 items-center mb-12">
         <div>
-          <SectionLabel>Gremium</SectionLabel>
           <Headline level="h2">Ausschuss</Headline>
-          <p className="text-muted text-[0.98rem] leading-[1.75] max-w-xl">
+          <p className="text-muted text-[0.98rem] leading-[1.75]">
             Der Ausschuss leitet gemeinsam die Geschicke der Sportfreunde Urlau.
           </p>
         </div>
@@ -90,9 +89,7 @@ export default function AusschussSection() {
                   <span className="text-[0.72rem] text-muted uppercase tracking-[0.08em] font-semibold leading-none">
                     {role}
                   </span>
-                  <span className="font-semibold text-[0.93rem] text-foreground">
-                    {name}
-                  </span>
+                  <span className="font-semibold text-[0.93rem]">{name}</span>
                 </div>
               ))}
             </div>

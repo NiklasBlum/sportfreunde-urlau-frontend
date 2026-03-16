@@ -26,9 +26,7 @@ export default function TerminCard({
         </div>
       </div>
       <div>
-        <div className="font-semibold text-[0.93rem] text-foreground mb-[3px]">
-          {title}
-        </div>
+        <div className="font-semibold text-[0.93rem] mb-[3px]">{title}</div>
         <div className="text-[0.78rem] text-muted">{info}</div>
       </div>
       <div className="hidden sm:block">

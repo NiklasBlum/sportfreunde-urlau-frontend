@@ -31,7 +31,7 @@ const kontaktKarten = [
       </svg>
     ),
     label: "Adresse",
-    lines: ["Sportfreunde Urlau e.V.", "Urlau", "88410 Bad Wurzach"],
+    lines: ["Sportfreunde Urlau e.V.", "Urlau", "88299 Leutkirch"],
     href: "https://maps.google.com/?q=Urlau",
     hrefLabel: "In Google Maps öffnen",
   },
@@ -100,7 +100,9 @@ export default function KontaktPage() {
         {/* Hero */}
         <Section className="bg-blue">
           <SectionLabel light>Verein</SectionLabel>
-          <Headline level="h1">Kontakt</Headline>
+          <Headline level="h1" light>
+            Kontakt
+          </Headline>
           <p className="text-red-tint text-[1rem] leading-[1.75] max-w-xl">
             Fragen, Anregungen oder Interesse an einer Mitgliedschaft? Wir
             freuen uns über Ihre Nachricht.
@@ -113,9 +115,7 @@ export default function KontaktPage() {
             {/* Left: contact info cards */}
             <div>
               <SectionLabel>Erreichbarkeit</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-6">
-                So erreichen Sie uns
-              </h2>
+              <Headline level="h2">So erreichen Sie uns</Headline>
               <div className="flex flex-col gap-4">
                 {kontaktKarten.map(
                   ({ icon, label, lines, href, hrefLabel }) => (
@@ -133,7 +133,7 @@ export default function KontaktPage() {
                         {lines.map((line) => (
                           <p
                             key={line}
-                            className="text-[0.93rem] font-semibold text-foreground leading-snug"
+                            className="text-[0.93rem] font-semibold leading-snug"
                           >
                             {line}
                           </p>
@@ -162,9 +162,7 @@ export default function KontaktPage() {
             {/* Right: Ansprechpartner */}
             <div>
               <SectionLabel>Ansprechpartner</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-6">
-                Vorstand & Verantwortliche
-              </h2>
+              <Headline level="h2">Vorstand & Verantwortliche</Headline>
               <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/6">
                 {ansprechpartner.map(({ rolle, name }) => (
                   <div

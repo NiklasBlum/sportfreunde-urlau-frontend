@@ -6,6 +6,7 @@ import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
+import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
 
 export const metadata: Metadata = {
   title: "Sportmädels – Sportfreunde Urlau e.V.",
@@ -90,7 +91,9 @@ export default function SportmaedelsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <SectionLabel light>Abteilung</SectionLabel>
-              <Headline level="h1">Sportmädels</Headline>
+              <Headline level="h1" light>
+                Sportmädels
+              </Headline>
 
               <p className="text-red-tint text-[1rem] leading-[1.75] max-w-[480px]">
                 Sport, Gemeinschaft und Spaß – die Sportmädels sind immer in
@@ -98,7 +101,7 @@ export default function SportmaedelsPage() {
                 Weihnachtsfeier ist jede Saison ein Erlebnis.
               </p>
             </div>
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden hidden lg:block">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden hidden lg:block">
               <Image
                 src="/abteilungen/sportmaedels.webp"
                 alt="Die Sportmädels"
@@ -114,9 +117,7 @@ export default function SportmaedelsPage() {
         {/* Activities */}
         <Section>
           <SectionLabel>Was wir machen</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Unsere Aktivitäten
-          </h2>
+          <Headline level="h2">Unsere Aktivitäten</Headline>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {activities.map(({ icon, label, desc }) => (
               <div
@@ -140,9 +141,7 @@ export default function SportmaedelsPage() {
         {/* Recent events */}
         <Section className="bg-surface border-t border-b border-black/[0.06]">
           <SectionLabel>Rückblick</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Aktuelle Berichte
-          </h2>
+          <Headline level="h2">Aktuelle Berichte</Headline>
           <div className="flex flex-col gap-px bg-black/[0.06] rounded-xl overflow-hidden border border-black/[0.08]">
             {recentEvents.map(({ date, title, desc }) => (
               <div
@@ -170,9 +169,7 @@ export default function SportmaedelsPage() {
         {/* Team */}
         <Section>
           <SectionLabel>Das Team</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Leitung & Organisation
-          </h2>
+          <Headline level="h2">Leitung & Organisation</Headline>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-[640px]">
             {team.map(({ role, name }) => (
               <div
@@ -194,16 +191,7 @@ export default function SportmaedelsPage() {
         </Section>
 
         {/* Back */}
-        <div className="border-t border-black/[0.06] py-10">
-          <div className="container px-8">
-            <Link
-              href="/#abteilungen"
-              className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
-            >
-              ← Alle Abteilungen
-            </Link>
-          </div>
-        </div>
+        <AbteilungLinkSection />
       </main>
       <Footer />
     </>

@@ -11,27 +11,40 @@ export default function VorstandCard({
   name,
   avatar,
 }: VorstandCardProps) {
+  const initials = name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase())
+    .join("");
+
   return (
-    <div className="bg-white/[0.07] border border-white/10 rounded-xl p-[1.8rem] transition-all duration-200 hover:bg-white/[0.11] hover:-translate-y-[3px]">
-      <div className="w-20 h-20 rounded-full bg-white/10 border-[3px] border-gold-light/50 flex items-center justify-center text-[1.5rem] mb-4 overflow-hidden">
+    <article
+      className="flex min-h-60 flex-col items-center justify-center rounded-xl border border-black/8 bg-red p-[1.8rem] text-center shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-200 hover:-translate-y-0.75 hover:shadow-[0_14px_36px_rgba(192,17,31,0.18)]"
+      aria-label={`Vorstand: ${role} ${name}`}
+    >
+      <div className="mb-4 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border-[3px] border-gold/50 bg-surface text-[1.1rem] font-semibold text-red">
         {avatar ? (
           <Image
             src={avatar}
             alt={name}
             width={60}
             height={60}
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
           />
         ) : (
-          <span>👤</span>
+          <>
+            <span aria-hidden="true">{initials || "?"}</span>
+            <span className="sr-only">Kein Profilbild für {name}</span>
+          </>
         )}
       </div>
-      <div className="text-gold-highlight text-[0.7rem] font-semibold tracking-[0.1em] uppercase mb-1">
+      <div className="mb-1 text-[0.7rem] font-semibold tracking-widest text-white uppercase">
         {role}
       </div>
-      <div className="font-serif text-[1.1rem] text-white font-bold">
+      <div className="font-serif text-[1.1rem] font-bold text-white">
         {name}
       </div>
-    </div>
+    </article>
   );
 }

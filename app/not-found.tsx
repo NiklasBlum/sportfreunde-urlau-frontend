@@ -4,6 +4,7 @@ import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import Section from "@/components/atoms/Section";
 import SectionLabel from "@/components/atoms/SectionLabel";
+import { Headline } from "@/components/atoms/Headline";
 
 export const metadata: Metadata = {
   title: "Seite nicht gefunden – Sportfreunde Urlau e.V.",
@@ -14,14 +15,12 @@ export default function NotFound() {
   return (
     <>
       <Navbar />
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 flex flex-col justify-center">
         <Section>
           <div className="flex flex-col items-center text-center py-16 lg:py-28 max-w-xl mx-auto">
             <SectionLabel>Fehler 404</SectionLabel>
 
-            <h1 className="font-serif text-[clamp(2.4rem,5vw,3.8rem)] font-bold text-foreground leading-[1.1] mt-4 mb-4">
-              Seite nicht gefunden
-            </h1>
+            <Headline level="h1">Seite nicht gefunden</Headline>
 
             <p className="text-muted text-[1rem] leading-[1.75] mb-10">
               Die gesuchte Seite existiert leider nicht oder wurde verschoben.

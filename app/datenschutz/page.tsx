@@ -27,7 +27,7 @@ const abschnitte: DsAbschnitt[] = [
     title: "1. Verantwortlicher",
     paragraphs: [
       "Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:",
-      "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nAnschrift: Urlau, 88410 Bad Wurzach, Deutschland\nE-Mail: info@sportfreunde-urlau.de",
+      "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nAnschrift: Urlau, 88299 Leutkirch, Deutschland\nE-Mail: info@sportfreunde-urlau.de",
     ],
   },
   {
@@ -138,10 +138,11 @@ export default function DatenschutzPage() {
       <Navbar />
 
       <main id="main-content">
-        {/* Hero */}
         <Section className="bg-blue">
           <SectionLabel light>Rechtliches</SectionLabel>
-          <Headline level="h1">Datenschutz</Headline>
+          <Headline level="h1" light>
+            Datenschutz
+          </Headline>
           <p className="text-red-tint text-[1rem] leading-[1.75]">
             Datenschutzerklärung gemäß DSGVO und BDSG – Sportfreunde Urlau e.V.
           </p>
@@ -150,9 +151,7 @@ export default function DatenschutzPage() {
         {/* Abschnitte */}
         <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Datenschutzerklärung</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Informationen zur Datenverarbeitung
-          </h2>
+          <Headline level="h2">Informationen zur Datenverarbeitung</Headline>
 
           <div className="flex flex-col gap-4 max-w-3xl">
             {abschnitte.map(

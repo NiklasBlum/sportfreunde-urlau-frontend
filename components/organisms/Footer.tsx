@@ -14,7 +14,7 @@ export default function Footer() {
       aria-label="Seitenende"
       className="bg-black text-white/55 px-8 pt-10 pb-8"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto">
         {/* Brand row */}
         <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6 pb-6">
           <div className="flex items-center gap-3">
@@ -47,7 +47,14 @@ export default function Footer() {
         {/* Copyright bar */}
         <div className="pt-5 border-t border-white/12 text-[0.76rem] text-red-blush text-center sm:text-left">
           © {new Date().getFullYear()} Sportfreunde Urlau e.V. · Alle Rechte
-          vorbehalten
+          vorbehalten · Entwickelt von{" "}
+          <Link
+            href="https://niklas-blum.vercel.app"
+            className="underline decoration-red-blush/50 underline-offset-2 hover:text-gold-highlight hover:decoration-gold-highlight transition-colors duration-150"
+          >
+            Niklas Blum
+          </Link>
+          .
         </div>
       </div>
     </footer>

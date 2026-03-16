@@ -1,6 +1,6 @@
 import { client } from "./client";
 
-export type MtbTourLady = {
+export type RadsportHerrenEvents = {
   _id: string;
   date: string;
   route: string | null;
@@ -9,12 +9,12 @@ export type MtbTourLady = {
   season: number;
 };
 
-export async function getMtbToursLadies(
+export async function getRadsportHerrenEvents(
   season?: number,
-): Promise<MtbTourLady[]> {
+): Promise<RadsportHerrenEvents[]> {
   const filter = season
-    ? `_type == "mtbToursLadies" && season == ${season}`
-    : `_type == "mtbToursLadies"`;
+    ? `_type == "vfbHerren" && season == ${season}`
+    : `_type == "vfbHerren"`;
 
   return client.fetch(
     `*[${filter}] | order(date asc) {

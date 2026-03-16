@@ -30,7 +30,7 @@ const termine = [
 export default function TermineSection() {
   return (
     <Section id="termine">
-      <SectionLabel>Aktuelles</SectionLabel>
+      <SectionLabel>Organisation</SectionLabel>
 
       <Headline level="h2"> Termine &amp; Veranstaltungen</Headline>
 
@@ -38,7 +38,7 @@ export default function TermineSection() {
         Was ist bei den Sportfreunden Urlau geplant? Hier findet ihr alle
         wichtigen Termine.
       </p>
-      <div className="flex flex-col gap-px bg-black/[0.06] rounded-xl overflow-hidden border border-black/[0.08]">
+      <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8">
         {termine.map((t) => (
           <TerminCard key={t.title} {...t} />
         ))}

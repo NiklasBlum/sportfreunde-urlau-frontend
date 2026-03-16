@@ -89,8 +89,10 @@ export default function DownloadsPage() {
         {/* Hero */}
         <Section className="bg-blue">
           <SectionLabel light>Verein</SectionLabel>
-          <Headline level="h1">Downloads</Headline>
-          <p className="text-red-tint text-[1rem] leading-[1.75] max-w-xl">
+          <Headline level="h1" light>
+            Downloads
+          </Headline>
+          <p className="text-red-tint text-[1rem] leading-[1.75]">
             Satzung, Chronik und weitere Dokumente der Sportfreunde Urlau e.V.
             zum Herunterladen.
           </p>
@@ -102,9 +104,7 @@ export default function DownloadsPage() {
             {kategorien.map(({ id, title, subtitle, docs }) => (
               <div key={id} id={id}>
                 <SectionLabel>{subtitle}</SectionLabel>
-                <h2 className="font-serif text-[clamp(1.4rem,2.2vw,1.9rem)] font-bold text-foreground leading-[1.15] mb-6">
-                  {title}
-                </h2>
+                <Headline level="h2">{title}</Headline>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {docs.map(({ label, description, href, filename }) => (
                     <a

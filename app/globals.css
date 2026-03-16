@@ -5,15 +5,10 @@
   --font-serif: var(--font-serif), Georgia, serif;
 }
 
-:root {
-  --background: #faf7f5;
-  --foreground: #1a1a1a;
-}
-
 @theme {
   /* ── Brand ── */
-  --color-blue: rgb(11 38 102);
-  --color-blue-mid: rgb(55 88 186); /* hero gradient midpoint */
+  --color-blue: rgb(0, 0, 128);
+  --color-blue-mid: rgb(51, 11, 171); /* hero gradient midpoint */
   --color-red: rgb(143 13 23);
 
   /* ── Red family ── */
@@ -30,20 +25,33 @@
   --color-gold-highlight: rgb(240 192 96); /* focus rings, active nav    */
 
   /* ── Neutrals ── */
-  --color-surface: rgb(242 238 235); /* alternate-section bg        */
+  --color-surface: rgb(236, 233, 230); /* alternate-section bg        */
   --color-surface-hover: rgb(255 248 248); /* card hover on white bg     */
   --color-surface-hover-warm: rgb(253 246 240); /* download-card hover   */
   --color-muted: rgb(74 82 96); /* secondary / caption text    */
-  --color-foreground: rgb(26 26 26); /* primary body text           */
+}
+
+:root {
+  --navbar-height-mobile: 64px;
+  --navbar-height-desktop: 72px;
+  --anchor-offset-mobile: 64px;
+  --anchor-offset-desktop: 72px;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--anchor-offset-mobile);
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: var(--anchor-offset-desktop);
+  }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #faf7f5;
+  @apply text-black;
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
@@ -74,9 +82,9 @@ body {
   }
 }
 
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid var(--color-gold-highlight);
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 3px solid var(--color-blue);
   outline-offset: 3px;
   border-radius: 4px;
+  box-shadow: 0 0 0 2px #fff;
 }

@@ -1,12 +1,15 @@
 ﻿import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
-import { getMtbTours, type MtbTour } from "@/lib/cms/mtbTours";
+import {
+  getRadsportHerrenEvents,
+  type RadsportHerrenEvents,
+} from "@/lib/cms/getRadsportHerrenEvents";
+import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
 
 export const metadata: Metadata = {
   title: "Radsport Herren (VFB) – Sportfreunde Urlau e.V.",
@@ -90,19 +93,22 @@ function formatDate(iso: string): string {
   return `${d}.${m}.${y}`;
 }
 
-function groupBySeason(tours: MtbTour[]): Map<number, MtbTour[]> {
+function groupBySeason(
+  tours: RadsportHerrenEvents[],
+): Map<number, RadsportHerrenEvents[]> {
   return tours.reduce((map, tour) => {
     const list = map.get(tour.season) ?? [];
     list.push(tour);
     map.set(tour.season, list);
     return map;
-  }, new Map<number, MtbTour[]>());
+  }, new Map<number, RadsportHerrenEvents[]>());
 }
 
 export default async function RadsportHerrenPage() {
-  const tours = await getMtbTours();
+  const tours = await getRadsportHerrenEvents();
   const bySeason = groupBySeason(tours);
   const seasons = Array.from(bySeason.keys()).sort((a, b) => b - a);
+
   return (
     <>
       <Navbar />
@@ -112,7 +118,9 @@ export default async function RadsportHerrenPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <SectionLabel light>Abteilung</SectionLabel>
-              <Headline level="h1"> Radsport Herren (VFB)</Headline>
+              <Headline level="h1" light>
+                Radsport Herren
+              </Headline>
 
               <p className="text-red-tint text-[1rem] leading-[1.75]">
                 MTB-Touren für jeden Fahrstil – von Pro bis Komfort, immer
@@ -139,9 +147,7 @@ export default async function RadsportHerrenPage() {
             className="bg-surface border-t border-b border-black/[0.06]"
           >
             <SectionLabel>Saison {season}</SectionLabel>
-            <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-6">
-              MTB-Tourenplan {season}
-            </h2>
+            <Headline level="h2">MTB-Tourenplan {season}</Headline>
             <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8 text-[0.88rem] text-amber-900 leading-[1.65]">
               <p>
                 Falls die aktuelle Tour aufgrund des Wetters verschoben oder
@@ -186,7 +192,7 @@ export default async function RadsportHerrenPage() {
                         key={_id}
                         className={`border-t border-black/[0.06] ${i % 2 === 0 ? "bg-white" : "bg-surface"}`}
                       >
-                        <td className="px-4 py-3 font-semibold text-foreground whitespace-nowrap">
+                        <td className="px-4 py-3 font-semibold whitespace-nowrap">
                           {formatDate(date)}
                         </td>
                         <td className="px-4 py-3 text-muted whitespace-nowrap">
@@ -232,9 +238,7 @@ export default async function RadsportHerrenPage() {
             {/* Übungszeiten */}
             <div>
               <SectionLabel>Übungszeiten</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-                Trainingszeiten
-              </h2>
+              <Headline level="h2">Trainingszeiten</Headline>
               <div className="flex flex-col gap-6">
                 {uebungszeiten.map(({ season, slots }) => (
                   <div
@@ -250,7 +254,7 @@ export default async function RadsportHerrenPage() {
                           key={time}
                           className="flex items-baseline gap-3 text-[0.9rem]"
                         >
-                          <span className="font-semibold text-foreground whitespace-nowrap">
+                          <span className="font-semibold whitespace-nowrap">
                             {time}
                           </span>
                           <span className="text-muted">{label}</span>
@@ -265,18 +269,14 @@ export default async function RadsportHerrenPage() {
             {/* Kontakt */}
             <div>
               <SectionLabel>Kontakt</SectionLabel>
-              <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-                Abteilungsleiter
-              </h2>
+              <Headline level="h2">Abteilungsleiter</Headline>
               <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
                     🚵
                   </div>
                   <div>
-                    <div className="font-semibold text-foreground text-[1rem]">
-                      Roland Krug
-                    </div>
+                    <div className="font-semibold text-[1rem]">Roland Krug</div>
                     <div className="text-[0.8rem] text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
                       Abteilungsleiter Radsport
                     </div>
@@ -290,9 +290,7 @@ export default async function RadsportHerrenPage() {
         {/* Gruppen */}
         <Section className="bg-surface border-t border-b border-black/[0.06]">
           <SectionLabel>Gruppen</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            MTB-Gruppen
-          </h2>
+          <Headline level="h2">MTB-Gruppen</Headline>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {gruppen.map(({ name, description }) => (
               <div
@@ -313,16 +311,14 @@ export default async function RadsportHerrenPage() {
         {/* Regeln */}
         <Section>
           <SectionLabel>Sicherheit</SectionLabel>
-          <h2 className="font-serif text-[clamp(1.6rem,2.6vw,2.2rem)] font-bold text-foreground leading-[1.15] mb-8">
-            Regeln & Tabus
-          </h2>
+          <Headline level="h2">Regeln & Tabus</Headline>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Regeln */}
             <div className="flex flex-col gap-4">
               {regeln.map(({ title, text }) => (
                 <div
                   key={title}
-                  className="bg-surface rounded-xl p-6 border border-black/[0.06]"
+                  className="bg-white rounded-xl p-6 border border-black/[0.06]"
                 >
                   <div className="font-semibold text-foreground text-[0.95rem] mb-1">
                     {title}
@@ -362,14 +358,7 @@ export default async function RadsportHerrenPage() {
         </Section>
 
         {/* Back */}
-        <Section className="bg-surface border-t border-black/[0.06]">
-          <Link
-            href="/#abteilungen"
-            className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
-          >
-            ← Alle Abteilungen
-          </Link>
-        </Section>
+        <AbteilungLinkSection />
       </main>
       <Footer />
     </>

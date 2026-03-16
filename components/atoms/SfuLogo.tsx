@@ -7,7 +7,7 @@ export default function SfuLogo({
 }) {
   return (
     <Image
-      src="/logo.png"
+      src="/logo.webp"
       alt="Sportfreunde Urlau Vereinswappen"
       width={100}
       height={110}

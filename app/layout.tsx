@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body
-        className={`${dmSans.variable} ${playfairDisplay.variable} antialiased min-h-screen`}
+        className={`${dmSans.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col`}
       >
         {children}
         <Analytics />

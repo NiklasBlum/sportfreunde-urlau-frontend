@@ -11,7 +11,7 @@ export default function AbteilungLinkSection({ sectionClassName }: BackProps) {
       className={
         sectionClassName
           ? `${sectionClassName} border-t border-black/6`
-          : "bg-surface border-t border-black/6"
+          : "bg-white border-t border-black/6"
       }
     >
       <Link

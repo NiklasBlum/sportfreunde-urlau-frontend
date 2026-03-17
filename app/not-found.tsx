@@ -22,7 +22,7 @@ export default function NotFound() {
 
             <Headline level="h1">Seite nicht gefunden</Headline>
 
-            <p className="text-muted text-[1rem] leading-[1.75] mb-10">
+            <p className="text-muted text-body mb-10">
               Die gesuchte Seite existiert leider nicht oder wurde verschoben.
               Zurück zur Startseite oder zu einer unserer Abteilungen.
             </p>

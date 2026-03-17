@@ -33,7 +33,7 @@ export default function HeroSection() {
             <br />
             <span className="text-gold-highlight">herzlich willkommen!</span>
           </h1>
-          <p className="text-red-tint text-[1.05rem] leading-[1.8] mb-10 w-full md:max-w-110 animate-[fadeUp_0.8s_0.2s_ease_both]">
+          <p className="text-red-tint text-body mb-10 w-full md:max-w-110 animate-[fadeUp_0.8s_0.2s_ease_both]">
             Wir bieten ein umfangreiches Angebot im Breiten- und Freizeitsport
             und fördern aktiv den Sport bei Kindern und Jugendlichen. Bleibe fit
             und gesund mit uns!

@@ -13,7 +13,7 @@ export type RadsportDamenEvent = {
 
 export async function getRadsportDamenEvents(): Promise<RadsportDamenEvent[]> {
   return client.fetch(
-    `*[_type == "mtbEventsLadies"] | order(_createdAt desc) {
+    `*[_type == "radsport_damen_events"] | order(_createdAt desc) {
       _id,
       headline,
       beschreibung,

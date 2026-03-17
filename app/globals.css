@@ -60,6 +60,22 @@ body {
   @apply cursor-pointer duration-200 ease-in-out hover:brightness-85;
 }
 
+/* ── Typography utilities ── */
+@utility text-body {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+@utility text-body-xs {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@utility text-caption {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;

@@ -92,7 +92,7 @@ export default function DownloadsPage() {
           <Headline level="h1" light>
             Downloads
           </Headline>
-          <p className="text-red-tint text-[1rem] leading-[1.75]">
+          <p className="text-red-tint text-body">
             Satzung, Chronik und weitere Dokumente der Sportfreunde Urlau e.V.
             zum Herunterladen.
           </p>

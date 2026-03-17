@@ -64,7 +64,7 @@ export default function TischtennisPage() {
             Tischtennis
           </Headline>
 
-          <p className="text-red-tint text-[1rem] leading-[1.75]">
+          <p className="text-red-tint text-body">
             Wettkampfsport und Freizeitspiel für jedes Alter – von den Bambinis
             bis zu den Aktiven.
           </p>
@@ -159,7 +159,7 @@ export default function TischtennisPage() {
         </Section>
 
         {/* Back */}
-        <AbteilungLinkSection sectionClassName="bg-white" />
+        <AbteilungLinkSection />
       </main>
       <Footer />
     </>

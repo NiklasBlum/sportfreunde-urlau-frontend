@@ -15,13 +15,13 @@ export default function VereinSection() {
             Die Heimat der SFU
           </Headline>
 
-          <p className="text-[0.98rem] leading-[1.75] mb-[1rem]">
+          <p className="text-body mb-4">
             Der Sportverein Sportfreunde Urlau e.V. ist fest in der Gemeinschaft
             von Urlau verwurzelt. Mit rund 240 aktiven Mitgliedern bieten wir
             für jeden etwas – von Kinderturnen bis Radsport, von Tischtennis bis
             Langlauf.
           </p>
-          <p className="text-[0.98rem] leading-[1.8] mb-8">
+          <p className="text-body mb-8">
             Unser Verein hat es sich zur Aufgabe gemacht, ein möglichst
             umfangreiches Angebot im Breiten- und Freizeitsport zu bieten. Zudem
             liegt uns die Förderung des Sports bei Kindern und Jugendlichen

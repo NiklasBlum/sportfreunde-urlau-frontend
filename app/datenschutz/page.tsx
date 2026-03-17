@@ -27,7 +27,7 @@ const abschnitte: DsAbschnitt[] = [
     title: "1. Verantwortlicher",
     paragraphs: [
       "Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:",
-      "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nAnschrift: Urlau, 88299 Leutkirch, Deutschland\nE-Mail: info@sportfreunde-urlau.de",
+      "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nAnschrift: Urlau, 88299 Leutkirch, Deutschland\nE-Mail: vorstand@sportfreunde-urlau.de",
     ],
   },
   {
@@ -143,7 +143,7 @@ export default function DatenschutzPage() {
           <Headline level="h1" light>
             Datenschutz
           </Headline>
-          <p className="text-red-tint text-[1rem] leading-[1.75]">
+          <p className="text-red-tint text-body">
             Datenschutzerklärung gemäß DSGVO und BDSG – Sportfreunde Urlau e.V.
           </p>
         </Section>
@@ -168,7 +168,7 @@ export default function DatenschutzPage() {
                   {paragraphs?.map((p, i) => (
                     <p
                       key={i}
-                      className="text-[0.88rem] text-muted leading-[1.75] mb-3 whitespace-pre-line"
+                      className="text-body-xs text-muted mb-3 whitespace-pre-line"
                     >
                       {p}
                     </p>
@@ -188,7 +188,7 @@ export default function DatenschutzPage() {
                   )}
 
                   {note && (
-                    <p className="text-[0.88rem] text-muted leading-[1.75] whitespace-pre-line">
+                    <p className="text-body-xs text-muted whitespace-pre-line">
                       {note}
                     </p>
                   )}

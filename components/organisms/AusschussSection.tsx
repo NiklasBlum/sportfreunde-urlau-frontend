@@ -57,7 +57,7 @@ export default function AusschussSection() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10 items-center mb-12">
         <div>
           <Headline level="h2">Ausschuss</Headline>
-          <p className="text-muted text-[0.98rem] leading-[1.75]">
+          <p className="text-muted text-body">
             Der Ausschuss leitet gemeinsam die Geschicke der Sportfreunde Urlau.
           </p>
         </div>

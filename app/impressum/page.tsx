@@ -52,7 +52,7 @@ export default function ImpressumPage() {
           <Headline level="h1" light>
             Impressum
           </Headline>
-          <p className="text-red-tint text-[1rem] leading-[1.75]">
+          <p className="text-red-tint text-body">
             Angaben gemäß § 5 TMG – Sportfreunde Urlau e.V.
           </p>
         </Section>
@@ -91,9 +91,7 @@ export default function ImpressumPage() {
                 <div className="font-semibold text-foreground text-[0.95rem] mb-1">
                   {title}
                 </div>
-                <p className="text-[0.88rem] text-muted leading-[1.7]">
-                  {text}
-                </p>
+                <p className="text-body-xs text-muted">{text}</p>
               </div>
             ))}
           </div>

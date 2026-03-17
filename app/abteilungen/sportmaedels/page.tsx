@@ -95,7 +95,7 @@ export default function SportmaedelsPage() {
                 Sportmädels
               </Headline>
 
-              <p className="text-red-tint text-[1rem] leading-[1.75] max-w-[480px]">
+              <p className="text-red-tint text-body max-w-[480px]">
                 Sport, Gemeinschaft und Spaß – die Sportmädels sind immer in
                 Bewegung. Vom Faschingstanz über MTB-Touren bis zur
                 Weihnachtsfeier ist jede Saison ein Erlebnis.
@@ -130,9 +130,7 @@ export default function SportmaedelsPage() {
                 <div className="font-semibold text-foreground text-[0.95rem] mb-1.5">
                   {label}
                 </div>
-                <p className="text-muted text-[0.87rem] leading-[1.7]">
-                  {desc}
-                </p>
+                <p className="text-muted text-body-xs">{desc}</p>
               </div>
             ))}
           </div>
@@ -157,9 +155,7 @@ export default function SportmaedelsPage() {
                   <div className="font-semibold text-[0.95rem] text-foreground mb-1">
                     {title}
                   </div>
-                  <p className="text-muted text-[0.87rem] leading-[1.7]">
-                    {desc}
-                  </p>
+                  <p className="text-muted text-body-xs">{desc}</p>
                 </div>
               </div>
             ))}

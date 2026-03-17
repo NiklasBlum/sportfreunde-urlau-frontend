@@ -41,7 +41,7 @@ export default function VorstandSection() {
     <Section id="vorstand">
       <Headline level="h2">Unser Vorstand</Headline>
 
-      <p className=" text-[0.98rem] leading-[1.75] mb-[2.8rem]">
+      <p className="text-body mb-11">
         Die Sportfreunde Urlau werden von einem engagierten Vorstandsteam
         geleitet.
       </p>
@@ -58,7 +58,7 @@ export default function VorstandSection() {
       </div>
 
       <div className="mt-10 text-center">
-        <p className="text-[0.95rem] mb-2">Nachricht an den Vorstand</p>
+        <p className="text-body-xs mb-2">Nachricht an den Vorstand</p>
         <a
           href="mailto:vorstand@sportfreunde-urlau.de"
           className="font-semibold underline underline-offset-4"

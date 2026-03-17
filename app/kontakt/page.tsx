@@ -103,7 +103,7 @@ export default function KontaktPage() {
           <Headline level="h1" light>
             Kontakt
           </Headline>
-          <p className="text-red-tint text-[1rem] leading-[1.75] max-w-xl">
+          <p className="text-red-tint text-body max-w-xl">
             Fragen, Anregungen oder Interesse an einer Mitgliedschaft? Wir
             freuen uns über Ihre Nachricht.
           </p>
@@ -178,7 +178,7 @@ export default function KontaktPage() {
                   </div>
                 ))}
               </div>
-              <p className="text-[0.82rem] text-muted mt-4 leading-relaxed">
+              <p className="text-caption text-muted mt-4">
                 Für abteilungsspezifische Anfragen wenden Sie sich bitte direkt
                 an die jeweilige{" "}
                 <Link

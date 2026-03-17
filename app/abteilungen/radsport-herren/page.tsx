@@ -6,10 +6,11 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import {
-  getRadsportHerrenEvents,
-  type RadsportHerrenEvents,
-} from "@/lib/cms/getRadsportHerrenEvents";
+  getRadsportHerrenTours,
+  type RadsportHerrenEvent,
+} from "@/lib/cms/getRadsportHerrenTours";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import WeatherForecast from "@/components/atoms/WeatherForecast";
 
 export const metadata: Metadata = {
   title: "Radsport Herren (VFB) – Sportfreunde Urlau e.V.",
@@ -94,18 +95,21 @@ function formatDate(iso: string): string {
 }
 
 function groupBySeason(
-  tours: RadsportHerrenEvents[],
-): Map<number, RadsportHerrenEvents[]> {
+  tours: RadsportHerrenEvent[],
+): Map<number, RadsportHerrenEvent[]> {
   return tours.reduce((map, tour) => {
-    const list = map.get(tour.season) ?? [];
+    const year = Number(tour.date.slice(0, 4));
+    const list = map.get(year) ?? [];
     list.push(tour);
-    map.set(tour.season, list);
+    map.set(year, list);
     return map;
-  }, new Map<number, RadsportHerrenEvents[]>());
+  }, new Map<number, RadsportHerrenEvent[]>());
 }
 
 export default async function RadsportHerrenPage() {
-  const tours = await getRadsportHerrenEvents();
+  const tours = await getRadsportHerrenTours();
+
+  const today = new Date().toISOString().slice(0, 10);
   const bySeason = groupBySeason(tours);
   const seasons = Array.from(bySeason.keys()).sort((a, b) => b - a);
 
@@ -122,7 +126,7 @@ export default async function RadsportHerrenPage() {
                 Radsport Herren
               </Headline>
 
-              <p className="text-red-tint text-[1rem] leading-[1.75]">
+              <p className="text-red-tint text-body">
                 MTB-Touren für jeden Fahrstil – von Pro bis Komfort, immer
                 montags von April bis September.
               </p>
@@ -140,97 +144,92 @@ export default async function RadsportHerrenPage() {
           </div>
         </Section>
 
-        {/* Tourenplan */}
-        {seasons.map((season) => (
-          <Section
-            key={season}
-            className="bg-surface border-t border-b border-black/[0.06]"
-          >
-            <SectionLabel>Saison {season}</SectionLabel>
-            <Headline level="h2">MTB-Tourenplan {season}</Headline>
-            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8 text-[0.88rem] text-amber-900 leading-[1.65]">
-              <p>
-                Falls die aktuelle Tour aufgrund des Wetters verschoben oder
-                abgesagt werden muss, steht es hier am Montagabend bis
-                spätestens 17:00 Uhr. Wenn hier nichts steht, findet die Tour
-                statt!
-              </p>
-              <p className="mt-2">
-                Für die aktuelle Wettervorhersage{" "}
-                <a
-                  href="http://wetterstationen.meteomedia.de/station=109440&wahl=vorhersage"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold underline hover:text-amber-700"
-                >
-                  hier klicken
-                </a>
-                .
-              </p>
+        <Section className="bg-surface border-t border-b border-black/6">
+          <Headline level="h2">
+            {seasons.length === 1 ? "MTB-Tourenplan" : "MTB-Tourenpläne"}
+          </Headline>
+
+          <WeatherForecast classNames="my-3" />
+
+          {/* Tourenplan */}
+          {seasons.map((season, i) => (
+            <div key={season} className={i < seasons.length - 1 ? "mb-10" : ""}>
+              {seasons.length > 1 && (
+                <SectionLabel>Saison {season}</SectionLabel>
+              )}
+
+              <div className="overflow-hidden rounded-xl border border-black/6 ">
+                <table className="w-full text-[0.88rem]">
+                  <thead>
+                    <tr className="bg-red text-white">
+                      <th className="text-left px-4 py-3 font-semibold w-30">
+                        Datum
+                      </th>
+                      <th className="text-left px-4 py-3 font-semibold w-28">
+                        Abfahrt
+                      </th>
+                      <th className="text-left px-4 py-3 font-semibold">
+                        Route
+                      </th>
+                      <th className="text-right px-4 py-3 font-semibold w-24">
+                        Status
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {bySeason
+                      .get(season)!
+                      .map(({ _id, date, route, departureTime, status }, i) => (
+                        <tr
+                          key={_id}
+                          className={`border-t border-black/6 ${
+                            date === today
+                              ? "bg-amber-50"
+                              : i % 2 === 0
+                                ? "bg-white"
+                                : "bg-surface-hover"
+                          }`}
+                        >
+                          <td className="px-4 py-3 font-semibold whitespace-nowrap">
+                            {formatDate(date)}
+                          </td>
+                          <td className="px-4 py-3 text-muted whitespace-nowrap">
+                            {departureTime ?? "—"}
+                          </td>
+                          <td className="px-4 py-3 text-muted">
+                            {status === "cancelled" ? (
+                              <span className="italic text-muted/60">
+                                Abgesagt
+                              </span>
+                            ) : (
+                              route
+                            )}
+                          </td>
+                          <td className="px-4 py-3 text-right">
+                            {status === "tour" && (
+                              <span className="inline-block bg-green-100 text-green-800 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                                Tour
+                              </span>
+                            )}
+                            {status === "cancelled" && (
+                              <span className="inline-block bg-red-100 text-red-700 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                                Abgesagt
+                              </span>
+                            )}
+                            {status === "pause" && (
+                              <span className="inline-block bg-gray-100 text-gray-600 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                                Pause
+                              </span>
+                            )}
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div className="overflow-hidden rounded-xl border border-black/[0.06]">
-              <table className="w-full text-[0.88rem]">
-                <thead>
-                  <tr className="bg-red-dark text-white">
-                    <th className="text-left px-4 py-3 font-semibold w-[7.5rem]">
-                      Datum
-                    </th>
-                    <th className="text-left px-4 py-3 font-semibold w-[7rem]">
-                      Abfahrt
-                    </th>
-                    <th className="text-left px-4 py-3 font-semibold">Route</th>
-                    <th className="text-right px-4 py-3 font-semibold w-[6rem]">
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bySeason
-                    .get(season)!
-                    .map(({ _id, date, route, departureTime, status }, i) => (
-                      <tr
-                        key={_id}
-                        className={`border-t border-black/[0.06] ${i % 2 === 0 ? "bg-white" : "bg-surface"}`}
-                      >
-                        <td className="px-4 py-3 font-semibold whitespace-nowrap">
-                          {formatDate(date)}
-                        </td>
-                        <td className="px-4 py-3 text-muted whitespace-nowrap">
-                          {departureTime ?? "—"}
-                        </td>
-                        <td className="px-4 py-3 text-muted">
-                          {status === "cancelled" ? (
-                            <span className="italic text-muted/60">
-                              Abgesagt
-                            </span>
-                          ) : (
-                            route
-                          )}
-                        </td>
-                        <td className="px-4 py-3 text-right">
-                          {status === "tour" && (
-                            <span className="inline-block bg-green-100 text-green-800 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
-                              Tour
-                            </span>
-                          )}
-                          {status === "cancelled" && (
-                            <span className="inline-block bg-red-100 text-red-700 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
-                              Abgesagt
-                            </span>
-                          )}
-                          {status === "pause" && (
-                            <span className="inline-block bg-gray-100 text-gray-600 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
-                              Pause
-                            </span>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          </Section>
-        ))}
+          ))}
+        </Section>
 
         {/* Übungszeiten & Kontakt */}
         <Section>
@@ -243,7 +242,7 @@ export default async function RadsportHerrenPage() {
                 {uebungszeiten.map(({ season, slots }) => (
                   <div
                     key={season}
-                    className="bg-surface rounded-xl p-6 border border-black/[0.06]"
+                    className="bg-surface rounded-xl p-6 border border-black/6"
                   >
                     <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                       {season}
@@ -300,9 +299,7 @@ export default async function RadsportHerrenPage() {
                 <div className="font-serif font-bold text-red-dark text-[1rem] mb-2">
                   {name}
                 </div>
-                <p className="text-[0.88rem] text-muted leading-[1.65]">
-                  {description}
-                </p>
+                <p className="text-body-xs text-muted">{description}</p>
               </div>
             ))}
           </div>
@@ -323,9 +320,7 @@ export default async function RadsportHerrenPage() {
                   <div className="font-semibold text-foreground text-[0.95rem] mb-1">
                     {title}
                   </div>
-                  <p className="text-[0.88rem] text-muted leading-[1.65]">
-                    {text}
-                  </p>
+                  <p className="text-body-xs text-muted">{text}</p>
                 </div>
               ))}
             </div>

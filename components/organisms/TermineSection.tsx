@@ -34,7 +34,7 @@ export default function TermineSection() {
 
       <Headline level="h2"> Termine &amp; Veranstaltungen</Headline>
 
-      <p className="text-muted text-[0.98rem] leading-[1.75] mb-[2.8rem]">
+      <p className="text-muted text-body mb-11">
         Was ist bei den Sportfreunden Urlau geplant? Hier findet ihr alle
         wichtigen Termine.
       </p>

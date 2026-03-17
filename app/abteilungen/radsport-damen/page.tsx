@@ -92,9 +92,9 @@ export default async function MtbLadiesPage() {
             <div>
               <SectionLabel light>Abteilung</SectionLabel>
               <Headline level="h1" light>
-                MTB-Ladies
+                Radsport Damen
               </Headline>
-              <p className="text-red-tint text-[1rem] leading-[1.75]">
+              <p className="text-red-tint text-body">
                 MTB-Touren für Damen – immer montags von April bis September.
               </p>
             </div>
@@ -276,9 +276,7 @@ export default async function MtbLadiesPage() {
                   <div className="font-semibold text-foreground text-[0.95rem] mb-1">
                     {title}
                   </div>
-                  <p className="text-[0.88rem] text-muted leading-[1.65]">
-                    {text}
-                  </p>
+                  <p className="text-body-xs text-muted">{text}</p>
                 </div>
               ))}
             </div>

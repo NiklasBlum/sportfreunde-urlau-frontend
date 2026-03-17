@@ -14,7 +14,7 @@ export default function AbteilungenSection() {
 
       <Headline level="h2">Unsere Abteilungen</Headline>
 
-      <p className="text-muted text-[0.98rem] leading-[1.75] mb-[2.8rem]">
+      <p className="text-muted text-body mb-11">
         Ob Jung oder Alt, Profi oder Einsteiger – bei uns findet jeder die
         passende Sportart.
       </p>

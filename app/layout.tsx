@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   title: "Sportfreunde Urlau e.V.",
   description:
     "Offizielle Website der Sportfreunde Urlau e.V. – Breitensport für die ganze Familie im Allgäu.",
+  //TODO: Remove before launch
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({

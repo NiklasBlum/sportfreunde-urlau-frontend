@@ -70,7 +70,7 @@ export default function MittwochsmaedelsPage() {
                 {outdoor.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2 text-[0.9rem] text-muted"
+                    className="flex items-start gap-2 text-body-xs text-muted"
                   >
                     <span>–</span> {item}
                   </li>
@@ -88,7 +88,7 @@ export default function MittwochsmaedelsPage() {
                 {indoor.map((item) => (
                   <li
                     key={item}
-                    className="flex items-start gap-2 text-[0.9rem] text-muted"
+                    className="flex items-start gap-2 text-body-xs text-muted"
                   >
                     <span>–</span>
                     {item}
@@ -111,7 +111,7 @@ export default function MittwochsmaedelsPage() {
                   Ganzjährig
                 </div>
                 <ul className="flex flex-col gap-2.5">
-                  <li className="flex items-baseline gap-3 text-[0.9rem]">
+                  <li className="flex items-baseline gap-3 text-body-xs">
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Mittwochs, 19:30 / 20:00 Uhr
                     </span>
@@ -133,7 +133,7 @@ export default function MittwochsmaedelsPage() {
                   <div className="font-semibold text-foreground text-[1rem]">
                     Tanja Heinz
                   </div>
-                  <div className="text-[0.78rem] text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
+                  <div className="text-label text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
                     Abteilungsleiterin
                   </div>
                 </div>

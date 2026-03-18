@@ -39,7 +39,7 @@ export default function VorstandCard({
           </>
         )}
       </div>
-      <div className="mb-1 text-[0.7rem] font-semibold tracking-widest text-white uppercase">
+      <div className="mb-1 text-micro font-semibold tracking-widest text-white uppercase">
         {role}
       </div>
       <div className="font-serif text-[1.1rem] font-bold text-white">

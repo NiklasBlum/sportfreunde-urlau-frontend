@@ -127,7 +127,7 @@ export default function SportmaedelsPage() {
                 <div className="text-[1.8rem] mb-3" aria-hidden="true">
                   {icon}
                 </div>
-                <div className="font-semibold text-foreground text-[0.95rem] mb-1.5">
+                <div className="font-semibold text-foreground text-body-sm mb-1.5">
                   {label}
                 </div>
                 <p className="text-muted text-body-xs">{desc}</p>
@@ -147,12 +147,12 @@ export default function SportmaedelsPage() {
                 className="bg-white px-6 py-5 flex gap-6 items-start"
               >
                 <div className="shrink-0 w-[4.5rem] text-center pt-0.5">
-                  <span className="inline-block text-[0.72rem] font-semibold tracking-[0.1em] uppercase text-red-accent bg-red-accent/[0.08] rounded-md px-2 py-1 leading-none">
+                  <span className="inline-block text-label font-semibold tracking-[0.1em] uppercase text-red-accent bg-red-accent/[0.08] rounded-md px-2 py-1 leading-none">
                     {date}
                   </span>
                 </div>
                 <div>
-                  <div className="font-semibold text-[0.95rem] text-foreground mb-1">
+                  <div className="font-semibold text-body-sm text-foreground mb-1">
                     {title}
                   </div>
                   <p className="text-muted text-body-xs">{desc}</p>
@@ -175,10 +175,10 @@ export default function SportmaedelsPage() {
                 <div className="w-12 h-12 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.3rem] mx-auto mb-3">
                   🤸
                 </div>
-                <div className="font-semibold text-foreground text-[0.95rem]">
+                <div className="font-semibold text-foreground text-body-sm">
                   {name}
                 </div>
-                <div className="text-[0.75rem] text-muted mt-1 leading-[1.4]">
+                <div className="text-label text-muted mt-1 leading-[1.4]">
                   {role}
                 </div>
               </div>

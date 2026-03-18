@@ -159,7 +159,7 @@ export default async function RadsportHerrenPage() {
               )}
 
               <div className="overflow-hidden rounded-xl border border-black/6 ">
-                <table className="w-full text-[0.88rem]">
+                <table className="w-full text-body-xs">
                   <thead>
                     <tr className="bg-red text-white">
                       <th className="text-left px-4 py-3 font-semibold w-30">
@@ -207,17 +207,17 @@ export default async function RadsportHerrenPage() {
                           </td>
                           <td className="px-4 py-3 text-right">
                             {status === "tour" && (
-                              <span className="inline-block bg-green-100 text-green-800 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                              <span className="inline-block bg-green-100 text-green-800 text-label font-semibold px-2 py-0.5 rounded-full">
                                 Tour
                               </span>
                             )}
                             {status === "cancelled" && (
-                              <span className="inline-block bg-red-100 text-red-700 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                              <span className="inline-block bg-red-100 text-red-700 text-label font-semibold px-2 py-0.5 rounded-full">
                                 Abgesagt
                               </span>
                             )}
                             {status === "pause" && (
-                              <span className="inline-block bg-gray-100 text-gray-600 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                              <span className="inline-block bg-gray-100 text-gray-600 text-label font-semibold px-2 py-0.5 rounded-full">
                                 Pause
                               </span>
                             )}
@@ -251,7 +251,7 @@ export default async function RadsportHerrenPage() {
                       {slots.map(({ time, label }) => (
                         <li
                           key={time}
-                          className="flex items-baseline gap-3 text-[0.9rem]"
+                          className="flex items-baseline gap-3 text-body-xs"
                         >
                           <span className="font-semibold whitespace-nowrap">
                             {time}
@@ -276,7 +276,7 @@ export default async function RadsportHerrenPage() {
                   </div>
                   <div>
                     <div className="font-semibold text-[1rem]">Roland Krug</div>
-                    <div className="text-[0.8rem] text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
+                    <div className="text-label text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
                       Abteilungsleiter Radsport
                     </div>
                   </div>
@@ -317,7 +317,7 @@ export default async function RadsportHerrenPage() {
                   key={title}
                   className="bg-white rounded-xl p-6 border border-black/[0.06]"
                 >
-                  <div className="font-semibold text-foreground text-[0.95rem] mb-1">
+                  <div className="font-semibold text-foreground text-body-sm mb-1">
                     {title}
                   </div>
                   <p className="text-body-xs text-muted">{text}</p>
@@ -335,7 +335,7 @@ export default async function RadsportHerrenPage() {
                   {tabus.map((tabu) => (
                     <li
                       key={tabu}
-                      className="flex items-start gap-3 text-[0.88rem] text-muted leading-[1.65]"
+                      className="flex items-start gap-3 text-body-xs text-muted"
                     >
                       <span
                         className="mt-[0.25em] text-red-dark font-bold shrink-0"

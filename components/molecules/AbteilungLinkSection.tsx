@@ -17,7 +17,7 @@ export default function AbteilungLinkSection({ sectionClassName }: BackProps) {
       <Link
         href="/#abteilungen"
         className={
-          "inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
+          "inline-flex items-center gap-2 text-red-accent font-semibold text-body-xs hover:underline"
         }
       >
         ← Alle Abteilungen

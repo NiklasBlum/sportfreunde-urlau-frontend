@@ -16,7 +16,7 @@ export default function ImageUrlau() {
         <div className="font-serif text-[1.9rem] font-bold leading-none">
           240
         </div>
-        <div className="text-[0.68rem] font-semibold tracking-[0.08em] uppercase mt-0.5">
+        <div className="text-micro font-semibold tracking-[0.08em] uppercase mt-0.5">
           Mitglieder
         </div>
       </div>

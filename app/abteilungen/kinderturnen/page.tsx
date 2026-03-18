@@ -55,13 +55,13 @@ export default function KindertурnenPage() {
             {programm.map((item) => (
               <div
                 key={item}
-                className="bg-surface rounded-xl p-5 border border-black/6 text-[0.9rem] text-muted"
+                className="bg-surface rounded-xl p-5 border border-black/6 text-body-xs text-muted"
               >
                 {item}
               </div>
             ))}
           </div>
-          <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-[0.88rem] text-amber-900 leading-[1.65] max-w-2xl">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-body-xs text-amber-900 max-w-2xl">
             Als besonderes Highlight treten wir beim{" "}
             <strong>Faschingsnachmittag</strong> der Sportfreunde auf. Ein
             Einstieg ins Kinderturnen ist immer nach den{" "}
@@ -81,7 +81,7 @@ export default function KindertурnenPage() {
                   Ganzjährig (außer Sommerferien)
                 </div>
                 <ul className="flex flex-col gap-2.5">
-                  <li className="flex items-baseline gap-3 text-[0.9rem]">
+                  <li className="flex items-baseline gap-3 text-body-xs">
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Mittwochs, 16:15 – 17:15 Uhr
                     </span>
@@ -108,10 +108,10 @@ export default function KindertурnenPage() {
                       🧒
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground text-[0.95rem]">
+                      <div className="font-semibold text-foreground text-body-sm">
                         {name}
                       </div>
-                      <div className="text-[0.78rem] text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
+                      <div className="text-label text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
                         {role}
                       </div>
                     </div>

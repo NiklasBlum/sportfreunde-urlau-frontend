@@ -17,10 +17,10 @@ export default function AbteilungCard({
       <div className="mx-auto mb-3 flex h-18 w-18 items-center justify-center rounded-full text-5xl transition-transform duration-200 group-hover:scale-105">
         {icon}
       </div>
-      <div className="min-h-11 text-[0.92rem] font-semibold leading-tight text-white">
+      <div className="min-h-11 text-body-xs font-semibold leading-tight text-white">
         {name}
       </div>
-      <div className="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-white/90 transition-colors duration-200 group-hover:text-gold-highlight">
+      <div className="mt-2 text-label font-semibold uppercase tracking-[0.08em] text-white/90 transition-colors duration-200 group-hover:text-gold-highlight">
         Zur Abteilung <span aria-hidden="true">→</span>
       </div>
     </a>

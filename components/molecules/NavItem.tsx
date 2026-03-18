@@ -22,7 +22,7 @@ export default function NavItem({
     <li className="relative group">
       <Link
         href={href}
-        className={`flex items-center h-18 px-4 text-[0.82rem] font-medium tracking-[0.06em] uppercase transition-colors duration-200 no-underline focus-visible:outline-[3px] focus-visible:outline-gold-highlight focus-visible:-outline-offset-[3px] ${
+        className={`flex items-center h-18 px-4 text-caption font-medium tracking-[0.06em] uppercase transition-colors duration-200 no-underline focus-visible:outline-[3px] focus-visible:outline-gold-highlight focus-visible:-outline-offset-[3px] ${
           active
             ? "text-gold-highlight bg-black/18"
             : "text-white hover:text-gold-highlight hover:bg-black/18"
@@ -36,7 +36,7 @@ export default function NavItem({
             <Link
               key={`${item.href}-${index}`}
               href={item.href}
-              className="block px-[1.2rem] py-[0.65rem] text-red-subtle text-[0.82rem] border-b border-white/6 transition-all duration-150 no-underline hover:bg-black/20 hover:text-gold-highlight hover:pl-[1.6rem] focus-visible:outline-[3px] focus-visible:outline-gold-highlight"
+              className="block px-[1.2rem] py-[0.65rem] text-red-subtle text-caption border-b border-white/6 transition-all duration-150 no-underline hover:bg-black/20 hover:text-gold-highlight hover:pl-[1.6rem] focus-visible:outline-[3px] focus-visible:outline-gold-highlight"
             >
               {item.label}
             </Link>

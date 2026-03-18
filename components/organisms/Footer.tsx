@@ -24,7 +24,9 @@ export default function Footer() {
               <p className="text-sm font-semibold text-white/90 font-serif">
                 Sportfreunde Urlau e.V.
               </p>
-              <p className="text-xs text-red-blush mt-0.5">Seit 1971 · Urlau</p>
+              <p className="text-caption text-red-blush mt-0.5">
+                Seit 1971 · Urlau
+              </p>
             </div>
           </div>
 
@@ -34,7 +36,7 @@ export default function Footer() {
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-[0.76rem] text-red-blush no-underline hover:text-gold-highlight transition-colors duration-150"
+                    className="text-body-xs text-red-blush no-underline hover:text-gold-highlight transition-colors duration-150"
                   >
                     {label}
                   </Link>
@@ -45,7 +47,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright bar */}
-        <div className="pt-5 border-t border-white/12 text-[0.76rem] text-red-blush text-center sm:text-left">
+        <div className="pt-5 border-t border-white/12 text-body-xs text-red-blush text-center sm:text-left">
           © {new Date().getFullYear()} Sportfreunde Urlau e.V. · Alle Rechte
           vorbehalten · Entwickelt von{" "}
           <Link

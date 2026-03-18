@@ -72,7 +72,7 @@ export default function ElternKindTurnenPage() {
                 <div className="text-[1.8rem] mb-3" aria-hidden="true">
                   {icon}
                 </div>
-                <div className="font-semibold text-foreground text-[0.95rem] mb-1.5">
+                <div className="font-semibold text-foreground text-body-sm mb-1.5">
                   {title}
                 </div>
                 <p className="text-muted text-body-xs">{desc}</p>
@@ -81,7 +81,7 @@ export default function ElternKindTurnenPage() {
           </div>
 
           {/* Hinweis */}
-          <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-[0.88rem] text-amber-900 leading-[1.65]">
+          <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-body-xs text-amber-900">
             <span className="font-semibold">Bitte mitbringen:</span> Turnschuhe,
             Turnbekleidung und ausreichend Getränke für die Kleinen.
           </div>
@@ -99,7 +99,7 @@ export default function ElternKindTurnenPage() {
                   Ganzjährig (außer Schulferien)
                 </div>
                 <ul className="flex flex-col gap-2.5">
-                  <li className="flex items-baseline gap-3 text-[0.9rem]">
+                  <li className="flex items-baseline gap-3 text-body-xs">
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Dienstags, 16:00 – 17:00 Uhr
                     </span>
@@ -128,10 +128,10 @@ export default function ElternKindTurnenPage() {
                       👶
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground text-[0.95rem]">
+                      <div className="font-semibold text-foreground text-body-sm">
                         {name}
                       </div>
-                      <div className="text-[0.78rem] text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
+                      <div className="text-label text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
                         {role}
                       </div>
                     </div>

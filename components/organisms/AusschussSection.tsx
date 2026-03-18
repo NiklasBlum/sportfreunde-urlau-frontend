@@ -77,19 +77,18 @@ export default function AusschussSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {gruppen.map(({ label, members }) => (
           <div key={label}>
-            <h3 className="text-[0.72rem] font-semibold tracking-[0.18em] uppercase text-red-accent mb-3 flex items-center gap-2.5 before:content-[''] before:w-5.5 before:h-0.5 before:bg-gold">
-              {label}
-            </h3>
+            <SectionLabel>{label}</SectionLabel>
+
             <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/6 h-fit">
               {members.map(({ role, name }) => (
                 <div
                   key={role}
                   className="flex flex-col bg-white px-4 py-3 gap-0.5"
                 >
-                  <span className="text-[0.72rem] text-muted uppercase tracking-[0.08em] font-semibold leading-none">
+                  <span className="text-label text-muted uppercase tracking-[0.08em] font-semibold leading-none">
                     {role}
                   </span>
-                  <span className="font-semibold text-[0.93rem]">{name}</span>
+                  <span className="font-semibold text-body-sm">{name}</span>
                 </div>
               ))}
             </div>

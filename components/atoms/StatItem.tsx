@@ -17,7 +17,7 @@ export default function StatItem({ value, unit, label }: StatItemProps) {
         )}
       </div>
 
-      <div className="text-red-tint text-[0.72rem] tracking-[0.08em] uppercase mt-0.75">
+      <div className="text-red-tint text-label tracking-[0.08em] uppercase mt-0.75">
         {label}
       </div>
     </div>

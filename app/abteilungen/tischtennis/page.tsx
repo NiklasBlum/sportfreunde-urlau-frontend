@@ -90,7 +90,7 @@ export default function TischtennisPage() {
                       {slots.map(({ time, label }) => (
                         <li
                           key={time}
-                          className="flex items-baseline gap-3 text-[0.9rem]"
+                          className="flex items-baseline gap-3 text-body-xs"
                         >
                           <span className="font-semibold text-foreground tabular-nums whitespace-nowrap">
                             {time}
@@ -119,7 +119,7 @@ export default function TischtennisPage() {
                     </div>
                     <a
                       href="mailto:jakob.butscher@web.de"
-                      className="inline-flex items-center gap-2 text-red-accent font-semibold text-[0.9rem] hover:underline"
+                      className="inline-flex items-center gap-2 text-red-accent font-semibold text-body-xs hover:underline"
                     >
                       jakob.butscher@web.de
                     </a>
@@ -145,12 +145,12 @@ export default function TischtennisPage() {
                 className="flex items-center justify-between bg-white px-6 py-4 no-underline group hover:bg-surface-hover transition-colors duration-150"
               >
                 <div>
-                  <span className="font-semibold text-[0.95rem] text-foreground group-hover:text-red-accent transition-colors">
+                  <span className="font-semibold text-body-sm text-foreground group-hover:text-red-accent transition-colors">
                     {name}
                   </span>
-                  <span className="ml-3 text-[0.85rem] text-muted">{liga}</span>
+                  <span className="ml-3 text-body-xs text-muted">{liga}</span>
                 </div>
-                <span className="text-red-accent text-[0.8rem] font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-red-accent text-label font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">
                   Spielplan →
                 </span>
               </a>

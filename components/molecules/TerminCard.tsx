@@ -21,13 +21,13 @@ export default function TerminCard({
         <div className="font-serif text-[2rem] font-bold text-red-accent leading-none">
           {day}
         </div>
-        <div className="text-[0.72rem] font-semibold tracking-[0.1em] uppercase text-muted">
+        <div className="text-label font-semibold tracking-[0.1em] uppercase text-muted">
           {month}
         </div>
       </div>
       <div>
-        <div className="font-semibold text-[0.93rem] mb-[3px]">{title}</div>
-        <div className="text-[0.78rem] text-muted">{info}</div>
+        <div className="font-semibold text-body-sm mb-[3px]">{title}</div>
+        <div className="text-label text-muted">{info}</div>
       </div>
       <div className="hidden sm:block">
         <Tag>{tag}</Tag>

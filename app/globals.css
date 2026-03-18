@@ -65,6 +65,11 @@ body {
   line-height: 1.75;
 }
 
+@utility text-body-sm {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
 @utility text-body-xs {
   font-size: 14px;
   line-height: 1.7;
@@ -73,6 +78,16 @@ body {
 @utility text-caption {
   font-size: 13px;
   line-height: 1.65;
+}
+
+@utility text-label {
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+@utility text-micro {
+  font-size: 11px;
+  line-height: 1.6;
 }
 
 @keyframes fadeUp {

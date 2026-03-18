@@ -12,15 +12,13 @@ export default function NewsCard({ icon, meta, title, text }: NewsCardProps) {
         {icon}
       </div>
       <div className="p-[1.3rem]">
-        <div className="text-[0.75rem] text-muted uppercase tracking-[0.08em] mb-2">
+        <div className="text-label text-muted uppercase tracking-[0.08em] mb-2">
           {meta}
         </div>
         <div className="font-serif text-[1rem] font-bold text-foreground leading-[1.3] mb-2">
           {title}
         </div>
-        <div className="text-[0.83rem] text-muted leading-relaxed">
-          {text}
-        </div>
+        <div className="text-caption text-muted leading-relaxed">{text}</div>
       </div>
     </div>
   );

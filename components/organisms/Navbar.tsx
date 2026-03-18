@@ -106,7 +106,7 @@ export default function Navbar() {
                 {item.dropdown ? (
                   <>
                     <button
-                      className="w-full cursor-pointer flex items-center justify-between px-6 py-4 text-white text-[0.88rem] font-semibold uppercase tracking-[0.07em] hover:bg-black/20 transition-colors duration-150"
+                      className="w-full cursor-pointer flex items-center justify-between px-6 py-4 text-white text-body-xs font-semibold uppercase tracking-[0.07em] hover:bg-black/20 transition-colors duration-150"
                       onClick={() => toggleSection(item.label)}
                       aria-expanded={openSection === item.label}
                     >
@@ -124,7 +124,7 @@ export default function Navbar() {
                             key={`${sub.href}-${i}`}
                             href={sub.href}
                             onClick={close}
-                            className="block px-8 py-3 text-red-subtle text-[0.85rem] border-b border-white/[0.05] last:border-b-0 hover:text-gold-highlight hover:bg-black/10 transition-colors duration-150 no-underline"
+                            className="block px-8 py-3 text-red-subtle text-body-xs border-b border-white/[0.05] last:border-b-0 hover:text-gold-highlight hover:bg-black/10 transition-colors duration-150 no-underline"
                           >
                             {sub.label}
                           </Link>
@@ -136,7 +136,7 @@ export default function Navbar() {
                   <Link
                     href={item.href}
                     onClick={close}
-                    className={`block px-6 py-4 text-[0.88rem] font-semibold uppercase tracking-[0.07em] transition-colors duration-150 no-underline hover:bg-black/20 ${item.active ? "text-gold-highlight" : "text-white"}`}
+                    className={`block px-6 py-4 text-body-xs font-semibold uppercase tracking-[0.07em] transition-colors duration-150 no-underline hover:bg-black/20 ${item.active ? "text-gold-highlight" : "text-white"}`}
                   >
                     {item.label}
                   </Link>

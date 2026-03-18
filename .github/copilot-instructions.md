@@ -89,13 +89,18 @@ Follow **atoms → molecules → organisms** strictly:
 
 ### Typography Scale
 
-Custom `@utility` classes are defined in `globals.css`. Always use these — never use arbitrary `text-[…rem]` or `leading-[…]` values on paragraph text.
+Custom `@utility` classes are defined in `globals.css`. Always use these — **never** use arbitrary `text-[…rem]` values anywhere in the codebase.
 
-| Class          | Size | Line-height | Use                                           |
-| -------------- | ---- | ----------- | --------------------------------------------- |
-| `text-body`    | 16px | 1.75        | Hero subtitles, hero/section intro paragraphs |
-| `text-body-xs` | 14px | 1.70        | Card descriptions, secondary info             |
-| `text-caption` | 13px | 1.65        | Fine print, small labels, footnotes           |
+| Class          | Size | Line-height | Use                                                      |
+| -------------- | ---- | ----------- | -------------------------------------------------------- |
+| `text-body`    | 16px | 1.75        | Hero subtitles, hero/section intro paragraphs            |
+| `text-body-sm` | 15px | 1.70        | Card titles, section item names, near-body content       |
+| `text-body-xs` | 14px | 1.70        | Card descriptions, list items, nav items, secondary info |
+| `text-caption` | 13px | 1.65        | Fine print, small non-uppercase labels, footnotes        |
+| `text-label`   | 12px | 1.65        | Uppercase metadata labels, table badges, role tags       |
+| `text-micro`   | 11px | 1.60        | Decorative overlines, tiny badges, logo subtexts         |
+
+If you need a line-height that differs from the utility's default, add an explicit `leading-[…]` override — do not reach for an arbitrary `text-[…rem]` class.
 
 Margin-bottom on `<p>` elements follows the Tailwind spacing scale in **px** (not rem):
 

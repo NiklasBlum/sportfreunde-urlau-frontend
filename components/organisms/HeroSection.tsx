@@ -3,7 +3,7 @@ import StatItem from "@/components/atoms/StatItem";
 import SfuLogo from "@/components/atoms/SfuLogo";
 
 const stats = [
-  { value: "240", unit: "+", label: "Mitglieder" },
+  { value: "290", unit: "+", label: "Mitglieder" },
   { value: "10", label: "Abteilungen" },
   { value: "50", unit: "+", label: "Jahre Geschichte" },
   { value: "1", label: "Heimatort Urlau" },

@@ -5,7 +5,7 @@ import SfuLogo from "@/components/atoms/SfuLogo";
 const stats = [
   { value: "240", unit: "+", label: "Mitglieder" },
   { value: "10", label: "Abteilungen" },
-  { value: "100", unit: "+", label: "Jahre Geschichte" },
+  { value: "50", unit: "+", label: "Jahre Geschichte" },
   { value: "1", label: "Heimatort Urlau" },
 ];
 
@@ -64,7 +64,7 @@ export default function HeroSection() {
                   Sportfreunde Urlau
                 </div>
                 <div className="text-[0.67rem] tracking-[0.12em] uppercase text-gold-highlight mt-0.75">
-                  e.V. - Gegründet 1921 - Allgäu
+                  e.V. - Gegründet 1971 - Allgäu
                 </div>
               </div>
             </div>

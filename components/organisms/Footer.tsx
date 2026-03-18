@@ -24,7 +24,7 @@ export default function Footer() {
               <p className="text-sm font-semibold text-white/90 font-serif">
                 Sportfreunde Urlau e.V.
               </p>
-              <p className="text-xs text-red-blush mt-0.5">Seit 1921 · Urlau</p>
+              <p className="text-xs text-red-blush mt-0.5">Seit 1971 · Urlau</p>
             </div>
           </div>
 

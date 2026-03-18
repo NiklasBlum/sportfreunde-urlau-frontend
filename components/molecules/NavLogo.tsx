@@ -13,7 +13,7 @@ export default function NavLogo() {
       <div className="text-white font-serif text-[1.05rem] leading-[1.2]">
         Sportfreunde Urlau
         <span className="block text-[0.7rem] mt-1 font-sans font-normal tracking-[0.12em] text-red-subtle uppercase">
-          e.V. · Gegr. 1921
+          e.V. · Gegr. 1971
         </span>
       </div>
     </Link>

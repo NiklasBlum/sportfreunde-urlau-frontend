@@ -1,6 +1,6 @@
 # Sportfreunde Urlau e.V. — Website
 
-The public website for **Sportfreunde Urlau e.V.**, a sports club based in Urlau, Germany. The site presents the club, its departments (*Abteilungen*), upcoming events, news, and contact information.
+The public website for **Sportfreunde Urlau e.V.**, a sports club based in Urlau, Germany. The site presents the club, its departments (_Abteilungen_), upcoming events, news, and contact information.
 
 ## What's in this repo
 
@@ -11,13 +11,13 @@ The public website for **Sportfreunde Urlau e.V.**, a sports club based in Urlau
 
 ## Tech stack
 
-| Concern   | Tool                          |
-|-----------|-------------------------------|
-| Framework | Next.js 16 (App Router)       |
-| Language  | TypeScript 5                  |
-| Styling   | Tailwind CSS 4                |
-| CMS       | Sanity (content management)   |
-| Hosting   | Vercel                        |
+| Concern   | Tool                        |
+| --------- | --------------------------- |
+| Framework | Next.js 16 (App Router)     |
+| Language  | TypeScript 5                |
+| Styling   | Tailwind CSS 4              |
+| CMS       | Sanity (content management) |
+| Hosting   | Vercel                      |
 
 ## Local development
 

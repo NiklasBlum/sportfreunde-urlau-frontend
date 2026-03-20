@@ -73,9 +73,8 @@ export default function TischtennisPage() {
         {/* Training & Contact */}
         <Section>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Training times */}
             <div>
-              <SectionLabel>Training</SectionLabel>
+              <SectionLabel>Übungszeiten</SectionLabel>
               <Headline level="h2">Trainingszeiten</Headline>
               <div className="flex flex-col gap-6">
                 {trainingDays.map(({ day, slots }) => (

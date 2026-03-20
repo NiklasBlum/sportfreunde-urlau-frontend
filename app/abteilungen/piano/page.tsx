@@ -48,7 +48,8 @@ export default function PianoPage() {
         <Section>
           <SectionLabel>Über uns</SectionLabel>
           <Headline level="h2">Wer sind die Pianos?</Headline>
-          <div className="bg-surface rounded-xl p-6 border border-black/6 max-w-2xl">
+
+          <div className="bg-surface rounded-xl p-6 border border-black/6 ">
             <p className="text-body-xs text-muted">
               Unsere Gruppe besteht derzeit aus ca. 8–10 Damen im Alter zwischen
               ca. 40 und 60 Jahren. Alle sind willkommen, die sich uns
@@ -66,9 +67,10 @@ export default function PianoPage() {
         <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Programm</SectionLabel>
           <Headline level="h2">Indoor & Outdoor</Headline>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Indoor */}
-            <div className="bg-white rounded-xl p-6 border border-black/6">
+            <div className="bg-background rounded-xl p-6 border border-black/6">
               <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                 Indoor – zu rhythmischer Musik
               </div>
@@ -85,7 +87,7 @@ export default function PianoPage() {
             </div>
 
             {/* Outdoor */}
-            <div className="bg-white rounded-xl p-6 border border-black/6">
+            <div className="bg-background rounded-xl p-6 border border-black/6">
               <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                 Outdoor im Sommer
               </div>
@@ -120,7 +122,7 @@ export default function PianoPage() {
                       Mittwochs, 20:00 – 22:00 Uhr
                     </span>
                     <span className="text-muted">
-                      Kleiner Raum der Dorfhalle Urlau
+                      Im kleinen Raum der Dorfhalle Urlau
                     </span>
                   </li>
                 </ul>

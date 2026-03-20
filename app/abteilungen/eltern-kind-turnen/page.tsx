@@ -6,6 +6,7 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import { Card } from "@/components/atoms/Card";
 
 export const metadata: Metadata = {
   title: "Eltern-Kind-Turnen – Sportfreunde Urlau e.V.",
@@ -50,7 +51,7 @@ export default function ElternKindTurnenPage() {
               <Headline level="h1" light>
                 Eltern-Kind-Turnen
               </Headline>
-              <p className="text-red-tint text-body max-w-130">
+              <p className="text-red-tint text-body">
                 Bewegung, Spaß und Gemeinschaft für die Kleinsten – Eltern,
                 Großeltern und Kinder im Alter von ca. 1–5 Jahren turnen
                 gemeinsam in der Dorfhalle Urlau.
@@ -69,11 +70,13 @@ export default function ElternKindTurnenPage() {
                 key={title}
                 className="bg-surface rounded-xl p-6 border border-black/6"
               >
-                <div className="text-[1.8rem] mb-3" aria-hidden="true">
-                  {icon}
-                </div>
-                <div className="font-semibold text-foreground text-body-sm mb-1.5">
-                  {title}
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="text-[1.8rem]" aria-hidden="true">
+                    {icon}
+                  </div>
+                  <div className="font-semibold text-foreground text-body-sm">
+                    {title}
+                  </div>
                 </div>
                 <p className="text-muted text-body-xs">{desc}</p>
               </div>
@@ -81,10 +84,10 @@ export default function ElternKindTurnenPage() {
           </div>
 
           {/* Hinweis */}
-          <div className="mt-8 bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-body-xs text-amber-900">
+          <Card type="hint" className="mt-8">
             <span className="font-semibold">Bitte mitbringen:</span> Turnschuhe,
-            Turnbekleidung und ausreichend Getränke für die Kleinen.
-          </div>
+            Turnbekleidung und ausreichend Getränke
+          </Card>
         </Section>
 
         {/* Übungszeiten & Kontakt */}
@@ -94,7 +97,7 @@ export default function ElternKindTurnenPage() {
             <div>
               <SectionLabel>Übungszeiten</SectionLabel>
               <Headline level="h2">Trainingszeiten</Headline>
-              <div className="bg-white rounded-xl p-6 border border-black/6">
+              <div className="bg-background rounded-xl p-6 border border-black/6">
                 <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                   Ganzjährig (außer Schulferien)
                 </div>
@@ -103,14 +106,13 @@ export default function ElternKindTurnenPage() {
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Dienstags, 16:00 – 17:00 Uhr
                     </span>
-                    <span className="text-muted">
-                      Turnen für Eltern & Kinder
+                  </li>
+                  <li className="flex items-baseline gap-3 text-body-xs">
+                    <span className="font-semibold text-foreground whitespace-nowrap">
+                      Alter: ca. 1–5 Jahre
                     </span>
                   </li>
                 </ul>
-                <p className="mt-4 text-caption text-muted">
-                  Ort: Dorfhalle Urlau &nbsp;·&nbsp; Alter: ca. 1–5 Jahre
-                </p>
               </div>
             </div>
 
@@ -122,7 +124,7 @@ export default function ElternKindTurnenPage() {
                 {leiterinnen.map(({ name, role }) => (
                   <div
                     key={name}
-                    className="bg-white rounded-xl p-5 border border-black/6 flex items-center gap-4"
+                    className="bg-background rounded-xl p-5 border border-black/6 flex items-center gap-4"
                   >
                     <div className="w-12 h-12 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.3rem] shrink-0">
                       👶

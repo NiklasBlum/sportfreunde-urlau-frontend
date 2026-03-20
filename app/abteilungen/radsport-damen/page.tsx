@@ -16,9 +16,9 @@ import {
 } from "@/lib/cms/getRadsportDamenEvents";
 
 export const metadata: Metadata = {
-  title: "MTB-Ladies – Sportfreunde Urlau e.V.",
+  title: "Radsport Damen – Sportfreunde Urlau e.V.",
   description:
-    "MTB-Touren, Trainingszeiten und Infos zur Radsport-Damenabteilung (MTB-Ladies) der Sportfreunde Urlau e.V.",
+    "MTB-Touren, Trainingszeiten und Infos zur Radsport-Damenabteilung der Sportfreunde Urlau e.V.",
 };
 
 const uebungszeiten = [
@@ -242,16 +242,16 @@ export default async function MtbLadiesPage() {
             <div>
               <SectionLabel>Kontakt</SectionLabel>
               <Headline level="h2">Abteilungsleitung</Headline>
-              <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
+              <div className="bg-surface rounded-xl p-6 border border-black/6">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
                     🚴‍♀️
                   </div>
                   <div>
                     <div className="font-semibold text-foreground text-[1rem]">
-                      MTB-Ladies
+                      -
                     </div>
-                    <div className="text-label text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
+                    <div className="text-label text-muted uppercase tracking-widest font-semibold mt-0.5">
                       Radsport Damen
                     </div>
                   </div>
@@ -262,7 +262,7 @@ export default async function MtbLadiesPage() {
         </Section>
 
         {/* Regeln */}
-        <Section className="bg-surface border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Sicherheit</SectionLabel>
           <Headline level="h2">Regeln & Tabus</Headline>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -271,7 +271,7 @@ export default async function MtbLadiesPage() {
               {regeln.map(({ title, text }) => (
                 <div
                   key={title}
-                  className="bg-white rounded-xl p-6 border border-black/[0.06]"
+                  className="bg-white rounded-xl p-6 border border-black/6"
                 >
                   <div className="font-semibold text-foreground text-body-sm mb-1">
                     {title}

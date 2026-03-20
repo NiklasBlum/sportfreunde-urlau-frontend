@@ -5,6 +5,7 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import { Card } from "@/components/atoms/Card";
 
 export const metadata: Metadata = {
   title: "Kinderturnen – Sportfreunde Urlau e.V.",
@@ -51,22 +52,26 @@ export default function KindertурnenPage() {
         <Section>
           <SectionLabel>Was wir machen</SectionLabel>
           <Headline level="h2">Unser Programm</Headline>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            {programm.map((item) => (
-              <div
-                key={item}
-                className="bg-surface rounded-xl p-5 border border-black/6 text-body-xs text-muted"
-              >
-                {item}
-              </div>
-            ))}
+
+          <div className="bg-surface rounded-xl p-6 border border-black/6 mb-6">
+            <ul className="flex flex-col gap-2">
+              {programm.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2 text-body-xs text-muted"
+                >
+                  <span>–</span> {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-body-xs text-amber-900 max-w-2xl">
+
+          <Card type="hint">
             Als besonderes Highlight treten wir beim{" "}
             <strong>Faschingsnachmittag</strong> der Sportfreunde auf. Ein
             Einstieg ins Kinderturnen ist immer nach den{" "}
             <strong>Sommerferien im September</strong> möglich.
-          </div>
+          </Card>
         </Section>
 
         {/* Übungszeiten & Kontakt */}
@@ -76,7 +81,7 @@ export default function KindertурnenPage() {
             <div>
               <SectionLabel>Übungszeiten</SectionLabel>
               <Headline level="h2">Trainingszeiten</Headline>
-              <div className="bg-white rounded-xl p-6 border border-black/6">
+              <div className="bg-background rounded-xl p-6 border border-black/6">
                 <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                   Ganzjährig (außer Sommerferien)
                 </div>
@@ -87,10 +92,15 @@ export default function KindertурnenPage() {
                     </span>
                     <span className="text-muted">Kinderturnen</span>
                   </li>
+                  <li className="flex items-baseline gap-3 text-body-xs">
+                    <span className="font-semibold text-foreground whitespace-nowrap">
+                      Alter: 5–6 Jahre
+                    </span>
+                    <span className="text-muted">
+                      (letztes und vorletztes Kindergartenjahr)
+                    </span>
+                  </li>
                 </ul>
-                <p className="mt-4 text-caption text-muted">
-                  Alter: 5–6 Jahre (letztes und vorletztes Kindergartenjahr)
-                </p>
               </div>
             </div>
 
@@ -102,7 +112,7 @@ export default function KindertурnenPage() {
                 {leiterinnen.map(({ name, role }) => (
                   <div
                     key={name}
-                    className="bg-white rounded-xl p-5 border border-black/6 flex items-center gap-4"
+                    className="bg-background rounded-xl p-5 border border-black/6 flex items-center gap-4"
                   >
                     <div className="w-12 h-12 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.3rem] shrink-0">
                       🧒

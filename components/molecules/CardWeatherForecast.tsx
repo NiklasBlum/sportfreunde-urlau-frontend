@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import { Card } from "../atoms/Card";
 
 export default function WeatherForecast({
   classNames,
@@ -7,9 +8,7 @@ export default function WeatherForecast({
   classNames?: string;
 }): ReactNode {
   return (
-    <div
-      className={`bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-body-xs text-amber-900 ${classNames}`}
-    >
+    <Card type="hint" className={classNames}>
       <p>
         Falls die aktuelle Tour aufgrund des Wetters verschoben oder abgesagt
         werden muss, steht es hier am Montagabend bis spätestens 17:00 Uhr. Wenn
@@ -27,6 +26,6 @@ export default function WeatherForecast({
         </Link>
         .
       </p>
-    </div>
+    </Card>
   );
 }

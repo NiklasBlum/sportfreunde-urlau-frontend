@@ -1,6 +1,5 @@
 ﻿import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
@@ -95,7 +94,7 @@ export default function SportmaedelsPage() {
                 Sportmädels
               </Headline>
 
-              <p className="text-red-tint text-body max-w-[480px]">
+              <p className="text-red-tint text-body max-w-120">
                 Sport, Gemeinschaft und Spaß – die Sportmädels sind immer in
                 Bewegung. Vom Faschingstanz über MTB-Touren bis zur
                 Weihnachtsfeier ist jede Saison ein Erlebnis.
@@ -122,13 +121,15 @@ export default function SportmaedelsPage() {
             {activities.map(({ icon, label, desc }) => (
               <div
                 key={label}
-                className="bg-surface rounded-xl p-6 border border-black/[0.06]"
+                className="bg-surface rounded-xl p-6 border border-black/6"
               >
-                <div className="text-[1.8rem] mb-3" aria-hidden="true">
-                  {icon}
-                </div>
-                <div className="font-semibold text-foreground text-body-sm mb-1.5">
-                  {label}
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="text-[1.8rem]" aria-hidden="true">
+                    {icon}
+                  </div>
+                  <div className="font-semibold text-foreground text-body-sm">
+                    {label}
+                  </div>
                 </div>
                 <p className="text-muted text-body-xs">{desc}</p>
               </div>
@@ -137,17 +138,17 @@ export default function SportmaedelsPage() {
         </Section>
 
         {/* Recent events */}
-        <Section className="bg-surface border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Rückblick</SectionLabel>
           <Headline level="h2">Aktuelle Berichte</Headline>
-          <div className="flex flex-col gap-px bg-black/[0.06] rounded-xl overflow-hidden border border-black/[0.08]">
+          <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8">
             {recentEvents.map(({ date, title, desc }) => (
               <div
                 key={title}
                 className="bg-white px-6 py-5 flex gap-6 items-start"
               >
-                <div className="shrink-0 w-[4.5rem] text-center pt-0.5">
-                  <span className="inline-block text-label font-semibold tracking-[0.1em] uppercase text-red-accent bg-red-accent/[0.08] rounded-md px-2 py-1 leading-none">
+                <div className="shrink-0 w-18 text-center pt-0.5">
+                  <span className="inline-block text-label font-semibold tracking-widest uppercase text-red-accent bg-red-accent/8 rounded-md px-2 py-1 leading-none">
                     {date}
                   </span>
                 </div>
@@ -162,27 +163,52 @@ export default function SportmaedelsPage() {
           </div>
         </Section>
 
-        {/* Team */}
-        <Section>
-          <SectionLabel>Das Team</SectionLabel>
-          <Headline level="h2">Leitung & Organisation</Headline>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-[640px]">
-            {team.map(({ role, name }) => (
-              <div
-                key={name}
-                className="bg-surface rounded-xl p-5 border border-black/[0.06] text-center"
-              >
-                <div className="w-12 h-12 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.3rem] mx-auto mb-3">
-                  🤸
+        {/* Übungszeiten & Team */}
+        <Section className="bg-background border-t border-b border-black/6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Übungszeiten */}
+            <div>
+              <SectionLabel>Übungszeiten</SectionLabel>
+              <Headline level="h2">Trainingszeiten</Headline>
+              <div className="bg-surface rounded-xl p-6 border border-black/6">
+                <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
+                  Ganzjährig
                 </div>
-                <div className="font-semibold text-foreground text-body-sm">
-                  {name}
-                </div>
-                <div className="text-label text-muted mt-1 leading-[1.4]">
-                  {role}
-                </div>
+                <ul className="flex flex-col gap-2.5">
+                  <li className="flex items-baseline gap-3 text-body-xs">
+                    <span className="font-semibold text-foreground whitespace-nowrap">
+                      Donnerstags, 19:30 Uhr
+                    </span>
+                  </li>
+                </ul>
               </div>
-            ))}
+            </div>
+
+            {/* Team */}
+            <div>
+              <SectionLabel>Kontakt</SectionLabel>
+              <Headline level="h2">Leitung & Organisation</Headline>
+              <div className="flex flex-col gap-3">
+                {team.map(({ role, name }) => (
+                  <div
+                    key={name}
+                    className="bg-surface rounded-xl p-4 border border-black/6 flex items-center gap-4"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.3rem] shrink-0">
+                      🤸
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground text-body-sm">
+                        {name}
+                      </div>
+                      <div className="text-label text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
+                        {role}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </Section>
 

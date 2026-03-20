@@ -5,6 +5,7 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Winter-Volleyballer – Sportfreunde Urlau e.V.",
@@ -25,7 +26,14 @@ export default function WinterVolleyballerPage() {
           </Headline>
           <p className="text-red-tint text-body">
             Volleyball in der Wintersaison von Anfang Oktober bis Ende März.
-            Unterabteilung der Radsportabteilung.
+            Unterabteilung der{" "}
+            <Link
+              href="/abteilungen/radsport-herren"
+              className="text-red-accent font-semibold underline underline-offset-2 hover:text-red-dark focus-visible:ring-3 focus-visible:ring-[--color-gold-highlight] rounded-sm"
+            >
+              Radsportabteilung
+            </Link>
+            .
           </p>
         </Section>
 
@@ -45,7 +53,6 @@ export default function WinterVolleyballerPage() {
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Montags, 20:00 – 22:00 Uhr
                     </span>
-                    <span className="text-muted">Volleyball</span>
                   </li>
                 </ul>
               </div>

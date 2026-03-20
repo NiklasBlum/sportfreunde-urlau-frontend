@@ -7,28 +7,29 @@
 
 @theme {
   /* ── Brand ── */
-  --color-blue: rgb(0, 0, 128);
-  --color-blue-mid: rgb(51, 11, 171); /* hero gradient midpoint */
-  --color-red: rgb(143 13 23);
+  --color-blue: #000080;
+  --color-blue-mid: #330bab; /* hero gradient midpoint */
+  --color-red: #8f0d17;
 
   /* ── Red family ── */
-  --color-red-dark: rgb(122 11 20); /* dropdowns, dark hover bg   */
-  --color-red-accent: rgb(176 14 27); /* links, section accents      */
-  --color-red-tint: rgb(240 221 224); /* body text on dark-red bg   */
-  --color-red-subtle: rgb(245 208 211); /* nav sub-link text           */
-  --color-red-blush: rgb(200 184 186); /* footer muted text           */
+  --color-red-dark: #7a0b14; /* dropdowns, dark hover bg   */
+  --color-red-accent: #b00e1b; /* links, section accents      */
+  --color-red-tint: #f0dde0; /* body text on dark-red bg   */
+  --color-red-subtle: #f5d0d3; /* nav sub-link text           */
+  --color-red-blush: #c8b8ba; /* footer muted text           */
 
   /* ── Gold accent ── */
-  --color-gold: rgb(168 118 40); /* decorative line, badge bg   */
-  --color-gold-dark: rgb(61 26 0); /* gold-button hover text      */
-  --color-gold-light: rgb(200 151 58); /* gold-button hover bg        */
-  --color-gold-highlight: rgb(240 192 96); /* focus rings, active nav    */
+  --color-gold: #a87628; /* decorative line, badge bg   */
+  --color-gold-dark: #3d1a00; /* gold-button hover text      */
+  --color-gold-light: #c8973a; /* gold-button hover bg        */
+  --color-gold-highlight: #f0c060; /* focus rings, active nav    */
 
   /* ── Neutrals ── */
-  --color-surface: rgb(236, 233, 230); /* alternate-section bg        */
-  --color-surface-hover: rgb(255 248 248); /* card hover on white bg     */
-  --color-surface-hover-warm: rgb(253 246 240); /* download-card hover   */
-  --color-muted: rgb(74 82 96); /* secondary / caption text    */
+  --color-background: #f4f2f2; /* main page background (lighter neutral grey) */
+  --color-surface: #eae9e9; /* alternate-section bg (darker for clear contrast) */
+  --color-surface-hover: #f6f8fa; /* card hover on light background */
+  --color-surface-hover-warm: #f7f5f3; /* download-card warm hover */
+  --color-muted: #4a5260; /* secondary / caption text */
 }
 
 :root {
@@ -49,7 +50,7 @@ html {
 }
 
 body {
-  background: #faf7f5;
+  background: var(--color-background);
   @apply text-black;
   font-family: var(--font-sans);
   overflow-x: hidden;

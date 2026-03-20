@@ -6,6 +6,7 @@ import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
 import Link from "next/link";
+import { Card } from "@/components/atoms/Card";
 
 export const metadata: Metadata = {
   title: "Langlauf – Sportfreunde Urlau e.V.",
@@ -34,6 +35,23 @@ const loipen = [
 
 const betreuer = ["Manne", "Josef", "Norbert", "Gerhard"];
 
+const loipenBericht = {
+  stand: "11.01.2026, 14:00 Uhr",
+  loipen: [
+    { name: "Fetzach-Loipe (6,5 km)", gespurt: "11.01.26", zustand: "0/–" },
+    {
+      name: "Missen-Loipe (8 km)",
+      gespurt: "–",
+      zustand: "aktuell nicht möglich",
+    },
+    {
+      name: "Märchenwald-Loipe Herlazhofen (6,5 km)",
+      gespurt: "verkürzt gesp.",
+      zustand: "-",
+    },
+  ],
+};
+
 export default function LanglaufPage() {
   return (
     <>
@@ -46,10 +64,51 @@ export default function LanglaufPage() {
             Langlauf
           </Headline>
           <p className="text-red-tint text-body">
-            Fit durch den Winter – ab November montags um 19:00 Uhr in der
-            Dorfhalle. Unsere ehrenamtlichen Loipenbetreuer halten die Urlauer
-            Loipen so gut wie möglich in Schuss.
+            Unsere ehrenamtlichen Loipenbetreuer halten die Urlauer Loipen so
+            gut wie möglich in Schuss.
           </p>
+          <p className="text-red-tint text-body">
+            Fit durch den Winter – ab November montags um 19:00 Uhr in der
+            Dorfhalle.
+          </p>
+        </Section>
+
+        {/* Loipenzustandsbericht */}
+        <Section className="bg-surface border-t border-b border-black/6">
+          <SectionLabel>Liopennetz</SectionLabel>
+          <Headline level="h2">Loipenzustandsbericht</Headline>
+          <p className="text-caption text-muted mb-5">
+            Stand: {loipenBericht.stand}
+          </p>
+          <div className="overflow-hidden rounded-xl border-2 border-black/6 mb-6">
+            <table className="w-full text-body-xs">
+              <thead>
+                <tr className="bg-red-dark text-white">
+                  <th className="text-left px-4 py-3 font-semibold">Loipe</th>
+                  <th className="text-left px-4 py-3 font-semibold whitespace-nowrap">
+                    Gespurt am
+                  </th>
+                  <th className="text-left px-4 py-3 font-semibold">Zustand</th>
+                </tr>
+              </thead>
+              <tbody>
+                {loipenBericht.loipen.map(({ name, gespurt, zustand }, i) => (
+                  <tr
+                    key={name}
+                    className={`border-t border-black/6 ${
+                      i % 2 === 0 ? "bg-white" : "bg-surface"
+                    }`}
+                  >
+                    <td className="px-4 py-3 text-muted">{name}</td>
+                    <td className="px-4 py-3 text-foreground whitespace-nowrap">
+                      {gespurt}
+                    </td>
+                    <td className="px-4 py-3 text-foreground">{zustand}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </Section>
 
         {/* Hinweise */}
@@ -57,20 +116,31 @@ export default function LanglaufPage() {
           <SectionLabel>Loipeninfo</SectionLabel>
           <Headline level="h2">Hinweise zur Nutzung</Headline>
           <div className="flex flex-wrap gap-4 ">
-            <div className="bg-surface rounded-xl p-6 border border-black/6">
-              <p className="text-body-xs text-muted">
+            <Card type="default" className="bg-surface">
+              <p>Liebe Langlauffreunde,</p>
+              <p>
+                aktuell kommen wir mit dem &bdquo;neuen&ldquo; breiteren
+                Spurgerät noch nicht über die Eschabrücke beim Fallenstock. Vom
+                Sportplatz bis zur Falle ist deshalb &bdquo;Selberspuren&ldquo;
+                angesagt. Märchenwald ist wegen Schneebruch und
+                Schneebruchgefahr nicht passierbar.
+              </p>
+              <p>
+                Die Loipen sind diesen Winter nicht gekennzeichnet, aber die
+                &bdquo;Oihoimische&ldquo; kennen sich ja aus.
+              </p>
+              <p className=" ">
                 Unser Loipensystem ist auf <strong>Links</strong> ausgelegt –
                 wer die linken Spuren benutzt, ist automatisch in der korrekten
                 Laufrichtung unterwegs.
               </p>
-            </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-body-xs text-amber-900">
-              <p>
-                Bei Schneefall aktuelle Informationen zum Spurzustand auf dieser
-                Seite nachlesen. Die Loipenbetreuer aktualisieren den Zustand
-                regelmäßig.
-              </p>
-            </div>
+            </Card>
+
+            <Card type="hint">
+              Bei Schneefall aktuelle Informationen zum Spurzustand auf dieser
+              Seite nachlesen. Die Loipenbetreuer aktualisieren den Zustand
+              regelmäßig.
+            </Card>
           </div>
 
           {/* Links */}
@@ -84,7 +154,7 @@ export default function LanglaufPage() {
               Wetter Urlau →
             </Link>
             <Link
-              href="http://www.Linkllgaeu-cam.de/"
+              href="http://www.allgaeu-cam.de/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-body-xs font-semibold text-foreground hover:text-red-accent transition-colors"
@@ -110,45 +180,14 @@ export default function LanglaufPage() {
           </div>
         </Section>
 
-        {/* Loipen */}
-        <Section className="bg-surface border-t border-b border-black/6">
-          <SectionLabel>Loipennetz</SectionLabel>
-          <Headline level="h2">Unsere Loipen</Headline>
-          <div className="overflow-hidden rounded-xl border border-black/6">
-            <table className="w-full text-body-xs">
-              <thead>
-                <tr className="bg-red-dark text-white">
-                  <th className="text-left px-4 py-3 font-semibold">Loipe</th>
-                  <th className="text-right px-4 py-3 font-semibold w-24">
-                    Länge
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {loipen.map(({ name, km }, i) => (
-                  <tr
-                    key={name}
-                    className={`border-t border-black/6 ${i % 2 === 0 ? "bg-white" : "bg-surface"}`}
-                  >
-                    <td className="px-4 py-3 text-muted">{name}</td>
-                    <td className="px-4 py-3 text-right font-semibold text-foreground whitespace-nowrap">
-                      {km || "—"}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Section>
-
         {/* Übungszeiten & Loipenbetreuer */}
-        <Section>
+        <Section className="bg-surface">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Übungszeiten */}
             <div>
               <SectionLabel>Übungszeiten</SectionLabel>
               <Headline level="h2">Trainingszeiten</Headline>
-              <div className="bg-surface rounded-xl p-6 border border-black/6">
+              <div className="bg-background rounded-xl p-6 border border-black/6">
                 <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                   November – März
                 </div>
@@ -157,7 +196,7 @@ export default function LanglaufPage() {
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Montags, 19:00 Uhr
                     </span>
-                    <span className="text-muted">Dorfhalle Urlau</span>
+                    <span className="text-muted">Fit durch den Winter</span>
                   </li>
                 </ul>
               </div>
@@ -167,7 +206,7 @@ export default function LanglaufPage() {
             <div>
               <SectionLabel>Kontakt</SectionLabel>
               <Headline level="h2">Loipenbetreuer</Headline>
-              <div className="bg-surface rounded-xl p-6 border border-black/6">
+              <div className="bg-background rounded-xl p-6 border border-black/6">
                 <p className="text-body-xs text-muted mb-4">
                   Unsere begeisterten Langläufer pflegen die Loipen
                   ehrenamtlich. Sollte die Spur nicht olympischen Anforderungen
@@ -177,7 +216,7 @@ export default function LanglaufPage() {
                   {betreuer.map((name) => (
                     <span
                       key={name}
-                      className="bg-white border border-black/6 rounded-lg px-3 py-1.5 text-body-xs font-semibold text-foreground"
+                      className="bg-surface border border-black/6 rounded-lg px-3 py-1.5 text-body-xs font-semibold text-foreground"
                     >
                       {name}
                     </span>

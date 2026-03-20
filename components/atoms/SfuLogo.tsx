@@ -12,6 +12,7 @@ export default function SfuLogo({
       width={100}
       height={100}
       className={className}
+      priority
     />
   );
 }

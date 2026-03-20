@@ -12,9 +12,9 @@ export default function ImageUrlau() {
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
       </div>
-      <div className="block absolute bottom-0 right-0 bg-red text-white rounded-tl-xl  px-[1.4rem] py-[1.1rem] text-center ">
+      <div className="block absolute bottom-0 right-0 bg-red text-white rounded-tl-xl rounded-br-xl px-[1.4rem] py-[1.1rem] text-center">
         <div className="font-serif text-[1.9rem] font-bold leading-none">
-          240
+          290
         </div>
         <div className="text-micro font-semibold tracking-[0.08em] uppercase mt-0.5">
           Mitglieder

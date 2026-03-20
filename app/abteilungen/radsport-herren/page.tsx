@@ -10,7 +10,7 @@ import {
   type RadsportHerrenEvent,
 } from "@/lib/cms/getRadsportHerrenTours";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
-import WeatherForecast from "@/components/atoms/WeatherForecast";
+import CardWeatherForecast from "@/components/molecules/CardWeatherForecast";
 
 export const metadata: Metadata = {
   title: "Radsport Herren (VFB) – Sportfreunde Urlau e.V.",
@@ -138,18 +138,19 @@ export default async function RadsportHerrenPage() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 1200px) 50vw, 600px"
-                priority
+                priority={true}
               />
             </div>
           </div>
         </Section>
 
         <Section className="bg-surface border-t border-b border-black/6">
+          <SectionLabel>Touren</SectionLabel>
           <Headline level="h2">
             {seasons.length === 1 ? "MTB-Tourenplan" : "MTB-Tourenpläne"}
           </Headline>
 
-          <WeatherForecast classNames="my-3" />
+          <CardWeatherForecast classNames="my-8" />
 
           {/* Tourenplan */}
           {seasons.map((season, i) => (
@@ -187,7 +188,7 @@ export default async function RadsportHerrenPage() {
                               ? "bg-amber-50"
                               : i % 2 === 0
                                 ? "bg-white"
-                                : "bg-surface-hover"
+                                : "bg-background"
                           }`}
                         >
                           <td className="px-4 py-3 font-semibold whitespace-nowrap">
@@ -272,7 +273,7 @@ export default async function RadsportHerrenPage() {
               <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
-                    🚵
+                    🚴
                   </div>
                   <div>
                     <div className="font-semibold text-[1rem]">Roland Krug</div>

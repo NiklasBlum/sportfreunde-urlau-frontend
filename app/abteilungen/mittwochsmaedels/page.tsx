@@ -106,7 +106,7 @@ export default function MittwochsmaedelsPage() {
             <div>
               <SectionLabel>Übungszeiten</SectionLabel>
               <Headline level="h2">Trainingszeiten</Headline>
-              <div className="bg-white rounded-xl p-6 border border-black/6">
+              <div className="bg-background rounded-xl p-6 border border-black/6">
                 <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                   Ganzjährig
                 </div>
@@ -115,7 +115,6 @@ export default function MittwochsmaedelsPage() {
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Mittwochs, 19:30 / 20:00 Uhr
                     </span>
-                    <span className="text-muted">Urlauer Dorfhalle</span>
                   </li>
                 </ul>
               </div>
@@ -125,7 +124,7 @@ export default function MittwochsmaedelsPage() {
             <div>
               <SectionLabel>Kontakt</SectionLabel>
               <Headline level="h2">Abteilungsleiterin</Headline>
-              <div className="bg-white rounded-xl p-6 border border-black/6 flex items-center gap-4">
+              <div className="bg-background rounded-xl p-6 border border-black/6 flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem] shrink-0">
                   💃
                 </div>

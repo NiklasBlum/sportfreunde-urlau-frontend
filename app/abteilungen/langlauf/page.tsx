@@ -5,6 +5,7 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Langlauf – Sportfreunde Urlau e.V.",
@@ -55,7 +56,7 @@ export default function LanglaufPage() {
         <Section>
           <SectionLabel>Loipeninfo</SectionLabel>
           <Headline level="h2">Hinweise zur Nutzung</Headline>
-          <div className="flex flex-col gap-4 max-w-2xl">
+          <div className="flex flex-wrap gap-4 ">
             <div className="bg-surface rounded-xl p-6 border border-black/6">
               <p className="text-body-xs text-muted">
                 Unser Loipensystem ist auf <strong>Links</strong> ausgelegt –
@@ -63,7 +64,7 @@ export default function LanglaufPage() {
                 Laufrichtung unterwegs.
               </p>
             </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-[0.88rem] text-amber-900 leading-[1.65]">
+            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-body-xs text-amber-900">
               <p>
                 Bei Schneefall aktuelle Informationen zum Spurzustand auf dieser
                 Seite nachlesen. Die Loipenbetreuer aktualisieren den Zustand
@@ -74,38 +75,38 @@ export default function LanglaufPage() {
 
           {/* Links */}
           <div className="mt-6 flex flex-wrap gap-3">
-            <a
+            <Link
               href="http://wetterstationen.meteomedia.de/messnetz/forecast/109450.html"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-[0.88rem] font-semibold text-foreground hover:text-red-accent transition-colors"
+              className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-body-xs font-semibold text-foreground hover:text-red-accent transition-colors"
             >
               Wetter Urlau →
-            </a>
-            <a
-              href="http://www.allgaeu-cam.de/"
+            </Link>
+            <Link
+              href="http://www.Linkllgaeu-cam.de/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-[0.88rem] font-semibold text-foreground hover:text-red-accent transition-colors"
+              className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-body-xs font-semibold text-foreground hover:text-red-accent transition-colors"
             >
               Allgäu-Cam →
-            </a>
-            <a
+            </Link>
+            <Link
               href="http://www.loipen-allgaeu.de/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-[0.88rem] font-semibold text-foreground hover:text-red-accent transition-colors"
+              className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-body-xs font-semibold text-foreground hover:text-red-accent transition-colors"
             >
               Loipen Allgäu →
-            </a>
-            <a
+            </Link>
+            <Link
               href="http://www.leutkirch.de/Loipenbericht"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-[0.88rem] font-semibold text-foreground hover:text-red-accent transition-colors"
+              className="inline-flex items-center gap-2 bg-surface border border-black/6 rounded-lg px-4 py-2 text-body-xs font-semibold text-foreground hover:text-red-accent transition-colors"
             >
               Loipenbericht Leutkirch →
-            </a>
+            </Link>
           </div>
         </Section>
 
@@ -114,7 +115,7 @@ export default function LanglaufPage() {
           <SectionLabel>Loipennetz</SectionLabel>
           <Headline level="h2">Unsere Loipen</Headline>
           <div className="overflow-hidden rounded-xl border border-black/6">
-            <table className="w-full text-[0.88rem]">
+            <table className="w-full text-body-xs">
               <thead>
                 <tr className="bg-red-dark text-white">
                   <th className="text-left px-4 py-3 font-semibold">Loipe</th>
@@ -152,7 +153,7 @@ export default function LanglaufPage() {
                   November – März
                 </div>
                 <ul className="flex flex-col gap-2.5">
-                  <li className="flex items-baseline gap-3 text-[0.9rem]">
+                  <li className="flex items-baseline gap-3 text-body-xs">
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Montags, 19:00 Uhr
                     </span>
@@ -176,7 +177,7 @@ export default function LanglaufPage() {
                   {betreuer.map((name) => (
                     <span
                       key={name}
-                      className="bg-white border border-black/6 rounded-lg px-3 py-1.5 text-[0.88rem] font-semibold text-foreground"
+                      className="bg-white border border-black/6 rounded-lg px-3 py-1.5 text-body-xs font-semibold text-foreground"
                     >
                       {name}
                     </span>

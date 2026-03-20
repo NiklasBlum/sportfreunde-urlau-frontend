@@ -3,9 +3,9 @@ import StatItem from "@/components/atoms/StatItem";
 import SfuLogo from "@/components/atoms/SfuLogo";
 
 const stats = [
-  { value: "240", unit: "+", label: "Mitglieder" },
+  { value: "290", unit: "+", label: "Mitglieder" },
   { value: "10", label: "Abteilungen" },
-  { value: "100", unit: "+", label: "Jahre Geschichte" },
+  { value: "50", unit: "+", label: "Jahre Geschichte" },
   { value: "1", label: "Heimatort Urlau" },
 ];
 
@@ -63,8 +63,8 @@ export default function HeroSection() {
                 <div className="font-serif text-[1.1rem] font-bold text-white">
                   Sportfreunde Urlau
                 </div>
-                <div className="text-[0.67rem] tracking-[0.12em] uppercase text-gold-highlight mt-0.75">
-                  e.V. - Gegründet 1921 - Allgäu
+                <div className="text-micro tracking-[0.12em] uppercase text-gold-highlight mt-0.75">
+                  e.V. - Gegründet 1972 - Allgäu
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function HeroSection() {
                 &bdquo;Wir animieren Dich zu sportlichen Aktivitäten und freuen
                 uns über jedes neue Mitglied.&ldquo;
               </p>
-              <cite className="block mt-1.5 text-gold-highlight text-[0.8rem] not-italic font-semibold">
+              <cite className="block mt-1.5 text-gold-highlight text-label not-italic font-semibold">
                 Michael Tronsberg, 1. Vorsitzender
               </cite>
             </div>
@@ -96,7 +96,7 @@ export default function HeroSection() {
       </div>
 
       {/* Scroll hint */}
-      <div className="flex absolute bottom-2 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/40 text-[0.68rem] tracking-[0.15em] uppercase animate-bounce after:content-[''] after:w-px after:h-9 after:bg-gradient-to-b after:from-white/40 after:to-transparent">
+      <div className="flex absolute bottom-2 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/40 text-micro tracking-[0.15em] uppercase animate-bounce after:content-[''] after:w-px after:h-9 after:bg-linear-to-b after:from-white/40 after:to-transparent">
         Scroll
       </div>
     </section>

@@ -41,7 +41,7 @@ export default function WinterVolleyballerPage() {
                   Oktober – März
                 </div>
                 <ul className="flex flex-col gap-2.5">
-                  <li className="flex items-baseline gap-3 text-[0.9rem]">
+                  <li className="flex items-baseline gap-3 text-body-xs">
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Montags, 20:00 – 22:00 Uhr
                     </span>
@@ -71,10 +71,10 @@ export default function WinterVolleyballerPage() {
                       🏐
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground text-[0.95rem]">
+                      <div className="font-semibold text-foreground text-body-sm">
                         {name}
                       </div>
-                      <div className="text-[0.78rem] text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
+                      <div className="text-label text-muted uppercase tracking-[0.08em] font-semibold mt-0.5">
                         {role}
                       </div>
                     </div>

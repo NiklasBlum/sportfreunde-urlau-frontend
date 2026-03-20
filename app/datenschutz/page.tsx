@@ -27,7 +27,7 @@ const abschnitte: DsAbschnitt[] = [
     title: "1. Verantwortlicher",
     paragraphs: [
       "Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:",
-      "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nAnschrift: Urlau, 88299 Leutkirch, Deutschland\nE-Mail: vorstand@sportfreunde-urlau.de",
+      "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nAnschrift: Urlau, 88299 Leutkirch, Deutschland\nE-Mail: vorstand.sportfreunde.urlau@gmail.com",
     ],
   },
   {
@@ -62,31 +62,39 @@ const abschnitte: DsAbschnitt[] = [
     ],
   },
   {
-    id: "google-fonts",
-    title: "4. Google Fonts",
+    id: "schriftarten",
+    title: "4. Schriftarten",
     paragraphs: [
-      "Diese Website verwendet Google Fonts, einen Dienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA. Google Fonts ermöglicht die Einbindung externer Schriftarten.",
-      "Beim Laden einer Seite stellt Ihr Browser eine direkte Verbindung zu Googles Servern her, um die benötigten Schriftarten herunterzuladen. Dabei wird Ihre IP-Adresse an Google übermittelt. Wir haben keinen Einfluss auf die anschließende Datenverarbeitung durch Google.",
-      "Die Einbindung von Google Fonts erfolgt auf Grundlage unseres berechtigten Interesses an einer einheitlichen und ansprechenden Darstellung unserer Website (Art. 6 Abs. 1 lit. f DSGVO). Soweit eine Einwilligung eingeholt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO.",
+      "Diese Website verwendet die Schriftarten DM Sans und Playfair Display. Die Schriftdateien werden mithilfe von next/font beim Build-Vorgang heruntergeladen und anschließend selbst gehostet.",
+      "Beim Aufrufen unserer Website stellt Ihr Browser keine Verbindung zu Servern von Google oder anderen Drittanbietern her, um Schriftarten zu laden. Es werden dabei keine personenbezogenen Daten an Dritte übermittelt.",
+    ],
+  },
+  {
+    id: "analytics",
+    title: "5. Webanalyse – Vercel Analytics",
+    paragraphs: [
+      "Diese Website verwendet Vercel Analytics, einen datenschutzfreundlichen Analysedienst der Vercel Inc., 340 Pine Street, Suite 603, San Francisco, CA 94104, USA.",
+      "Vercel Analytics erfasst anonymisierte Nutzungsstatistiken wie aufgerufene Seiten, Referrer-URL, Herkunftsland, Browsertyp und Gerätetyp. Es werden keine Cookies gesetzt, keine IP-Adressen gespeichert und keine siteübergreifende Nutzerverfolgung durchgeführt. Eine Zuordnung zu einzelnen Personen ist nicht möglich.",
+      "Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an der Verbesserung und Optimierung unserer Website (Art. 6 Abs. 1 lit. f DSGVO). Daten können in die USA übermittelt werden; die Übermittlung erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO.",
     ],
     externalLinks: [
       {
-        label: "Datenschutzerklärung von Google",
-        href: "https://policies.google.com/privacy",
+        label: "Datenschutzerklärung von Vercel",
+        href: "https://vercel.com/legal/privacy-policy",
       },
     ],
   },
   {
     id: "cookies",
-    title: "5. Cookies und Tracking",
+    title: "6. Cookies und Tracking",
     paragraphs: [
-      "Diese Website verwendet keine Tracking-Cookies und verzichtet vollständig auf den Einsatz von Webanalyse-Diensten (z. B. Google Analytics, Matomo o. Ä.).",
-      "Es werden keine Nutzerprofile erstellt und keine Nutzungsdaten zu Werbezwecken erhoben oder an Dritte weitergegeben.",
+      "Diese Website setzt keine Tracking-Cookies und erstellt keine Nutzerprofile zu Werbezwecken.",
+      "Nutzungsdaten werden ausschließlich in anonymisierter, aggregierter Form über Vercel Analytics erfasst (siehe Abschnitt 5). Eine Weitergabe personenbezogener Daten an Dritte zu Werbezwecken findet nicht statt.",
     ],
   },
   {
     id: "kontakt",
-    title: "6. Kontaktaufnahme per E-Mail",
+    title: "7. Kontaktaufnahme per E-Mail",
     paragraphs: [
       "Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben – einschließlich der von Ihnen angegebenen Kontaktdaten – zwecks Bearbeitung Ihrer Anfrage und für den Fall von Rückfragen bei uns gespeichert. Diese Daten werden nicht ohne Ihre Einwilligung weitergegeben.",
       "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung eingehender Anfragen) bzw. Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage auf den Abschluss eines Vertrags gerichtet ist. Die Daten werden gelöscht, sobald die Aufbewahrung nicht mehr erforderlich ist, spätestens nach vollständiger Abwicklung des Anliegens.",
@@ -94,7 +102,7 @@ const abschnitte: DsAbschnitt[] = [
   },
   {
     id: "betroffenenrechte",
-    title: "7. Rechte der betroffenen Person",
+    title: "8. Rechte der betroffenen Person",
     paragraphs: [
       "Ihnen stehen gegenüber uns folgende Rechte hinsichtlich Ihrer personenbezogenen Daten zu:",
     ],
@@ -111,7 +119,7 @@ const abschnitte: DsAbschnitt[] = [
   },
   {
     id: "beschwerderecht",
-    title: "8. Beschwerderecht bei der Aufsichtsbehörde",
+    title: "9. Beschwerderecht bei der Aufsichtsbehörde",
     paragraphs: [
       "Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren (Art. 77 DSGVO). Die zuständige Aufsichtsbehörde ist:",
       "Der Landesbeauftragte für Datenschutz und Informationsfreiheit Baden-Württemberg (LfDI BW)\nLautenschlagerstraße 20\n70173 Stuttgart\nTelefon: +49 711 615541-0\nE-Mail: poststelle@lfdi.bwl.de",
@@ -125,7 +133,7 @@ const abschnitte: DsAbschnitt[] = [
   },
   {
     id: "aktualitaet",
-    title: "9. Aktualität und Änderung dieser Datenschutzerklärung",
+    title: "10. Aktualität und Änderung dieser Datenschutzerklärung",
     paragraphs: [
       "Diese Datenschutzerklärung ist aktuell gültig und hat den Stand März 2026. Durch die Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher oder behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Version ist jederzeit auf dieser Seite abrufbar.",
     ],
@@ -161,7 +169,7 @@ export default function DatenschutzPage() {
                   id={id}
                   className="bg-white rounded-xl p-6 border border-black/6"
                 >
-                  <h3 className="font-semibold text-foreground text-[0.95rem] mb-3">
+                  <h3 className="font-semibold text-foreground text-body-sm mb-3">
                     {title}
                   </h3>
 
@@ -179,7 +187,7 @@ export default function DatenschutzPage() {
                       {bullets.map((item) => (
                         <li
                           key={item}
-                          className="text-[0.88rem] text-muted leading-[1.7]"
+                          className="text-body-xs text-muted leading-[1.7]"
                         >
                           {item}
                         </li>
@@ -201,7 +209,7 @@ export default function DatenschutzPage() {
                           href={href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[0.82rem] text-red-accent underline underline-offset-2 hover:text-red-dark transition-colors duration-150"
+                          className="text-caption text-red-accent underline underline-offset-2 hover:text-red-dark transition-colors duration-150"
                         >
                           {label} ↗
                         </Link>

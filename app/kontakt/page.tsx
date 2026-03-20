@@ -53,8 +53,8 @@ const kontaktKarten = [
       </svg>
     ),
     label: "E-Mail Vorstand",
-    lines: ["vorstand@sportfreunde-urlau.de"],
-    href: "mailto:vorstand@sportfreunde-urlau.de",
+    lines: ["vorstand.sportfreunde.urlau@gmail.com"],
+    href: "mailto:vorstand.sportfreunde.urlau@gmail.com",
     hrefLabel: "E-Mail schreiben",
   },
   {
@@ -78,7 +78,7 @@ const kontaktKarten = [
     ),
     label: "1. Vorsitzender",
     lines: ["Michael Tronsberg"],
-    href: "mailto:vorstand@sportfreunde-urlau.de",
+    href: "mailto:vorstand.sportfreunde.urlau@gmail.com",
     hrefLabel: "E-Mail schreiben",
   },
 ];
@@ -127,13 +127,13 @@ export default function KontaktPage() {
                         {icon}
                       </div>
                       <div className="min-w-0">
-                        <div className="text-[0.72rem] font-semibold tracking-widest uppercase text-muted mb-1">
+                        <div className="text-label font-semibold tracking-widest uppercase text-muted mb-1">
                           {label}
                         </div>
                         {lines.map((line) => (
                           <p
                             key={line}
-                            className="text-[0.93rem] font-semibold leading-snug"
+                            className="text-body-sm font-semibold leading-snug"
                           >
                             {line}
                           </p>
@@ -148,7 +148,7 @@ export default function KontaktPage() {
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className="inline-block mt-2 text-[0.8rem] font-semibold text-red-accent hover:underline underline-offset-2 transition-colors duration-150"
+                          className="inline-block mt-2 text-label font-semibold text-red-accent hover:underline underline-offset-2 transition-colors duration-150"
                         >
                           {hrefLabel} →
                         </a>
@@ -169,10 +169,10 @@ export default function KontaktPage() {
                     key={rolle}
                     className="flex flex-col sm:flex-row sm:items-center bg-white px-6 py-4 gap-1 sm:gap-6"
                   >
-                    <span className="text-[0.8rem] text-muted uppercase tracking-[0.08em] font-semibold sm:w-52 shrink-0">
+                    <span className="text-label text-muted uppercase tracking-[0.08em] font-semibold sm:w-52 shrink-0">
                       {rolle}
                     </span>
-                    <span className="font-semibold text-[0.95rem] text-foreground">
+                    <span className="font-semibold text-body-sm text-foreground">
                       {name}
                     </span>
                   </div>

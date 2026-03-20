@@ -1,7 +1,7 @@
-﻿import SectionLabel from "@/components/atoms/SectionLabel";
-import VorstandCard from "@/components/molecules/VorstandCard";
+﻿import VorstandCard from "@/components/molecules/VorstandCard";
 import Section from "../atoms/Section";
 import { Headline } from "../atoms/Headline";
+import Link from "next/link";
 
 export const vorstand = [
   {
@@ -59,12 +59,12 @@ export default function VorstandSection() {
 
       <div className="mt-10 text-center">
         <p className="text-body-xs mb-2">Nachricht an den Vorstand</p>
-        <a
-          href="mailto:vorstand@sportfreunde-urlau.de"
+        <Link
+          href="mailto:vorstand.sportfreunde.urlau@gmail.com"
           className="font-semibold underline underline-offset-4"
         >
-          vorstand@sportfreunde-urlau.de
-        </a>
+          vorstand.sportfreunde.urlau@gmail.com
+        </Link>
       </div>
     </Section>
   );

@@ -3,6 +3,7 @@ import Button from "@/components/atoms/Button";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "../atoms/Headline";
+import ImageUrlau from "../atoms/ImageUrlau";
 
 export default function WelcomeSection() {
   return (
@@ -29,26 +30,8 @@ export default function WelcomeSection() {
             Mehr über den Verein →
           </Button>
         </div>
-        {/* Image of Urlau */}
-        <div className="relative">
-          <div className="w-full aspect-video rounded-2xl overflow-hidden relative">
-            <Image
-              src="/urlau.webp"
-              alt="Urlau, Allgäu"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </div>
-          <div className="block absolute -bottom-6 -right-6 bg-red text-white rounded-xl px-[1.4rem] py-[1.1rem] text-center shadow-[0_8px_24px_rgba(200,151,58,0.4)]">
-            <div className="font-serif text-[1.9rem] font-bold leading-none">
-              240
-            </div>
-            <div className="text-[0.68rem] font-semibold tracking-[0.08em] uppercase mt-0.5">
-              Mitglieder
-            </div>
-          </div>
-        </div>
+
+        <ImageUrlau />
       </div>
     </Section>
   );

@@ -133,15 +133,15 @@ export default function DownloadsPage() {
                           </svg>
                         </div>
                         <div>
-                          <div className="font-semibold text-[0.95rem] text-foreground group-hover:text-red-accent transition-colors duration-150 leading-snug">
+                          <div className="font-semibold text-body-sm text-foreground group-hover:text-red-accent transition-colors duration-150 leading-snug">
                             {label}
                           </div>
-                          <div className="text-[0.8rem] text-muted mt-1 leading-snug">
+                          <div className="text-label text-muted mt-1 leading-snug">
                             {description}
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 text-[0.75rem] font-semibold text-red-accent self-end">
+                      <div className="flex items-center gap-1.5 text-label font-semibold text-red-accent self-end">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"

@@ -9,7 +9,7 @@ export default function SectionLabel({
 }: SectionLabelProps) {
   return (
     <div
-      className={`inline-flex items-center  gap-2.5 text-[0.72rem] md:text-[0.75rem] lg:text-[0.78rem] font-semibold tracking-[0.18em] uppercase mb-[0.9rem] before:content-[''] before:w-[22px] before:h-[2px] before:bg-gold ${
+      className={`inline-flex items-center gap-2.5 text-label md:text-body-xs font-semibold tracking-[0.18em] uppercase mb-4 before:content-[''] before:w-5 before:h-0.5 before:bg-gold ${
         light ? "text-gold-highlight" : "text-red-accent"
       }`}
     >

@@ -120,7 +120,7 @@ export default async function MtbLadiesPage() {
             <SectionLabel>Saison {season}</SectionLabel>
             <Headline level="h2"> MTB-Tourenplan {season}</Headline>
 
-            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8 text-[0.88rem] text-amber-900 leading-[1.65]">
+            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8 text-body-xs text-amber-900">
               <p>
                 Falls die aktuelle Tour aufgrund des Wetters verschoben oder
                 abgesagt werden muss, steht es hier am Montagabend bis
@@ -141,7 +141,7 @@ export default async function MtbLadiesPage() {
               </p>
             </div>
             <div className="overflow-hidden rounded-xl border border-black/[0.06]">
-              <table className="w-full text-[0.88rem]">
+              <table className="w-full text-body-xs">
                 <thead>
                   <tr className="bg-red-dark text-white">
                     <th className="text-left px-4 py-3 font-semibold w-[7.5rem]">
@@ -181,17 +181,17 @@ export default async function MtbLadiesPage() {
                         </td>
                         <td className="px-4 py-3 text-right">
                           {status === "tour" && (
-                            <span className="inline-block bg-green-100 text-green-800 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                            <span className="inline-block bg-green-100 text-green-800 text-label font-semibold px-2 py-0.5 rounded-full">
                               Tour
                             </span>
                           )}
                           {status === "cancelled" && (
-                            <span className="inline-block bg-red-100 text-red-700 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                            <span className="inline-block bg-red-100 text-red-700 text-label font-semibold px-2 py-0.5 rounded-full">
                               Abgesagt
                             </span>
                           )}
                           {status === "pause" && (
-                            <span className="inline-block bg-gray-100 text-gray-600 text-[0.75rem] font-semibold px-2 py-0.5 rounded-full">
+                            <span className="inline-block bg-gray-100 text-gray-600 text-label font-semibold px-2 py-0.5 rounded-full">
                               Pause
                             </span>
                           )}
@@ -224,7 +224,7 @@ export default async function MtbLadiesPage() {
                       {slots.map(({ time, label }) => (
                         <li
                           key={time}
-                          className="flex items-baseline gap-3 text-[0.9rem]"
+                          className="flex items-baseline gap-3 text-body-xs"
                         >
                           <span className="font-semibold text-foreground whitespace-nowrap">
                             {time}
@@ -251,7 +251,7 @@ export default async function MtbLadiesPage() {
                     <div className="font-semibold text-foreground text-[1rem]">
                       MTB-Ladies
                     </div>
-                    <div className="text-[0.8rem] text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
+                    <div className="text-label text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
                       Radsport Damen
                     </div>
                   </div>
@@ -273,7 +273,7 @@ export default async function MtbLadiesPage() {
                   key={title}
                   className="bg-white rounded-xl p-6 border border-black/[0.06]"
                 >
-                  <div className="font-semibold text-foreground text-[0.95rem] mb-1">
+                  <div className="font-semibold text-foreground text-body-sm mb-1">
                     {title}
                   </div>
                   <p className="text-body-xs text-muted">{text}</p>
@@ -291,7 +291,7 @@ export default async function MtbLadiesPage() {
                   {tabus.map((tabu) => (
                     <li
                       key={tabu}
-                      className="flex items-start gap-3 text-[0.88rem] text-muted leading-[1.65]"
+                      className="flex items-start gap-3 text-body-xs text-muted"
                     >
                       <span
                         className="mt-[0.25em] text-red-dark font-bold shrink-0"
@@ -320,7 +320,7 @@ export default async function MtbLadiesPage() {
                     {event.headline}
                   </h3>
                   {event.beschreibung && (
-                    <div className="text-[0.9rem] text-muted leading-[1.75] mb-6 flex flex-col gap-3">
+                    <div className="text-body-xs text-muted leading-[1.75] mb-6 flex flex-col gap-3">
                       {event.beschreibung
                         .replace(/\r\n/g, "\n")
                         .split(/\n{2,}/)

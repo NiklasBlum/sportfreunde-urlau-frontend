@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
@@ -10,10 +11,31 @@ export const metadata: Metadata = {
   description: "Impressum und Haftungsausschluss der Sportfreunde Urlau e.V.",
 };
 
+const vereinsinfo = [
+  { label: "Verein", value: "Sportfreunde Urlau e.V." },
+  {
+    label: "Anschrift",
+    value: "Martinsweg 6\n88299 Leutkirch im Allgäu\nDeutschland",
+  },
+  {
+    label: "E-Mail",
+    value: "vorstand.sportfreunde.urlau@gmail.com",
+    href: "mailto:vorstand.sportfreunde.urlau@gmail.com",
+  },
+  { label: "Registergericht", value: "123" },
+  { label: "Vereinsregisternummer", value: "VR 234" },
+  {
+    label: "Verantwortlicher (§ 18 Abs. 2 MStV)",
+    value: "Michael Tronsberg\nMartinsweg 6\n88299 Leutkirch im Allgäu",
+  },
+];
+
 const vorstand = [
   { role: "1. Vorsitzender", name: "Michael Tronsberg" },
-  { role: "Stellv. Vorsitzende", name: "Simone Breins, Horst Hüther" },
-  { role: "Kassierinnen", name: "Martina Dorn und Iris Haase" },
+  { role: "1. stellv. Vorsitzende", name: "Simone Breins" },
+  { role: "2. stellv. Vorsitzender", name: "Hans Bauer" },
+  { role: "Kassierin", name: "Martina Dorn" },
+  { role: "stellv. Kassier", name: "Thomas Krug" },
   { role: "Schriftführerin", name: "Erika Peter" },
   { role: "Webmaster", name: "Niklas Blum" },
 ];
@@ -30,10 +52,6 @@ const haftungsabschnitte = [
   {
     title: "Urheberrecht",
     text: "Alle auf dieser Website veröffentlichten Beiträge und Abbildungen sind urheberrechtlich geschützt. Jede vom Urheberrechtsgesetz nicht zugelassene Verwertung bedarf vorheriger schriftlicher Zustimmung. Dies gilt insbesondere für Vervielfältigung, Bearbeitung, Übersetzung, Einspeicherung, Verarbeitung bzw. Wiedergabe von Inhalten in Datenbanken oder anderen elektronischen Medien und Systemen. Fotokopien und Downloads von dieser Website dürfen nur für den persönlichen, privaten und nicht kommerziellen Gebrauch hergestellt werden.",
-  },
-  {
-    title: "Datenschutz",
-    text: "Alle auf dieser Website genannten Personen widersprechen hiermit jeder kommerziellen Verwendung und Weitergabe ihrer Daten.",
   },
   {
     title: "E-Mail-Kommunikation",
@@ -57,20 +75,50 @@ export default function ImpressumPage() {
           </p>
         </Section>
 
-        {/* Vorstand */}
+        {/* Pflichtangaben § 5 TMG */}
         <Section>
+          <SectionLabel>Anbieter</SectionLabel>
+          <Headline level="h2">Angaben gemäß § 5 TMG</Headline>
+          <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8 max-w-2xl">
+            {vereinsinfo.map(({ label, value, href }) => (
+              <div
+                key={label}
+                className="flex flex-col sm:flex-row sm:items-start bg-white px-6 py-4 gap-1 sm:gap-6"
+              >
+                <span className="text-label text-muted uppercase tracking-[0.08em] font-semibold w-56 shrink-0">
+                  {label}
+                </span>
+                {href ? (
+                  <Link
+                    href={href}
+                    className="font-semibold text-body-sm text-foreground underline underline-offset-2"
+                  >
+                    {value}
+                  </Link>
+                ) : (
+                  <span className="font-semibold text-body-sm text-foreground whitespace-pre-line">
+                    {value}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        {/* Vorstand */}
+        <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Verantwortlich</SectionLabel>
-          <Headline level="h2"> Vorstandschaft SF Urlau </Headline>
+          <Headline level="h2">Vorstandschaft SF Urlau</Headline>
           <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8 max-w-2xl">
             {vorstand.map(({ role, name }) => (
               <div
                 key={role}
                 className="flex flex-col sm:flex-row sm:items-center bg-white px-6 py-4 gap-1 sm:gap-6"
               >
-                <span className="text-[0.8rem] text-muted uppercase tracking-[0.08em] font-semibold w-48 shrink-0">
+                <span className="text-label text-muted uppercase tracking-[0.08em] font-semibold w-48 shrink-0">
                   {role}
                 </span>
-                <span className="font-semibold text-[0.95rem] text-foreground">
+                <span className="font-semibold text-body-sm text-foreground">
                   {name}
                 </span>
               </div>
@@ -79,7 +127,7 @@ export default function ImpressumPage() {
         </Section>
 
         {/* Haftungsausschluss */}
-        <Section className="bg-surface border-t border-b border-black/6">
+        <Section>
           <SectionLabel>Haftungsausschluss</SectionLabel>
           <Headline level="h2">Rechtliche Hinweise</Headline>
           <div className="flex flex-col gap-4 max-w-3xl">
@@ -88,7 +136,7 @@ export default function ImpressumPage() {
                 key={title}
                 className="bg-white rounded-xl p-6 border border-black/6"
               >
-                <div className="font-semibold text-foreground text-[0.95rem] mb-1">
+                <div className="font-semibold text-foreground text-body-sm mb-1">
                   {title}
                 </div>
                 <p className="text-body-xs text-muted">{text}</p>

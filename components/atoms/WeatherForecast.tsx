@@ -8,7 +8,7 @@ export default function WeatherForecast({
 }): ReactNode {
   return (
     <div
-      className={`bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-[0.88rem] text-amber-900 leading-[1.65] ${classNames}`}
+      className={`bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-body-xs text-amber-900 ${classNames}`}
     >
       <p>
         Falls die aktuelle Tour aufgrund des Wetters verschoben oder abgesagt

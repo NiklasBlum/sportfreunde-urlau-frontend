@@ -7,13 +7,15 @@ import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import {
   getRadsportDamenTours,
-  type RadsportDamenTour,
+  RadsportDamenTour,
 } from "@/lib/cms/getRadsportDamenTours";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
-import {
-  getRadsportDamenEvents,
-  RadsportDamenEvent,
-} from "@/lib/cms/getRadsportDamenEvents";
+import { getRadsportDamenEvents } from "@/lib/cms/getRadsportDamenEvents";
+import { RADSPORT_RULES, RADSPORT_TABUS } from "@/data/radsport_rules";
+import formatDate from "@/lib/formatIsoDate";
+import ScheduleTable, { Column } from "@/components/molecules/ScheduleTable";
+import CardWeatherForecast from "@/components/molecules/CardWeatherForecast";
+import EventList from "@/components/molecules/EventList";
 
 export const metadata: Metadata = {
   title: "Radsport Damen – Sportfreunde Urlau e.V.",
@@ -28,57 +30,47 @@ const uebungszeiten = [
   },
 ];
 
-const regeln = [
-  {
-    title: "Helmpflicht",
-    text: "Ohne Helm ist die Teilnahme an der Tour untersagt.",
-  },
-  {
-    title: "Weisung",
-    text: "Der jeweilige Guide gibt Weisungen und darf nicht überholt werden. Die Freigabe der Strecke (z. B. bergauf oder Trailabfahrten) erteilt der Guide.",
-  },
-  {
-    title: "Verkehrssicherheit",
-    text: "Jeder Teilnehmer ist für ein verkehrssicheres Rad verantwortlich. Hierzu gehören u. a. (voll aufgeladene) Lichter, voll funktionsfähige Bremsen und ordentliche Bereifung. Zudem darf nur max. zu zweit nebeneinander gefahren werden.",
-  },
-  {
-    title: "Organisation",
-    text: "Jeder sollte sich einschätzen können und bei der passenden Gruppe mitradeln. Grundsätzlich müssen sich die Teilnehmer beim Verlassen der Gruppe (während der Tour / bei Nichteinkehr in der Gaststätte) beim Guide abmelden.",
-  },
-  {
-    title: "Verantwortung",
-    text: "Jeder Teilnehmer ist für seinen Hintermann verantwortlich! Sollte die Geschwindigkeit zu hoch sein oder es eine Panne geben, dann an den Vordermann melden (bis die Info den Guide erreicht hat).",
-  },
-];
-
-const tabus = [
-  "Rechts überholen ist untersagt!",
-  "Im Versatz rechts hinten zu fahren ist untersagt!",
-  "Downhill nebeneinander zu fahren ist untersagt! Es muss bei jeder Abfahrt hintereinander mit ausreichend Abstand gefahren werden.",
-  "Überholen des Guides ohne Streckenfreigabe ist untersagt. Der Guide gibt das Tempo vor.",
-];
-
-function formatDate(iso: string): string {
-  const [y, m, d] = iso.split("-");
-  return `${d}.${m}.${y}`;
-}
-
 function groupBySeason(
   tours: RadsportDamenTour[],
 ): Map<number, RadsportDamenTour[]> {
   return tours.reduce((map, tour) => {
-    const list = map.get(tour.season) ?? [];
+    const year = Number(tour.date.slice(0, 4));
+    const list = map.get(year) ?? [];
     list.push(tour);
-    map.set(tour.season, list);
+    map.set(year, list);
     return map;
   }, new Map<number, RadsportDamenTour[]>());
 }
 
-export default async function MtbLadiesPage() {
+const columns: Column<RadsportDamenTour>[] = [
+  {
+    header: "Datum",
+    render: (t) => formatDate(t.date),
+  },
+  {
+    header: "Abfahrt",
+    render: (t) => t.departureTime ?? "—",
+  },
+  {
+    header: "Route",
+    render: (t) =>
+      t.status === "cancelled" ? (
+        <span className="italic font-bold text-red">Abgesagt</span>
+      ) : t.status === "pause" ? (
+        <span className="italic font-bold text-red">Pause / kein Training</span>
+      ) : (
+        t.route
+      ),
+  },
+];
+
+export default async function RadsportDamenPage() {
   const [tours, events] = await Promise.all([
     getRadsportDamenTours(),
     getRadsportDamenEvents(),
   ]);
+
+  const today = new Date().toISOString().slice(0, 10);
   const bySeason = groupBySeason(tours);
   const seasons = Array.from(bySeason.keys()).sort((a, b) => b - a);
 
@@ -112,97 +104,32 @@ export default async function MtbLadiesPage() {
         </Section>
 
         {/* Tourenplan */}
-        {seasons.map((season) => (
-          <Section
-            key={season}
-            className="bg-surface border-t border-b border-black/[0.06]"
-          >
-            <SectionLabel>Saison {season}</SectionLabel>
-            <Headline level="h2"> MTB-Tourenplan {season}</Headline>
+        <Section className="bg-surface border-t border-b border-black/6">
+          <SectionLabel>Touren</SectionLabel>
+          <Headline level="h2">
+            {seasons.length === 1 ? "MTB-Tourenplan" : "MTB-Tourenpläne"}
+          </Headline>
 
-            <div className="bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 mb-8 text-body-xs text-amber-900">
-              <p>
-                Falls die aktuelle Tour aufgrund des Wetters verschoben oder
-                abgesagt werden muss, steht es hier am Montagabend bis
-                spätestens 17:00 Uhr. Wenn hier nichts steht, findet die Tour
-                statt!
-              </p>
-              <p className="mt-2">
-                Für die aktuelle Wettervorhersage{" "}
-                <a
-                  href="http://wetterstationen.meteomedia.de/station=109440&wahl=vorhersage"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold underline hover:text-amber-700"
-                >
-                  hier klicken
-                </a>
-                .
-              </p>
+          <CardWeatherForecast classNames="my-8" />
+
+          {/* Tourenplan */}
+          {seasons.map((season, i) => (
+            <div key={season} className={i < seasons.length - 1 ? "mb-10" : ""}>
+              <SectionLabel>Saison {season}</SectionLabel>
+
+              <div className="overflow-hidden rounded-xl border border-black/6 ">
+                <ScheduleTable
+                  items={bySeason.get(season)!}
+                  columns={columns}
+                  getId={(t) => t._id}
+                  rowClassName={(t) =>
+                    t.date === today ? "bg-amber-50" : undefined
+                  }
+                />
+              </div>
             </div>
-            <div className="overflow-hidden rounded-xl border border-black/[0.06]">
-              <table className="w-full text-body-xs">
-                <thead>
-                  <tr className="bg-red-dark text-white">
-                    <th className="text-left px-4 py-3 font-semibold w-[7.5rem]">
-                      Datum
-                    </th>
-                    <th className="text-left px-4 py-3 font-semibold w-[7rem]">
-                      Abfahrt
-                    </th>
-                    <th className="text-left px-4 py-3 font-semibold">Route</th>
-                    <th className="text-right px-4 py-3 font-semibold w-[6rem]">
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bySeason
-                    .get(season)!
-                    .map(({ _id, date, route, departureTime, status }, i) => (
-                      <tr
-                        key={_id}
-                        className={`border-t border-black/[0.06] ${i % 2 === 0 ? "bg-white" : "bg-surface"}`}
-                      >
-                        <td className="px-4 py-3 font-semibold text-foreground whitespace-nowrap">
-                          {formatDate(date)}
-                        </td>
-                        <td className="px-4 py-3 text-muted whitespace-nowrap">
-                          {departureTime ?? "—"}
-                        </td>
-                        <td className="px-4 py-3 text-muted">
-                          {status === "cancelled" ? (
-                            <span className="italic text-muted/60">
-                              Abgesagt
-                            </span>
-                          ) : (
-                            route
-                          )}
-                        </td>
-                        <td className="px-4 py-3 text-right">
-                          {status === "tour" && (
-                            <span className="inline-block bg-green-100 text-green-800 text-label font-semibold px-2 py-0.5 rounded-full">
-                              Tour
-                            </span>
-                          )}
-                          {status === "cancelled" && (
-                            <span className="inline-block bg-red-100 text-red-700 text-label font-semibold px-2 py-0.5 rounded-full">
-                              Abgesagt
-                            </span>
-                          )}
-                          {status === "pause" && (
-                            <span className="inline-block bg-gray-100 text-gray-600 text-label font-semibold px-2 py-0.5 rounded-full">
-                              Pause
-                            </span>
-                          )}
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-          </Section>
-        ))}
+          ))}
+        </Section>
 
         {/* Übungszeiten & Kontakt */}
         <Section>
@@ -215,7 +142,7 @@ export default async function MtbLadiesPage() {
                 {uebungszeiten.map(({ season, slots }) => (
                   <div
                     key={season}
-                    className="bg-surface rounded-xl p-6 border border-black/[0.06]"
+                    className="bg-surface rounded-xl p-6 border border-black/6"
                   >
                     <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                       {season}
@@ -268,7 +195,7 @@ export default async function MtbLadiesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Regeln */}
             <div className="flex flex-col gap-4">
-              {regeln.map(({ title, text }) => (
+              {RADSPORT_RULES.map(({ title, text }) => (
                 <div
                   key={title}
                   className="bg-white rounded-xl p-6 border border-black/6"
@@ -288,7 +215,7 @@ export default async function MtbLadiesPage() {
                   Tabus
                 </div>
                 <ul className="flex flex-col gap-3">
-                  {tabus.map((tabu) => (
+                  {RADSPORT_TABUS.map((tabu) => (
                     <li
                       key={tabu}
                       className="flex items-start gap-3 text-body-xs text-muted"
@@ -313,46 +240,20 @@ export default async function MtbLadiesPage() {
           <Section>
             <SectionLabel>Berichte & Rückblicke</SectionLabel>
             <Headline level="h2">Events & Highlights</Headline>
-            <div className="flex flex-col gap-12">
-              {events.map((event: RadsportDamenEvent) => (
-                <div key={event._id}>
-                  <h3 className="font-serif font-bold text-foreground text-[1.2rem] mb-3">
-                    {event.headline}
-                  </h3>
-                  {event.beschreibung && (
-                    <div className="text-body-xs text-muted leading-[1.75] mb-6 flex flex-col gap-3">
-                      {event.beschreibung
-                        .replace(/\r\n/g, "\n")
-                        .split(/\n{2,}/)
-                        .filter((p) => p.trim())
-                        .map((p, i) => (
-                          <p key={i} className="whitespace-pre-line">
-                            {p.trim()}
-                          </p>
-                        ))}
-                    </div>
-                  )}
-                  {event.images.length > 0 && (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                      {event.images.map((img) => (
-                        <div
-                          key={img._key}
-                          className="relative aspect-square rounded-xl overflow-hidden bg-surface"
-                        >
-                          <Image
-                            src={img.url}
-                            alt={img.alt ?? event.headline}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+
+            <EventList
+              items={events.map((event) => ({
+                id: event._id,
+                href: `/abteilungen/radsport-damen/${event.slug}`,
+                dateLabel: new Date(event.date).toLocaleDateString("de-DE", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                }),
+                headline: event.headline,
+                description: event.description ?? undefined,
+              }))}
+            />
           </Section>
         )}
 

@@ -7,10 +7,13 @@ import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import {
   getRadsportHerrenTours,
-  type RadsportHerrenEvent,
+  type RadsportHerrenTour,
 } from "@/lib/cms/getRadsportHerrenTours";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
 import CardWeatherForecast from "@/components/molecules/CardWeatherForecast";
+import ScheduleTable, { Column } from "@/components/molecules/ScheduleTable";
+import { RADSPORT_RULES, RADSPORT_TABUS } from "@/data/radsport_rules";
+import formatDate from "@/lib/formatIsoDate";
 
 export const metadata: Metadata = {
   title: "Radsport Herren (VFB) – Sportfreunde Urlau e.V.",
@@ -59,52 +62,39 @@ const gruppen = [
   },
 ];
 
-const regeln = [
-  {
-    title: "Helmpflicht",
-    text: "Ohne Helm ist die Teilnahme an der Tour untersagt.",
-  },
-  {
-    title: "Weisung",
-    text: "Der jeweilige Guide gibt Weisungen und darf nicht überholt werden. Die Freigabe der Strecke (z. B. bergauf oder Trailabfahrten) erteilt der Guide.",
-  },
-  {
-    title: "Verkehrssicherheit",
-    text: "Jeder Teilnehmer ist für ein verkehrssicheres Rad verantwortlich. Hierzu gehören u. a. (voll aufgeladene) Lichter, voll funktionsfähige Bremsen und ordentliche Bereifung. Zudem darf nur max. zu zweit nebeneinander gefahren werden.",
-  },
-  {
-    title: "Organisation",
-    text: "Jeder sollte sich einschätzen können und bei der passenden Gruppe mitradeln. Grundsätzlich müssen sich die Teilnehmer beim Verlassen der Gruppe (während der Tour / bei Nichteinkehr in der Gaststätte) beim Guide abmelden.",
-  },
-  {
-    title: "Verantwortung",
-    text: "Jeder Teilnehmer ist für seinen Hintermann verantwortlich! Sollte die Geschwindigkeit zu hoch sein oder es eine Panne geben, dann an den Vordermann melden (bis die Info den Guide erreicht hat).",
-  },
-];
-
-const tabus = [
-  "Rechts überholen ist untersagt!",
-  "Im Versatz rechts hinten zu fahren ist untersagt!",
-  "Downhill nebeneinander zu fahren ist untersagt! Es muss bei jeder Abfahrt hintereinander mit ausreichend Abstand gefahren werden.",
-  "Überholen des Guides ohne Streckenfreigabe ist untersagt. Der Guide gibt das Tempo vor.",
-];
-
-function formatDate(iso: string): string {
-  const [y, m, d] = iso.split("-");
-  return `${d}.${m}.${y}`;
-}
-
 function groupBySeason(
-  tours: RadsportHerrenEvent[],
-): Map<number, RadsportHerrenEvent[]> {
+  tours: RadsportHerrenTour[],
+): Map<number, RadsportHerrenTour[]> {
   return tours.reduce((map, tour) => {
     const year = Number(tour.date.slice(0, 4));
     const list = map.get(year) ?? [];
     list.push(tour);
     map.set(year, list);
     return map;
-  }, new Map<number, RadsportHerrenEvent[]>());
+  }, new Map<number, RadsportHerrenTour[]>());
 }
+
+const columns: Column<RadsportHerrenTour>[] = [
+  {
+    header: "Datum",
+    render: (t) => formatDate(t.date),
+  },
+  {
+    header: "Abfahrt",
+    render: (t) => t.departureTime ?? "—",
+  },
+  {
+    header: "Route",
+    render: (t) =>
+      t.status === "cancelled" ? (
+        <span className="italic font-bold text-red">Abgesagt</span>
+      ) : t.status === "pause" ? (
+        <span className="italic font-bold text-red">Pause / kein Training</span>
+      ) : (
+        t.route
+      ),
+  },
+];
 
 export default async function RadsportHerrenPage() {
   const tours = await getRadsportHerrenTours();
@@ -144,6 +134,7 @@ export default async function RadsportHerrenPage() {
           </div>
         </Section>
 
+        {/* Tourenplan */}
         <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Touren</SectionLabel>
           <Headline level="h2">
@@ -155,78 +146,17 @@ export default async function RadsportHerrenPage() {
           {/* Tourenplan */}
           {seasons.map((season, i) => (
             <div key={season} className={i < seasons.length - 1 ? "mb-10" : ""}>
-              {seasons.length > 1 && (
-                <SectionLabel>Saison {season}</SectionLabel>
-              )}
+              <SectionLabel>Saison {season}</SectionLabel>
 
               <div className="overflow-hidden rounded-xl border border-black/6 ">
-                <table className="w-full text-body-xs">
-                  <thead>
-                    <tr className="bg-red text-white">
-                      <th className="text-left px-4 py-3 font-semibold w-30">
-                        Datum
-                      </th>
-                      <th className="text-left px-4 py-3 font-semibold w-28">
-                        Abfahrt
-                      </th>
-                      <th className="text-left px-4 py-3 font-semibold">
-                        Route
-                      </th>
-                      <th className="text-right px-4 py-3 font-semibold w-24">
-                        Status
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {bySeason
-                      .get(season)!
-                      .map(({ _id, date, route, departureTime, status }, i) => (
-                        <tr
-                          key={_id}
-                          className={`border-t border-black/6 ${
-                            date === today
-                              ? "bg-amber-50"
-                              : i % 2 === 0
-                                ? "bg-white"
-                                : "bg-background"
-                          }`}
-                        >
-                          <td className="px-4 py-3 font-semibold whitespace-nowrap">
-                            {formatDate(date)}
-                          </td>
-                          <td className="px-4 py-3 text-muted whitespace-nowrap">
-                            {departureTime ?? "—"}
-                          </td>
-                          <td className="px-4 py-3 text-muted">
-                            {status === "cancelled" ? (
-                              <span className="italic text-muted/60">
-                                Abgesagt
-                              </span>
-                            ) : (
-                              route
-                            )}
-                          </td>
-                          <td className="px-4 py-3 text-right">
-                            {status === "tour" && (
-                              <span className="inline-block bg-green-100 text-green-800 text-label font-semibold px-2 py-0.5 rounded-full">
-                                Tour
-                              </span>
-                            )}
-                            {status === "cancelled" && (
-                              <span className="inline-block bg-red-100 text-red-700 text-label font-semibold px-2 py-0.5 rounded-full">
-                                Abgesagt
-                              </span>
-                            )}
-                            {status === "pause" && (
-                              <span className="inline-block bg-gray-100 text-gray-600 text-label font-semibold px-2 py-0.5 rounded-full">
-                                Pause
-                              </span>
-                            )}
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
+                <ScheduleTable
+                  items={bySeason.get(season)!}
+                  columns={columns}
+                  getId={(t) => t._id}
+                  rowClassName={(t) =>
+                    t.date === today ? "bg-amber-50" : undefined
+                  }
+                />
               </div>
             </div>
           ))}
@@ -270,14 +200,14 @@ export default async function RadsportHerrenPage() {
             <div>
               <SectionLabel>Kontakt</SectionLabel>
               <Headline level="h2">Abteilungsleiter</Headline>
-              <div className="bg-surface rounded-xl p-6 border border-black/[0.06]">
+              <div className="bg-surface rounded-xl p-6 border border-black/6">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
                     🚴
                   </div>
                   <div>
                     <div className="font-semibold text-[1rem]">Roland Krug</div>
-                    <div className="text-label text-muted uppercase tracking-[0.1em] font-semibold mt-0.5">
+                    <div className="text-label text-muted uppercase tracking-widest font-semibold mt-0.5">
                       Abteilungsleiter Radsport
                     </div>
                   </div>
@@ -288,14 +218,14 @@ export default async function RadsportHerrenPage() {
         </Section>
 
         {/* Gruppen */}
-        <Section className="bg-surface border-t border-b border-black/[0.06]">
+        <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Gruppen</SectionLabel>
           <Headline level="h2">MTB-Gruppen</Headline>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {gruppen.map(({ name, description }) => (
               <div
                 key={name}
-                className="bg-white rounded-xl p-6 border border-black/[0.06]"
+                className="bg-white rounded-xl p-6 border border-black/6"
               >
                 <div className="font-serif font-bold text-red-dark text-[1rem] mb-2">
                   {name}
@@ -313,10 +243,10 @@ export default async function RadsportHerrenPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Regeln */}
             <div className="flex flex-col gap-4">
-              {regeln.map(({ title, text }) => (
+              {RADSPORT_RULES.map(({ title, text }) => (
                 <div
                   key={title}
-                  className="bg-white rounded-xl p-6 border border-black/[0.06]"
+                  className="bg-white rounded-xl p-6 border border-black/6"
                 >
                   <div className="font-semibold text-foreground text-body-sm mb-1">
                     {title}
@@ -333,7 +263,7 @@ export default async function RadsportHerrenPage() {
                   Tabus
                 </div>
                 <ul className="flex flex-col gap-3">
-                  {tabus.map((tabu) => (
+                  {RADSPORT_TABUS.map((tabu) => (
                     <li
                       key={tabu}
                       className="flex items-start gap-3 text-body-xs text-muted"

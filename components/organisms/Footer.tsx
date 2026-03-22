@@ -25,7 +25,7 @@ export default function Footer() {
                 Sportfreunde Urlau e.V.
               </p>
               <p className="text-caption text-red-blush mt-0.5">
-                Seit 1971 · Urlau
+                Seit 1972 · Urlau
               </p>
             </div>
           </div>

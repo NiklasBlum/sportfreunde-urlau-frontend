@@ -2,7 +2,7 @@ import { client } from "./client";
 
 const document_id = "radsport_herren_tours";
 
-export type RadsportHerrenEvent = {
+export type RadsportHerrenTour = {
   _id: string;
   date: string;
   route: string | null;
@@ -10,7 +10,7 @@ export type RadsportHerrenEvent = {
   status: "tour" | "cancelled" | "pause";
 };
 
-export async function getRadsportHerrenTours(): Promise<RadsportHerrenEvent[]> {
+export async function getRadsportHerrenTours(): Promise<RadsportHerrenTour[]> {
   return client.fetch(
     `*[_type == "${document_id}"] | order(date desc) {
       _id,

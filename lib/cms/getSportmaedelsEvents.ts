@@ -1,12 +1,12 @@
 import { client } from "./client";
 
-export type RadsportDamenEventImage = {
+export type SportmaedelsEventImage = {
   _key: string;
   asset: { _ref: string; _type: "reference" };
   alt: string | null;
 };
 
-export type RadsportDamenEventPreview = {
+export type SportmaedelsEventPreview = {
   _id: string;
   headline: string;
   description: string | null;
@@ -14,15 +14,15 @@ export type RadsportDamenEventPreview = {
   slug: string;
 };
 
-export type RadsportDamenEvent = RadsportDamenEventPreview & {
-  images: RadsportDamenEventImage[];
+export type SportmaedelsEvent = SportmaedelsEventPreview & {
+  images: SportmaedelsEventImage[];
 };
 
-export async function getRadsportDamenEvents(): Promise<
-  RadsportDamenEventPreview[]
+export async function getSportmaedelsEvents(): Promise<
+  SportmaedelsEventPreview[]
 > {
   return client.fetch(
-    `*[_type == "radsport_damen_events"] | order(date desc) {
+    `*[_type == "sportmaedels_events"] | order(date desc) {
       _id,
       headline,
       description,
@@ -32,11 +32,11 @@ export async function getRadsportDamenEvents(): Promise<
   );
 }
 
-export async function getRadsportDamenEventBySlug(
+export async function getSportmaedelsEventBySlug(
   slug: string,
-): Promise<RadsportDamenEvent | null> {
+): Promise<SportmaedelsEvent | null> {
   return client.fetch(
-    `*[_type == "radsport_damen_events" && slug.current == $slug][0] {
+    `*[_type == "sportmaedels_events" && slug.current == $slug][0] {
       _id,
       headline,
       description,

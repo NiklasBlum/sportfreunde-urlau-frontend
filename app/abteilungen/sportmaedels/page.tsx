@@ -6,6 +6,8 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import EventList from "@/components/molecules/EventList";
+import { getSportmaedelsEvents } from "@/lib/cms/getSportmaedelsEvents";
 
 export const metadata: Metadata = {
   title: "Sportmädels – Sportfreunde Urlau e.V.",
@@ -46,41 +48,24 @@ const activities = [
   },
 ];
 
-const recentEvents = [
-  {
-    date: "Feb 2026",
-    title: 'Hexentanz "Abracadabra"',
-    desc: "Neun geheimnisvolle Hexen betraten die vollbesetzte Bühne und verwandelten den Faschingsabend in ein Spektakel aus Zauber und Freude.",
-  },
-  {
-    date: "Feb 2026",
-    title: "Weiberfasnet Leutkirch",
-    desc: 'Die Urlauer-Clowns zogen unter dem Motto "Helden der Kindheit" durch Leutkirch – trotz schlechter Wetterbedingungen mit bester Stimmung.',
-  },
-  {
-    date: "Dez 2025",
-    title: "Hafenweihnacht Lindau",
-    desc: "Mit Zug und guter Laune nach Lindau: Weihnachtsmarkt, Lichterglanz am See und ein festlicher Abend beim Italiener.",
-  },
-  {
-    date: "Okt 2025",
-    title: "Jahresausflug Füssen",
-    desc: "Altstadtführung, Kalvarienberg und der Lechfall – 14 Sportmädels erlebten einen abwechslungsreichen Ausflugstag im Allgäu.",
-  },
-  {
-    date: "Feb 2025",
-    title: 'Faschingstanz "Im Himmel ist der Teufel los"',
-    desc: "Engel, Teufel und ein mitreißender Tanz – choreografiert von Brigitte D., mit Kostümen von Moni.",
-  },
-];
-
 const team = [
   { role: "Abteilungsleiterin", name: "Tanja" },
   { role: "Sportleiterin & Choreografie", name: "Brigitte D." },
   { role: "Kostüme", name: "Moni" },
 ];
 
-export default function SportmaedelsPage() {
+function formatMonthYear(isoDate: string): string {
+  const date = new Date(isoDate);
+
+  return new Intl.DateTimeFormat("de-DE", {
+    month: "short",
+    year: "numeric",
+  }).format(date);
+}
+
+export default async function SportmaedelsPage() {
+  const recentEvents = await getSportmaedelsEvents();
+
   return (
     <>
       <Navbar />
@@ -141,26 +126,18 @@ export default function SportmaedelsPage() {
         <Section className="bg-surface border-t border-b border-black/6">
           <SectionLabel>Rückblick</SectionLabel>
           <Headline level="h2">Aktuelle Berichte</Headline>
-          <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8">
-            {recentEvents.map(({ date, title, desc }) => (
-              <div
-                key={title}
-                className="bg-white px-6 py-5 flex gap-6 items-start"
-              >
-                <div className="shrink-0 w-18 text-center pt-0.5">
-                  <span className="inline-block text-label font-semibold tracking-widest uppercase text-red-accent bg-red-accent/8 rounded-md px-2 py-1 leading-none">
-                    {date}
-                  </span>
-                </div>
-                <div>
-                  <div className="font-semibold text-body-sm text-foreground mb-1">
-                    {title}
-                  </div>
-                  <p className="text-muted text-body-xs">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+
+          <EventList
+            items={recentEvents.map(
+              ({ _id, date, headline, description, slug }) => ({
+                id: _id,
+                href: `/abteilungen/sportmaedels/${slug}`,
+                dateLabel: formatMonthYear(date),
+                headline,
+                description,
+              }),
+            )}
+          />
         </Section>
 
         {/* Übungszeiten & Team */}

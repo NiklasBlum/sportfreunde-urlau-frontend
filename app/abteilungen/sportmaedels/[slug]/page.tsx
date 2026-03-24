@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
@@ -67,21 +66,24 @@ export default async function SportmaedelsEventPage({
         {/* Body */}
         <Section>
           {event.description && (
-            <p className="text-muted text-body mb-11">{event.description}</p>
+            <p className="text-muted text-body mb-5 whitespace-pre-wrap">
+              {event.description}
+            </p>
           )}
           {event.images.length > 0 && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
               {event.images.map((image) => (
                 <div
                   key={image._key}
-                  className="relative aspect-video rounded-xl overflow-hidden border border-black/8 bg-black/5"
+                  className="break-inside-avoid mb-4 rounded-xl overflow-hidden border border-black/8 bg-black/5"
                 >
                   <Image
-                    src={urlFor(image.asset).width(800).auto("format").url()}
+                    src={urlFor(image.asset).width(1200).auto("format").url()}
                     alt={image.alt ?? event.headline}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+                    width={image.dimensions?.width ?? 1200}
+                    height={image.dimensions?.height ?? 800}
+                    className="w-full h-auto"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                   />
                 </div>
               ))}

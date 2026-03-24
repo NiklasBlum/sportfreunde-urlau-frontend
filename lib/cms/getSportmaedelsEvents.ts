@@ -4,6 +4,7 @@ export type SportmaedelsEventImage = {
   _key: string;
   asset: { _ref: string; _type: "reference" };
   alt: string | null;
+  dimensions: { width: number; height: number } | null;
 };
 
 export type SportmaedelsEventPreview = {
@@ -45,6 +46,7 @@ export async function getSportmaedelsEventBySlug(
       "images": images[] {
         _key,
         asset,
+        "dimensions": asset->metadata.dimensions,
         alt
       }
     }`,

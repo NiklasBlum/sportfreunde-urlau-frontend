@@ -36,7 +36,9 @@ export default function EventList({ items }: EventListProps) {
               </p>
             )}
           </div>
-          <div className="text-muted self-center">{"-->"}</div>
+          <span aria-hidden="true" className="text-muted self-center text-2xl">
+            {">"}
+          </span>
         </Link>
       ))}
     </div>

@@ -148,7 +148,7 @@ export default function KontaktPage() {
                               ? "noopener noreferrer"
                               : undefined
                           }
-                          className="inline-block mt-2 text-label font-semibold text-red-accent hover:underline underline-offset-2 transition-colors duration-150"
+                          className="inline-block mt-2 text-body-xs font-semibold text-red hover:underline underline-offset-2 transition-colors duration-150"
                         >
                           {hrefLabel} →
                         </a>

@@ -6,6 +6,7 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import { EmailLink } from "@/components/atoms/EmailLink";
 
 export const metadata: Metadata = {
   title: "Tischtennis – Sportfreunde Urlau e.V.",
@@ -116,12 +117,7 @@ export default function TischtennisPage() {
                     <div className="font-semibold text-foreground text-[1rem]">
                       Jakob Butscher
                     </div>
-                    <a
-                      href="mailto:jakob.butscher@web.de"
-                      className="inline-flex items-center gap-2 text-red-accent font-semibold text-body-xs hover:underline"
-                    >
-                      jakob.butscher@web.de
-                    </a>
+                    <EmailLink email="jakob.butscher@web.de" />
                   </div>
                 </div>
               </div>

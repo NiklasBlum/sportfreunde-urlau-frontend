@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
@@ -10,7 +9,7 @@ import {
   getRadsportDamenEventBySlug,
   getRadsportDamenEvents,
 } from "@/lib/cms/getRadsportDamenEvents";
-import { urlFor } from "@/lib/cms/client";
+import ImageGallery from "@/components/molecules/ImageGallery";
 
 export async function generateStaticParams() {
   const events = await getRadsportDamenEvents();
@@ -72,25 +71,7 @@ export default async function RadsportDamenEventPage({
             </p>
           )}
 
-          {event.images.length > 0 && (
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
-              {event.images.map((image) => (
-                <div
-                  key={image._key}
-                  className="break-inside-avoid mb-4 rounded-xl overflow-hidden border border-black/8 bg-black/5"
-                >
-                  <Image
-                    src={urlFor(image.asset).width(1200).auto("format").url()}
-                    alt={image.alt ?? event.headline}
-                    width={image.dimensions?.width ?? 1200}
-                    height={image.dimensions?.height ?? 800}
-                    className="w-full h-auto"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          <ImageGallery images={event.images} fallbackAlt={event.headline} />
         </Section>
       </main>
       <Footer />

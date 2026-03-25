@@ -5,6 +5,7 @@ import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
+import { EmailLink } from "@/components/atoms/EmailLink";
 
 export const metadata: Metadata = {
   title: "Impressum – Sportfreunde Urlau e.V.",
@@ -89,12 +90,7 @@ export default function ImpressumPage() {
                   {label}
                 </span>
                 {href ? (
-                  <Link
-                    href={href}
-                    className="font-semibold text-body-sm text-foreground underline underline-offset-2"
-                  >
-                    {value}
-                  </Link>
+                  <EmailLink email={value} />
                 ) : (
                   <span className="font-semibold text-body-sm text-foreground whitespace-pre-line">
                     {value}

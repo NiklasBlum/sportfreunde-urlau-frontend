@@ -2,6 +2,7 @@
 import Section from "../atoms/Section";
 import { Headline } from "../atoms/Headline";
 import Link from "next/link";
+import { EmailLink } from "../atoms/EmailLink";
 
 export const vorstand = [
   {
@@ -59,12 +60,8 @@ export default function VorstandSection() {
 
       <div className="mt-10 text-center">
         <p className="text-body-xs mb-2">Nachricht an den Vorstand</p>
-        <Link
-          href="mailto:vorstand.sportfreunde.urlau@gmail.com"
-          className="font-semibold underline underline-offset-4"
-        >
-          vorstand.sportfreunde.urlau@gmail.com
-        </Link>
+
+        <EmailLink email="vorstand.sportfreunde.urlau@gmail.com" />
       </div>
     </Section>
   );

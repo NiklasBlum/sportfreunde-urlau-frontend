@@ -53,15 +53,14 @@ export default async function RadsportDamenEventPage({
   return (
     <>
       <Navbar />
+
       <main id="main-content">
         <Section className="bg-blue">
           <SectionLabel light>Rückblick</SectionLabel>
           <Headline level="h1" light>
             {event.headline}
           </Headline>
-          <p className="text-white text-body-xs mt-2">
-            {formatDate(event.date)}
-          </p>
+          <p className="text-white text-body mt-2">{formatDate(event.date)}</p>
         </Section>
 
         <Section>
@@ -71,7 +70,11 @@ export default async function RadsportDamenEventPage({
             </p>
           )}
 
-          <ImageGallery images={event.images} fallbackAlt={event.headline} />
+          <ImageGallery
+            columns={4}
+            images={event.images}
+            fallbackAlt={event.headline}
+          />
         </Section>
       </main>
       <Footer />

@@ -34,8 +34,6 @@ const programm = [
 
 const leiterinnen = [
   { name: "Patricia Mathy", role: "Abteilungsleiterin" },
-  { name: "Barbara Netzer", role: "Abteilungsleiterin" },
-  { name: "Sandrina Fasser", role: "Abteilungsleiterin" },
 ];
 
 export default function ElternKindTurnenPage() {

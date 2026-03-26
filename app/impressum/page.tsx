@@ -23,11 +23,9 @@ const vereinsinfo = [
     value: "vorstand.sportfreunde.urlau@gmail.com",
     href: "mailto:vorstand.sportfreunde.urlau@gmail.com",
   },
-  { label: "Registergericht", value: "123" },
-  { label: "Vereinsregisternummer", value: "VR 234" },
   {
     label: "Verantwortlicher (§ 18 Abs. 2 MStV)",
-    value: "Michael Tronsberg\nMartinsweg 6\n88299 Leutkirch im Allgäu",
+    value: "Michael Tronsberg\nRiedstr. 7\n88316 Isny",
   },
 ];
 

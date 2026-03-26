@@ -30,7 +30,7 @@ export default function NewsSection() {
       <SectionLabel>Neuigkeiten</SectionLabel>
       <Headline level="h2">Aktuelles aus dem Verein</Headline>
 
-      <p className="text-muted text-body max-w-[540px] mb-11">
+      <p className="text-muted text-body max-w-135 mb-11">
         Neuigkeiten, Berichte und Ankündigungen der Sportfreunde Urlau.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[1.4rem]">

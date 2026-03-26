@@ -4,7 +4,7 @@ import SfuLogo from "@/components/atoms/SfuLogo";
 
 const stats = [
   { value: "290", unit: "+", label: "Mitglieder" },
-  { value: "10", label: "Abteilungen" },
+  { value: "10", unit: "+", label: "Abteilungen" },
   { value: "50", unit: "+", label: "Jahre Geschichte" },
   { value: "1", label: "Heimatort Urlau" },
 ];

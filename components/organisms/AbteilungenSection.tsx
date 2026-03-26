@@ -1,6 +1,6 @@
 ﻿import SectionLabel from "@/components/atoms/SectionLabel";
 import AbteilungCard from "@/components/molecules/AbteilungCard";
-import { abteilungen } from "@/lib/abteilungen";
+import { abteilungen } from "@/data/abteilungen";
 import Section from "../atoms/Section";
 import { Headline } from "../atoms/Headline";
 

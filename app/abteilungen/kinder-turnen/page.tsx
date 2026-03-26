@@ -8,7 +8,7 @@ import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
 import { Card } from "@/components/atoms/Card";
 
 export const metadata: Metadata = {
-  title: "Kinderturnen – Sportfreunde Urlau e.V.",
+  title: "Kinder-Turnen – Sportfreunde Urlau e.V.",
   description:
     "Mittwochs von 16:15–17:15 Uhr – abwechslungsreiches Turnen für Kinder im letzten und vorletzten Kindergartenjahr (5–6 Jahre).",
 };
@@ -24,8 +24,6 @@ const programm = [
 
 const leiterinnen = [
   { name: "Natalie Doser", role: "Abteilungsleiterin" },
-  { name: "Maike Banhardt", role: "Abteilungsleiterin" },
-  { name: "Martina Göser", role: "Abteilungsleiterin" },
 ];
 
 export default function KindertурnenPage() {
@@ -37,7 +35,7 @@ export default function KindertурnenPage() {
         <Section className="bg-blue">
           <SectionLabel light>Abteilung</SectionLabel>
           <Headline level="h1" light>
-            Kinderturnen
+            Kinder-Turnen
           </Headline>
           <p className="text-red-tint text-body">
             Abwechslungsreiches Turnen für Kinder im letzten und vorletzten
@@ -69,7 +67,7 @@ export default function KindertурnenPage() {
           <Card type="hint">
             Als besonderes Highlight treten wir beim{" "}
             <strong>Faschingsnachmittag</strong> der Sportfreunde auf. Ein
-            Einstieg ins Kinderturnen ist immer nach den{" "}
+            Einstieg ins Kinder-Turnen ist immer nach den{" "}
             <strong>Sommerferien im September</strong> möglich.
           </Card>
         </Section>
@@ -90,7 +88,6 @@ export default function KindertурnenPage() {
                     <span className="font-semibold text-foreground whitespace-nowrap">
                       Mittwochs, 16:15 – 17:15 Uhr
                     </span>
-                    <span className="text-muted">Kinderturnen</span>
                   </li>
                   <li className="flex items-baseline gap-3 text-body-xs">
                     <span className="font-semibold text-foreground whitespace-nowrap">

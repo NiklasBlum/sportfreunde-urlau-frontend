@@ -27,8 +27,8 @@ const abschnitte: DsAbschnitt[] = [
     title: "1. Verantwortlicher",
     paragraphs: [
       "Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:",
-      "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nAnschrift: Urlau, 88299 Leutkirch, Deutschland\nE-Mail: vorstand.sportfreunde.urlau@gmail.com",
-    ],
+      "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nRiedstr. 7, 88316 Isny, Deutschland\nE-Mail: vorstand.sportfreunde.urlau@gmail.com",
+    ], 
   },
   {
     id: "grundsaetze",

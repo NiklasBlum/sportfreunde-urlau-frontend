@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import NavLogo from "@/components/molecules/NavLogo";
 import NavItem from "@/components/molecules/NavItem";
-import { abteilungen } from "@/lib/abteilungen";
+import { abteilungen } from "@/data/abteilungen";
 
 const navItems = [
   { label: "Startseite", href: "/", active: false },

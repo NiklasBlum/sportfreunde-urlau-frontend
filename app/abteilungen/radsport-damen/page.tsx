@@ -176,7 +176,7 @@ export default async function RadsportDamenPage() {
                   </div>
                   <div>
                     <div className="font-semibold text-foreground text-[1rem]">
-                      -
+                     Brigitte Krug
                     </div>
                     <div className="text-label text-muted uppercase tracking-widest font-semibold mt-0.5">
                       Radsport Damen

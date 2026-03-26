@@ -1,41 +1,10 @@
 ﻿import VorstandCard from "@/components/molecules/VorstandCard";
 import Section from "../atoms/Section";
 import { Headline } from "../atoms/Headline";
-import Link from "next/link";
 import { EmailLink } from "../atoms/EmailLink";
+import { VORSTAND } from "@/data/vorstand";
 
-export const vorstand = [
-  {
-    role: "1. Vorsitzender",
-    name: "Michael Tronsberg",
-    avatar: "/people/michael_tronsberg.png",
-  },
-  {
-    role: "1. stellv. Vorsitzende",
-    name: "Simone Breins",
-    avatar: "/people/simone_breins.png",
-  },
-  {
-    role: "2. stellv. Vorsitzender",
-    name: "Hans Bauer",
-    avatar: "/people/hans_bauer.png",
-  },
-  {
-    role: "Kassierin",
-    name: "Martina Dorn",
-    avatar: "/people/martina_dorn.png",
-  },
-  {
-    role: "stellv. Kassier",
-    name: "Thomas Krug",
-    avatar: "/people/thomas_krug.png",
-  },
-  {
-    role: "Schriftführerin",
-    name: "Erika Peter",
-    avatar: "/people/erika_peter.png",
-  },
-];
+
 
 export default function VorstandSection() {
   return (
@@ -48,7 +17,7 @@ export default function VorstandSection() {
       </p>
 
       <div className="grid grid-cols-[repeat(auto-fill,minmax(230px,1fr))] gap-6">
-        {vorstand.map((v) => (
+        {VORSTAND.map((v) => (
           <VorstandCard
             key={v.role}
             role={v.role}

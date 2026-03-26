@@ -2,10 +2,12 @@
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
+import { abteilungen } from "@/data/abteilungen";
+import { VORSTAND } from "@/data/vorstand";
 
 interface AusschussMitglied {
   role: string;
-  name: string;
+  leader: string;
 }
 
 interface AusschussGruppe {
@@ -16,36 +18,24 @@ interface AusschussGruppe {
 const gruppen: AusschussGruppe[] = [
   {
     label: "Vorstand",
-    members: [
-      { role: "1. Vorsitzender", name: "Michael Tronsberg" },
-      { role: "1. stellv. Vorsitzende", name: "Simone Breins" },
-      { role: "2. stellv. Vorsitzender", name: "Hans Bauer" },
-      { role: "1. Kassierin", name: "Martina Dorn" },
-      { role: "stellv. Kassier", name: "Thomas Krug" },
-      { role: "Gerätewart", name: "Ingolf Milius" },
-      { role: "Schriftführerin", name: "Erika Peter" },
-    ],
+    
+    members: VORSTAND.map(({ role, name }) => ({
+      role,
+      leader: name,
+    })),
   },
   {
     label: "Abteilungsleitung",
-    members: [
-      { role: "Tischtennis", name: "Ulrich Jechle" },
-      { role: "Sportmädels", name: "Tanja Ruf" },
-      { role: "Langlauf", name: "Manfred Heinz" },
-      { role: "Mutter-Kindturnen", name: "Anastasia Wirtz" },
-      { role: "Kinderturnen", name: "Marion Reischmann" },
-      { role: "Eltern-Kindturnen", name: "Natalie Doser" },
-      { role: "Radsport Herren (VFB)", name: "Roland Krug" },
-      { role: "M&M-Mädels", name: "Tanja Heinz" },
-      { role: "Piano", name: "Hermine Oettinger" },
-      { role: "Winter-Volleyballer", name: "Michael Tronsberg" },
-    ],
+    members: abteilungen.map(({ name, leader }) => ({
+      role: name,
+      leader,
+    })),
   },
   {
     label: "Jugend",
     members: [
-      { role: "Jugendleiterin", name: "Franziska Kolros" },
-      { role: "Jugendsprecherin", name: "Luana Peter" },
+      { role: "Jugendleiterin", leader: "Franziska Kolros" },
+      { role: "Jugendsprecherin", leader: "Luana Peter" },
     ],
   },
 ];
@@ -80,7 +70,7 @@ export default function AusschussSection() {
             <SectionLabel>{label}</SectionLabel>
 
             <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/6 h-fit">
-              {members.map(({ role, name }) => (
+              {members.map(({ role, leader: name }) => (
                 <div
                   key={role}
                   className="flex flex-col bg-white px-4 py-3 gap-0.5"

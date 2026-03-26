@@ -8,7 +8,7 @@ import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
 import { EmailLink } from "@/components/atoms/EmailLink";
 
 export const metadata: Metadata = {
-  title: "Mutter-Kind-Gruppe MuKi – Sportfreunde Urlau e.V.",
+  title: "Mutter-Kind-Turnen – Sportfreunde Urlau e.V.",
   description:
     "Dienstags von 09–11 Uhr treffen sich Eltern mit Kleinkindern (0–3 Jahre) zum Singen, Tanzen und Spielen in der Dorfhalle Urlau.",
 };
@@ -62,16 +62,15 @@ export default function MutterKindGruppePage() {
             <div>
               <SectionLabel light>Abteilung</SectionLabel>
               <Headline level="h1" light>
-                Mutter-Kind-Gruppe
+                Mutter-Kind-Turnen
               </Headline>
               <p className="text-red-tint text-body">
                 Singen, Tanzen, Basteln und freies Spiel für Eltern mit
                 Kleinkindern im Alter von 0–3 Jahren.
               </p>
               <p className="text-red-tint text-body">
-                Alle Eltern von und um der Umgebung Urlau sind herzlich
-                eingeladen mit ihren Kleinkindern im Alter von 0-3 Jahren daran
-                teilzunehmen!
+                Alle Eltern aus Urlau und Umgebung sind herzlich eingeladen mit
+                ihren Kleinkindern im Alter von 0-3 Jahren daran teilzunehmen!
               </p>
             </div>
           </div>

@@ -22,7 +22,7 @@ export const VORSTAND = [
   {
     role: "stellv. Kassier",
     name: "Sandrina Fasser",
-    avatar: "/logo.webp",
+    avatar: "/people/sandrina_fasser.png",
   },
   {
     role: "Schriftführerin",
@@ -30,11 +30,13 @@ export const VORSTAND = [
     avatar: "/people/erika_peter.png",
   },
   {
-    role: "Internet-/Öffentlichkeitsbeauftragter",  
-    name: "Thomas Krug", 
+    role: "Internet-/Öffentlichkeitsbeauftragter",
+    name: "Thomas Krug",
     avatar: "/people/thomas_krug.png",
   },
-  { role: "Gerätewart", 
-    name: "Ingolf Milius", 
-    avatar: "/people/ingolf_milius.webp" },
+  {
+    role: "Gerätewart",
+    name: "Ingolf Milius",
+    avatar: "/people/ingolf_milius.webp",
+  },
 ];

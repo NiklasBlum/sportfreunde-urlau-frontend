@@ -18,7 +18,7 @@ interface AusschussGruppe {
 const gruppen: AusschussGruppe[] = [
   {
     label: "Vorstand",
-    
+
     members: VORSTAND.map(({ role, name }) => ({
       role,
       leader: name,
@@ -34,8 +34,8 @@ const gruppen: AusschussGruppe[] = [
   {
     label: "Jugend",
     members: [
-      { role: "Jugendleiterin", leader: "Franziska Kolros" },
-      { role: "Jugendsprecherin", leader: "Luana Peter" },
+      { role: "Jugendleiter", leader: "Fabian Menig" },
+      { role: "Jugendsprecher", leader: "Benedikt Ziegerer" },
     ],
   },
 ];

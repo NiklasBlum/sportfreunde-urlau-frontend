@@ -1,4 +1,7 @@
-﻿import Tag from "@/components/atoms/Tag";
+﻿"use client";
+
+import { useRouter } from "next/navigation";
+import Tag from "@/components/atoms/Tag";
 
 interface TerminCardProps {
   day: string;
@@ -6,6 +9,7 @@ interface TerminCardProps {
   title: string;
   info: string;
   tag: string;
+  href?: string;
 }
 
 export default function TerminCard({
@@ -14,9 +18,25 @@ export default function TerminCard({
   title,
   info,
   tag,
+  href,
 }: TerminCardProps) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (href) {
+      router.push(href);
+    }
+  };
+
   return (
-    <div className="bg-white px-6 py-[1.2rem] grid grid-cols-[65px_1fr_auto] gap-[1.4rem] items-center transition-colors duration-150 hover:bg-surface-hover">
+    <div
+      onClick={handleClick}
+      className={`bg-white px-6 py-[1.2rem] grid grid-cols-[65px_1fr_auto] gap-[1.4rem] items-center transition-colors duration-150 ${
+        href
+          ? "cursor-pointer hover:bg-surface-hover"
+          : "hover:bg-surface-hover"
+      }`}
+    >
       <div className="text-center">
         <div className="font-serif text-[2rem] font-bold text-red-accent leading-none">
           {day}

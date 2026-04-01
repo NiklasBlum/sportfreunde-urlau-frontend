@@ -34,13 +34,13 @@ const kategorien: Kategorie[] = [
       {
         label: "Vereinssatzung",
         description: "Satzung der Sportfreunde Urlau e.V. (Stand 2022)",
-        href: "https://sportfreunde-urlau.de/tl_files/spfreundeurlau/Vorstand/Ab%20Maerz%202023/Satzung%20SFU%202022.pdf",
+        href: "/files/Satzung.pdf",
         filename: "Satzung_SFU_2022.pdf",
       },
       {
         label: "Jugendordnung",
         description: "Jugendsatzung der Sportfreunde Urlau e.V.",
-        href: "https://sportfreunde-urlau.de/tl_files/spfreundeurlau/Vorstand/Ab%20Maerz%202023/Jugendordnung.pdf",
+        href: "/files/Jugendordnung.pdf",
         filename: "Jugendordnung.pdf",
       },
     ],
@@ -51,10 +51,17 @@ const kategorien: Kategorie[] = [
     subtitle: "Geschichte des Vereins",
     docs: [
       {
+        label: "Chronik 25 Jahre SFU",
+        description:
+          "Die Vereinschronik der Sportfreunde Urlau zum 25-jährigen Jubiläum",
+        href: "/files/Chronik_25_Jahre.pdf",
+        filename: "Chronik_25_Jahre_SFU.pdf",
+      },
+      {
         label: "Chronik 50 Jahre SFU",
         description:
           "Die Vereinschronik der Sportfreunde Urlau zum 50-jährigen Jubiläum",
-        href: "https://sportfreunde-urlau.de/tl_files/spfreundeurlau/Vorstand/Ab%20Maerz%202023/Chronik%2050%20Jahre%20SFU%20DIN%20A4-komprimiert.pdf",
+        href: "/files/Chronik_50_Jahre.pdf",
         filename: "Chronik_50_Jahre_SFU.pdf",
       },
     ],
@@ -67,13 +74,13 @@ const kategorien: Kategorie[] = [
       {
         label: "Beitrittserklärung",
         description: "Beitrittserklärung Sportfreunde Urlau e.V. (Stand 2022)",
-        href: "https://sportfreunde-urlau.de/tl_files/spfreundeurlau/Vorstand/Beitrittserklaerung%202022.pdf",
+        href: "files//Beitrittserklaerung.pdf",
         filename: "Beitrittserklaerung_2022.pdf",
       },
       {
         label: "Hallenbelegungsplan",
         description: "Hallenbelegungsplan der Sportfreunde Urlau (2023)",
-        href: "https://sportfreunde-urlau.de/tl_files/spfreundeurlau/Vorstand/Ab%20Maerz%202023/Hallenbelegungsplan_2023.pdf",
+        href: "files/Hallenbelegungsplan.pdf",
         filename: "Hallenbelegungsplan_2023.pdf",
       },
     ],
@@ -110,7 +117,6 @@ export default function DownloadsPage() {
                     <a
                       key={filename}
                       href={href}
-                      download={filename}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group flex flex-col justify-between gap-4 bg-white rounded-xl border border-black/6 px-5 py-5 hover:bg-surface-hover-warm hover:-translate-y-0.5 transition-all duration-150"

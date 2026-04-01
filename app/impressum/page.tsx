@@ -1,5 +1,4 @@
 ﻿import type { Metadata } from "next";
-import Link from "next/link";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
@@ -14,15 +13,27 @@ export const metadata: Metadata = {
 
 const vereinsinfo = [
   { label: "Verein", value: "Sportfreunde Urlau e.V." },
+  { label: "Rechtsform", value: "Eingetragener Verein (e.V.)" },
   {
     label: "Anschrift",
     value: "Martinsweg 6\n88299 Leutkirch im Allgäu\nDeutschland",
+  },
+  {
+    label: "Vertreten durch den Vorstand (§ 26 BGB)",
+    value:
+      "Michael Tronsberg (1. Vorsitzender)\nSimone Breins (1. stellv. Vorsitzende)\nHans Bauer (2. stellv. Vorsitzender)",
+  },
+  {
+    label: "Registereintrag",
+    value:
+      "Eingetragen im Vereinsregister\nAmtsgericht [Musterstadt]\nVR [12345]",
   },
   {
     label: "E-Mail",
     value: "vorstand.sportfreunde.urlau@gmail.com",
     href: "mailto:vorstand.sportfreunde.urlau@gmail.com",
   },
+  { label: "Telefon", value: "+491726392531" },
   {
     label: "Verantwortlicher (§ 18 Abs. 2 MStV)",
     value: "Michael Tronsberg\nRiedstr. 7\n88316 Isny",
@@ -70,14 +81,14 @@ export default function ImpressumPage() {
             Impressum
           </Headline>
           <p className="text-red-tint text-body">
-            Angaben gemäß § 5 TMG – Sportfreunde Urlau e.V.
+            Angaben gemäß § 5 DDG – Sportfreunde Urlau e.V.
           </p>
         </Section>
 
         {/* Pflichtangaben § 5 TMG */}
         <Section>
           <SectionLabel>Anbieter</SectionLabel>
-          <Headline level="h2">Angaben gemäß § 5 TMG</Headline>
+          <Headline level="h2">Angaben gemäß § 5 DDG</Headline>
           <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8 max-w-2xl">
             {vereinsinfo.map(({ label, value, href }) => (
               <div
@@ -136,6 +147,18 @@ export default function ImpressumPage() {
                 <p className="text-body-xs text-muted">{text}</p>
               </div>
             ))}
+          </div>
+        </Section>
+
+        <Section className="bg-surface border-t border-black/6">
+          <SectionLabel>Streitbeilegung</SectionLabel>
+          <Headline level="h2">Verbraucherstreitbeilegung (§ 36 VSBG)</Headline>
+          <div className="bg-white rounded-xl p-6 border border-black/6 max-w-3xl">
+            <p className="text-body-xs text-muted">
+              Wir sind nicht bereit und nicht verpflichtet, an
+              Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+              teilzunehmen.
+            </p>
           </div>
         </Section>
       </main>

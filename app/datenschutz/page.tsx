@@ -28,7 +28,7 @@ const abschnitte: DsAbschnitt[] = [
     paragraphs: [
       "Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) und anderer nationaler Datenschutzgesetze sowie sonstiger datenschutzrechtlicher Bestimmungen ist:",
       "Sportfreunde Urlau e.V.\nVertreten durch: Michael Tronsberg (1. Vorsitzender)\nRiedstr. 7, 88316 Isny, Deutschland\nE-Mail: vorstand.sportfreunde.urlau@gmail.com",
-    ], 
+    ],
   },
   {
     id: "grundsaetze",
@@ -53,7 +53,7 @@ const abschnitte: DsAbschnitt[] = [
       "Referrer-URL (zuvor besuchte Seite)",
       "HTTP-Statuscode",
     ],
-    note: "Diese Daten werden nicht mit anderen Datenquellen zusammengeführt und nach kurzer Zeit automatisch gelöscht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der sicheren, stabilen und fehlerfreien Bereitstellung unserer Website).\n\nVercel verarbeitet Daten ggf. in den USA. Zwischen uns und Vercel besteht ein Auftragsverarbeitungsvertrag (Data Processing Agreement) gemäß Art. 28 DSGVO. Die Übermittlung personenbezogener Daten in die USA erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO.",
+    note: "Diese Daten werden nicht mit anderen Datenquellen zusammengeführt. Die Speicherdauer technischer Log-Daten richtet sich nach den Systemvorgaben des Hosting-Anbieters und unseren vertraglichen Vereinbarungen; nicht mehr erforderliche Daten werden gelöscht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der sicheren, stabilen und fehlerfreien Bereitstellung unserer Website).\n\nVercel verarbeitet Daten ggf. in den USA. Zwischen uns und Vercel besteht ein Auftragsverarbeitungsvertrag (Data Processing Agreement) gemäß Art. 28 DSGVO. Die Übermittlung personenbezogener Daten in Drittländer erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO.",
     externalLinks: [
       {
         label: "Datenschutzerklärung von Vercel",
@@ -74,8 +74,8 @@ const abschnitte: DsAbschnitt[] = [
     title: "5. Webanalyse – Vercel Analytics",
     paragraphs: [
       "Diese Website verwendet Vercel Analytics, einen datenschutzfreundlichen Analysedienst der Vercel Inc., 340 Pine Street, Suite 603, San Francisco, CA 94104, USA.",
-      "Vercel Analytics erfasst anonymisierte Nutzungsstatistiken wie aufgerufene Seiten, Referrer-URL, Herkunftsland, Browsertyp und Gerätetyp. Es werden keine Cookies gesetzt, keine IP-Adressen gespeichert und keine siteübergreifende Nutzerverfolgung durchgeführt. Eine Zuordnung zu einzelnen Personen ist nicht möglich.",
-      "Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an der Verbesserung und Optimierung unserer Website (Art. 6 Abs. 1 lit. f DSGVO). Daten können in die USA übermittelt werden; die Übermittlung erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO.",
+      "Vercel Analytics verarbeitet nach Anbieterangaben Nutzungsstatistiken in aggregierter bzw. pseudonymisierter Form, z. B. aufgerufene Seiten, Referrer-URL, Herkunftsland, Browsertyp und Gerätetyp. Nach Anbieterangaben werden hierfür keine Tracking-Cookies zur seitenübergreifenden Profilbildung eingesetzt.",
+      "Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an der bedarfsgerechten, wirtschaftlichen und technischen Optimierung unserer Website (Art. 6 Abs. 1 lit. f DSGVO). Eine unmittelbare Identifizierung einzelner Personen ist uns anhand der ausgewerteten Daten regelmäßig nicht möglich. Daten können in die USA übermittelt werden; die Übermittlung erfolgt auf Grundlage der Standardvertragsklauseln der EU-Kommission gemäß Art. 46 Abs. 2 lit. c DSGVO.",
     ],
     externalLinks: [
       {
@@ -97,7 +97,7 @@ const abschnitte: DsAbschnitt[] = [
     title: "7. Kontaktaufnahme per E-Mail",
     paragraphs: [
       "Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben – einschließlich der von Ihnen angegebenen Kontaktdaten – zwecks Bearbeitung Ihrer Anfrage und für den Fall von Rückfragen bei uns gespeichert. Diese Daten werden nicht ohne Ihre Einwilligung weitergegeben.",
-      "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung eingehender Anfragen) bzw. Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage auf den Abschluss eines Vertrags gerichtet ist. Die Daten werden gelöscht, sobald die Aufbewahrung nicht mehr erforderlich ist, spätestens nach vollständiger Abwicklung des Anliegens.",
+      "Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage auf den Abschluss oder die Durchführung eines Vertrags gerichtet ist; in allen übrigen Fällen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung eingehender Anfragen). Die Daten werden gelöscht, sobald die Aufbewahrung nicht mehr erforderlich ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen; in der Regel spätestens 12 Monate nach Abschluss des Anliegens.",
     ],
   },
   {

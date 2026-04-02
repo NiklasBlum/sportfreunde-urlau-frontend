@@ -25,8 +25,7 @@ const vereinsinfo = [
   },
   {
     label: "Registereintrag",
-    value:
-      "Eingetragen im Vereinsregister\nAmtsgericht [Musterstadt]\nVR [12345]",
+    value: "Eingetragen im Vereinsregister\nAmtsgericht Ulm\nVR 610102",
   },
   {
     label: "E-Mail",

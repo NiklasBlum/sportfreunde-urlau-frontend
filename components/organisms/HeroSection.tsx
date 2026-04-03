@@ -40,7 +40,8 @@ export default function HeroSection() {
           </p>
           <div className="flex gap-3 sm:gap-4 animate-[fadeUp_0.8s_0.3s_ease_both]">
             <Button href="#abteilungen" variant="red">
-              Unsere Abteilungen <span className="ml-1">→</span>
+              Unsere Abteilungen
+              <span className="ml-1 text-lg sm:text-md">→</span>
             </Button>
 
             <Button

@@ -36,6 +36,12 @@ const nextConfig: NextConfig = {
         destination: "/abteilungen/mittwochs-maedels",
         permanent: true,
       },
+      // Catch-all: any remaining /index.php* URL → home
+      {
+        source: "/index.php/:path*",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
   images: {

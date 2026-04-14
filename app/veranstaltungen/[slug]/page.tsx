@@ -11,6 +11,7 @@ interface Props {
 export default async function EventPage({ params }: Props) {
   const { slug } = await params;
   const event = await getEventBySlug(slug);
+
   if (!event) return notFound();
 
   const formattedDate = event.date
@@ -23,41 +24,39 @@ export default async function EventPage({ params }: Props) {
 
   return (
     <>
-      <main id="main-content" className="flex flex-1 flex-col">
-        {/* Hero */}
-        <Section className="bg-blue">
-          <SectionLabel light>{event.tag ?? "Veranstaltung"}</SectionLabel>
-          <Headline level="h1" light>
-            {event.title}
-          </Headline>
-          {event.info ? (
-            <p className="text-red-tint text-body">{event.info}</p>
+      {/* Hero */}
+      <Section className="bg-blue">
+        <SectionLabel light>{event.tag ?? "Veranstaltung"}</SectionLabel>
+
+        <Headline level="h1" light>
+          {event.title}
+        </Headline>
+
+        {event.info ? (
+          <p className="text-red-tint text-body">{event.info}</p>
+        ) : null}
+
+        {formattedDate ? (
+          <p className="text-body font-semibold text-red-accent mt-2">
+            {formattedDate}
+          </p>
+        ) : null}
+      </Section>
+
+      {/* Content */}
+      <Section>
+        <article className="prose prose-sm">
+          {event.description ? (
+            <div className="text-body whitespace-pre-line">
+              {event.description}
+            </div>
           ) : (
-            <p className="text-red-tint text-body">{formattedDate}</p>
+            <p className="text-body">
+              Keine ausführliche Beschreibung vorhanden.
+            </p>
           )}
-        </Section>
-
-        {/* Content */}
-        <Section className="bg-surface border-t border-black/6">
-          <article className="prose prose-sm">
-            {formattedDate ? (
-              <p className="text-body font-semibold text-red-accent mb-8">
-                {formattedDate}
-              </p>
-            ) : null}
-
-            {event.description ? (
-              <div className="text-body whitespace-pre-line">
-                {event.description}
-              </div>
-            ) : (
-              <p className="text-body">
-                Keine ausführliche Beschreibung vorhanden.
-              </p>
-            )}
-          </article>
-        </Section>
-      </main>
+        </article>
+      </Section>
     </>
   );
 }

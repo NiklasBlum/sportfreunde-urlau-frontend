@@ -1,6 +1,4 @@
 ﻿import type { Metadata } from "next";
-import Navbar from "@/components/organisms/Navbar";
-import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
@@ -70,98 +68,93 @@ const haftungsabschnitte = [
 
 export default function ImpressumPage() {
   return (
-    <>
-      <Navbar />
+    <main id="main-content">
+      <Section className="bg-blue">
+        <SectionLabel light>Rechtliches</SectionLabel>
+        <Headline level="h1" light>
+          Impressum
+        </Headline>
+        <p className="text-red-tint text-body">
+          Angaben gemäß § 5 DDG – Sportfreunde Urlau e.V.
+        </p>
+      </Section>
 
-      <main id="main-content">
-        <Section className="bg-blue">
-          <SectionLabel light>Rechtliches</SectionLabel>
-          <Headline level="h1" light>
-            Impressum
-          </Headline>
-          <p className="text-red-tint text-body">
-            Angaben gemäß § 5 DDG – Sportfreunde Urlau e.V.
+      {/* Pflichtangaben § 5 TMG */}
+      <Section>
+        <SectionLabel>Anbieter</SectionLabel>
+        <Headline level="h2">Angaben gemäß § 5 DDG</Headline>
+        <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8 max-w-2xl">
+          {vereinsinfo.map(({ label, value, href }) => (
+            <div
+              key={label}
+              className="flex flex-col sm:flex-row sm:items-start bg-white px-6 py-4 gap-1 sm:gap-6"
+            >
+              <span className="text-label text-muted uppercase tracking-[0.08em] font-semibold w-56 shrink-0">
+                {label}
+              </span>
+              {href ? (
+                <EmailLink email={value} />
+              ) : (
+                <span className="font-semibold text-body-sm text-foreground whitespace-pre-line">
+                  {value}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Vorstand */}
+      <Section className="bg-surface border-t border-b border-black/6">
+        <SectionLabel>Verantwortlich</SectionLabel>
+        <Headline level="h2">Vorstandschaft SF Urlau</Headline>
+        <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8 max-w-2xl">
+          {vorstand.map(({ role, name }) => (
+            <div
+              key={role}
+              className="flex flex-col sm:flex-row sm:items-center bg-white px-6 py-4 gap-1 sm:gap-6"
+            >
+              <span className="text-label text-muted uppercase tracking-[0.08em] font-semibold w-48 shrink-0">
+                {role}
+              </span>
+              <span className="font-semibold text-body-sm text-foreground">
+                {name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Haftungsausschluss */}
+      <Section>
+        <SectionLabel>Haftungsausschluss</SectionLabel>
+        <Headline level="h2">Rechtliche Hinweise</Headline>
+        <div className="flex flex-col gap-4 max-w-3xl">
+          {haftungsabschnitte.map(({ title, text }) => (
+            <div
+              key={title}
+              className="bg-white rounded-xl p-6 border border-black/6"
+            >
+              <div className="font-semibold text-foreground text-body-sm mb-1">
+                {title}
+              </div>
+              <p className="text-body-xs text-muted">{text}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section className="bg-surface border-t border-black/6">
+        <SectionLabel>Streitbeilegung</SectionLabel>
+        <Headline level="h2">Verbraucherstreitbeilegung (§ 36 VSBG)</Headline>
+        <div className="bg-white rounded-xl p-6 border border-black/6 max-w-3xl">
+          <p className="text-body-xs text-muted">
+            Wir sind nicht bereit und nicht verpflichtet, an
+            Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+            teilzunehmen.
           </p>
-        </Section>
-
-        {/* Pflichtangaben § 5 TMG */}
-        <Section>
-          <SectionLabel>Anbieter</SectionLabel>
-          <Headline level="h2">Angaben gemäß § 5 DDG</Headline>
-          <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8 max-w-2xl">
-            {vereinsinfo.map(({ label, value, href }) => (
-              <div
-                key={label}
-                className="flex flex-col sm:flex-row sm:items-start bg-white px-6 py-4 gap-1 sm:gap-6"
-              >
-                <span className="text-label text-muted uppercase tracking-[0.08em] font-semibold w-56 shrink-0">
-                  {label}
-                </span>
-                {href ? (
-                  <EmailLink email={value} />
-                ) : (
-                  <span className="font-semibold text-body-sm text-foreground whitespace-pre-line">
-                    {value}
-                  </span>
-                )}
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        {/* Vorstand */}
-        <Section className="bg-surface border-t border-b border-black/6">
-          <SectionLabel>Verantwortlich</SectionLabel>
-          <Headline level="h2">Vorstandschaft SF Urlau</Headline>
-          <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8 max-w-2xl">
-            {vorstand.map(({ role, name }) => (
-              <div
-                key={role}
-                className="flex flex-col sm:flex-row sm:items-center bg-white px-6 py-4 gap-1 sm:gap-6"
-              >
-                <span className="text-label text-muted uppercase tracking-[0.08em] font-semibold w-48 shrink-0">
-                  {role}
-                </span>
-                <span className="font-semibold text-body-sm text-foreground">
-                  {name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        {/* Haftungsausschluss */}
-        <Section>
-          <SectionLabel>Haftungsausschluss</SectionLabel>
-          <Headline level="h2">Rechtliche Hinweise</Headline>
-          <div className="flex flex-col gap-4 max-w-3xl">
-            {haftungsabschnitte.map(({ title, text }) => (
-              <div
-                key={title}
-                className="bg-white rounded-xl p-6 border border-black/6"
-              >
-                <div className="font-semibold text-foreground text-body-sm mb-1">
-                  {title}
-                </div>
-                <p className="text-body-xs text-muted">{text}</p>
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <Section className="bg-surface border-t border-black/6">
-          <SectionLabel>Streitbeilegung</SectionLabel>
-          <Headline level="h2">Verbraucherstreitbeilegung (§ 36 VSBG)</Headline>
-          <div className="bg-white rounded-xl p-6 border border-black/6 max-w-3xl">
-            <p className="text-body-xs text-muted">
-              Wir sind nicht bereit und nicht verpflichtet, an
-              Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
-              teilzunehmen.
-            </p>
-          </div>
-        </Section>
-      </main>
-      <Footer />
-    </>
+        </div>
+      </Section>
+    </main>
   );
 }

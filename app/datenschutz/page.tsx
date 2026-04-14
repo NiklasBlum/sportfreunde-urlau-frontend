@@ -1,7 +1,5 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
-import Navbar from "@/components/organisms/Navbar";
-import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
@@ -142,88 +140,82 @@ const abschnitte: DsAbschnitt[] = [
 
 export default function DatenschutzPage() {
   return (
-    <>
-      <Navbar />
+    <main id="main-content">
+      <Section className="bg-blue">
+        <SectionLabel light>Rechtliches</SectionLabel>
+        <Headline level="h1" light>
+          Datenschutz
+        </Headline>
+        <p className="text-red-tint text-body">
+          Datenschutzerklärung gemäß DSGVO und BDSG – Sportfreunde Urlau e.V.
+        </p>
+      </Section>
 
-      <main id="main-content">
-        <Section className="bg-blue">
-          <SectionLabel light>Rechtliches</SectionLabel>
-          <Headline level="h1" light>
-            Datenschutz
-          </Headline>
-          <p className="text-red-tint text-body">
-            Datenschutzerklärung gemäß DSGVO und BDSG – Sportfreunde Urlau e.V.
-          </p>
-        </Section>
+      {/* Abschnitte */}
+      <Section className="bg-surface border-t border-b border-black/6">
+        <SectionLabel>Datenschutzerklärung</SectionLabel>
+        <Headline level="h2">Informationen zur Datenverarbeitung</Headline>
 
-        {/* Abschnitte */}
-        <Section className="bg-surface border-t border-b border-black/6">
-          <SectionLabel>Datenschutzerklärung</SectionLabel>
-          <Headline level="h2">Informationen zur Datenverarbeitung</Headline>
+        <div className="flex flex-col gap-4 max-w-3xl">
+          {abschnitte.map(
+            ({ id, title, paragraphs, bullets, note, externalLinks }) => (
+              <article
+                key={id}
+                id={id}
+                className="bg-white rounded-xl p-6 border border-black/6"
+              >
+                <h3 className="font-semibold text-foreground text-body-sm mb-3">
+                  {title}
+                </h3>
 
-          <div className="flex flex-col gap-4 max-w-3xl">
-            {abschnitte.map(
-              ({ id, title, paragraphs, bullets, note, externalLinks }) => (
-                <article
-                  key={id}
-                  id={id}
-                  className="bg-white rounded-xl p-6 border border-black/6"
-                >
-                  <h3 className="font-semibold text-foreground text-body-sm mb-3">
-                    {title}
-                  </h3>
+                {paragraphs?.map((p, i) => (
+                  <p
+                    key={i}
+                    className="text-body-xs text-muted mb-3 whitespace-pre-line"
+                  >
+                    {p}
+                  </p>
+                ))}
 
-                  {paragraphs?.map((p, i) => (
-                    <p
-                      key={i}
-                      className="text-body-xs text-muted mb-3 whitespace-pre-line"
-                    >
-                      {p}
-                    </p>
-                  ))}
+                {bullets && bullets.length > 0 && (
+                  <ul className="list-disc list-outside pl-5 mb-3 flex flex-col gap-1">
+                    {bullets.map((item) => (
+                      <li
+                        key={item}
+                        className="text-body-xs text-muted leading-[1.7]"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
-                  {bullets && bullets.length > 0 && (
-                    <ul className="list-disc list-outside pl-5 mb-3 flex flex-col gap-1">
-                      {bullets.map((item) => (
-                        <li
-                          key={item}
-                          className="text-body-xs text-muted leading-[1.7]"
-                        >
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                {note && (
+                  <p className="text-body-xs text-muted whitespace-pre-line">
+                    {note}
+                  </p>
+                )}
 
-                  {note && (
-                    <p className="text-body-xs text-muted whitespace-pre-line">
-                      {note}
-                    </p>
-                  )}
-
-                  {externalLinks && externalLinks.length > 0 && (
-                    <div className="mt-3 flex flex-col gap-1">
-                      {externalLinks.map(({ label, href }) => (
-                        <Link
-                          key={href}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-caption text-red-accent underline underline-offset-2 hover:text-red-dark transition-colors duration-150"
-                        >
-                          {label} ↗
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </article>
-              ),
-            )}
-          </div>
-        </Section>
-      </main>
-
-      <Footer />
-    </>
+                {externalLinks && externalLinks.length > 0 && (
+                  <div className="mt-3 flex flex-col gap-1">
+                    {externalLinks.map(({ label, href }) => (
+                      <Link
+                        key={href}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-caption text-red-accent underline underline-offset-2 hover:text-red-dark transition-colors duration-150"
+                      >
+                        {label} ↗
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </article>
+            ),
+          )}
+        </div>
+      </Section>
+    </main>
   );
 }

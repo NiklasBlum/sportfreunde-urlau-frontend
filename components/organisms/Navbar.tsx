@@ -44,7 +44,7 @@ export default function Navbar() {
     setOpenSection((prev) => (prev === label ? null : label));
 
   return (
-    <>
+    <header>
       <nav
         aria-label="Hauptnavigation"
         className="sticky top-0 left-0 right-0 z-100 bg-red backdrop-blur-md px-6 lg:px-8 flex items-center justify-between h-16 lg:h-18 shadow-[0_2px_20px_rgba(0,0,0,0.35)]"
@@ -58,7 +58,6 @@ export default function Navbar() {
               key={item.label}
               label={item.dropdown ? `${item.label} ▾` : item.label}
               href={item.href}
-              // active={item.active}
               dropdown={item.dropdown}
             />
           ))}
@@ -146,6 +145,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 }

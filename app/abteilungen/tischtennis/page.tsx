@@ -1,6 +1,4 @@
 ﻿import type { Metadata } from "next";
-import Link from "next/link";
-import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
@@ -55,108 +53,103 @@ const mannschaften = [
 export default function TischtennisPage() {
   return (
     <>
-      <Navbar />
+      {/* Hero */}
+      <Section className="bg-blue">
+        <SectionLabel light>Abteilung</SectionLabel>
+        <Headline level="h1" light>
+          Tischtennis
+        </Headline>
 
-      <main id="main-content">
-        {/* Hero */}
-        <Section className="bg-blue">
-          <SectionLabel light>Abteilung</SectionLabel>
-          <Headline level="h1" light>
-            Tischtennis
-          </Headline>
+        <p className="text-red-tint text-body">
+          Wettkampfsport und Freizeitspiel für jedes Alter – von den Bambinis
+          bis zu den Aktiven.
+        </p>
+      </Section>
 
-          <p className="text-red-tint text-body">
-            Wettkampfsport und Freizeitspiel für jedes Alter – von den Bambinis
-            bis zu den Aktiven.
-          </p>
-        </Section>
-
-        {/* Training & Contact */}
-        <Section>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <SectionLabel>Übungszeiten</SectionLabel>
-              <Headline level="h2">Trainingszeiten</Headline>
-              <div className="flex flex-col gap-6">
-                {trainingDays.map(({ day, slots }) => (
-                  <div
-                    key={day}
-                    className="bg-surface rounded-xl p-6 border border-black/6"
-                  >
-                    <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
-                      {day}
-                    </div>
-                    <ul className="flex flex-col gap-2.5">
-                      {slots.map(({ time, label }) => (
-                        <li
-                          key={time}
-                          className="flex items-baseline gap-3 text-body-xs"
-                        >
-                          <span className="font-semibold text-foreground tabular-nums whitespace-nowrap">
-                            {time}
-                          </span>
-                          <span className="text-muted">{label}</span>
-                        </li>
-                      ))}
-                    </ul>
+      {/* Training & Contact */}
+      <Section>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <SectionLabel>Übungszeiten</SectionLabel>
+            <Headline level="h2">Trainingszeiten</Headline>
+            <div className="flex flex-col gap-6">
+              {trainingDays.map(({ day, slots }) => (
+                <div
+                  key={day}
+                  className="bg-surface rounded-xl p-6 border border-black/6"
+                >
+                  <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
+                    {day}
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Contact */}
-            <div>
-              <SectionLabel>Kontakt</SectionLabel>
-              <Headline level="h2">Abteilungsleiter</Headline>
-              <div className="bg-surface rounded-xl p-6 border border-black/6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
-                    🏓
-                  </div>
-                  <div>
-                    <div className="font-semibold text-foreground text-[1rem]">
-                      Jakob Butscher
-                    </div>
-                    <EmailLink email="jakob.butscher@web.de" />
-                  </div>
+                  <ul className="flex flex-col gap-2.5">
+                    {slots.map(({ time, label }) => (
+                      <li
+                        key={time}
+                        className="flex items-baseline gap-3 text-body-xs"
+                      >
+                        <span className="font-semibold text-foreground tabular-nums whitespace-nowrap">
+                          {time}
+                        </span>
+                        <span className="text-muted">{label}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
-        </Section>
 
-        {/* Teams */}
-        <Section className="bg-surface border-t border-b border-black/6">
-          <SectionLabel>Saison 2025/2026</SectionLabel>
-          <Headline level="h2"> Mannschaften</Headline>
-
-          <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8">
-            {mannschaften.map(({ name, liga, href }) => (
-              <a
-                key={name}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between bg-white px-6 py-4 no-underline group hover:bg-surface-hover transition-colors duration-150"
-              >
+          {/* Contact */}
+          <div>
+            <SectionLabel>Kontakt</SectionLabel>
+            <Headline level="h2">Abteilungsleiter</Headline>
+            <div className="bg-surface rounded-xl p-6 border border-black/6">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem]">
+                  🏓
+                </div>
                 <div>
-                  <span className="font-semibold text-body-sm text-foreground group-hover:text-red-accent transition-colors">
-                    {name}
-                  </span>
-                  <span className="ml-3 text-body-xs text-muted">{liga}</span>
+                  <div className="font-semibold text-foreground text-[1rem]">
+                    Jakob Butscher
+                  </div>
+                  <EmailLink email="jakob.butscher@web.de" />
                 </div>
-                <span className="text-red-accent text-label font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">
-                  Spielplan →
-                </span>
-              </a>
-            ))}
+              </div>
+            </div>
           </div>
-        </Section>
+        </div>
+      </Section>
 
-        {/* Back */}
-        <AbteilungLinkSection />
-      </main>
-      <Footer />
+      {/* Teams */}
+      <Section className="bg-surface border-t border-b border-black/6">
+        <SectionLabel>Saison 2025/2026</SectionLabel>
+        <Headline level="h2"> Mannschaften</Headline>
+
+        <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8">
+          {mannschaften.map(({ name, liga, href }) => (
+            <a
+              key={name}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between bg-white px-6 py-4 no-underline group hover:bg-surface-hover transition-colors duration-150"
+            >
+              <div>
+                <span className="font-semibold text-body-sm text-foreground group-hover:text-red-accent transition-colors">
+                  {name}
+                </span>
+                <span className="ml-3 text-body-xs text-muted">{liga}</span>
+              </div>
+              <span className="text-red-accent text-label font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">
+                Spielplan →
+              </span>
+            </a>
+          ))}
+        </div>
+      </Section>
+
+      {/* Back */}
+      <AbteilungLinkSection />
     </>
   );
 }

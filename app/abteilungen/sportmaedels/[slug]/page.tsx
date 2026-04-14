@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/organisms/Navbar";
-import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
@@ -49,33 +47,29 @@ export default async function SportmaedelsEventPage({
 
   return (
     <>
-      <Navbar />
-      <main id="main-content">
-        {/* Header */}
-        <Section className="bg-blue ">
-          <SectionLabel light>Rückblick</SectionLabel>
-          <Headline level="h1" light>
-            {event.headline}
-          </Headline>
-          <p className="text-white text-body mt-2">{formatDate(event.date)}</p>
-        </Section>
+      {/* Header */}
+      <Section className="bg-blue ">
+        <SectionLabel light>Rückblick</SectionLabel>
+        <Headline level="h1" light>
+          {event.headline}
+        </Headline>
+        <p className="text-white text-body mt-2">{formatDate(event.date)}</p>
+      </Section>
 
-        {/* Body */}
-        <Section childClassName="flex flex-col gap-5">
-          {event.description && (
-            <p className="text-muted text-body mb-5 whitespace-pre-wrap">
-              {event.description}
-            </p>
-          )}
+      {/* Body */}
+      <Section childClassName="flex flex-col gap-5">
+        {event.description && (
+          <p className="text-muted text-body mb-5 whitespace-pre-wrap">
+            {event.description}
+          </p>
+        )}
 
-          <ImageGallery
-            images={event.images}
-            fallbackAlt={event.headline}
-            columns={4}
-          />
-        </Section>
-      </main>
-      <Footer />
+        <ImageGallery
+          images={event.images}
+          fallbackAlt={event.headline}
+          columns={4}
+        />
+      </Section>
     </>
   );
 }

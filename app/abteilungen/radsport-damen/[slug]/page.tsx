@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Navbar from "@/components/organisms/Navbar";
-import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
@@ -52,32 +50,27 @@ export default async function RadsportDamenEventPage({
 
   return (
     <>
-      <Navbar />
+      <Section className="bg-blue">
+        <SectionLabel light>Rückblick</SectionLabel>
+        <Headline level="h1" light>
+          {event.headline}
+        </Headline>
+        <p className="text-white text-body mt-2">{formatDate(event.date)}</p>
+      </Section>
 
-      <main id="main-content">
-        <Section className="bg-blue">
-          <SectionLabel light>Rückblick</SectionLabel>
-          <Headline level="h1" light>
-            {event.headline}
-          </Headline>
-          <p className="text-white text-body mt-2">{formatDate(event.date)}</p>
-        </Section>
+      <Section>
+        {event.description && (
+          <p className="text-muted text-body mb-5 whitespace-pre-wrap">
+            {event.description}
+          </p>
+        )}
 
-        <Section>
-          {event.description && (
-            <p className="text-muted text-body mb-5 whitespace-pre-wrap">
-              {event.description}
-            </p>
-          )}
-
-          <ImageGallery
-            columns={4}
-            images={event.images}
-            fallbackAlt={event.headline}
-          />
-        </Section>
-      </main>
-      <Footer />
+        <ImageGallery
+          columns={4}
+          images={event.images}
+          fallbackAlt={event.headline}
+        />
+      </Section>
     </>
   );
 }

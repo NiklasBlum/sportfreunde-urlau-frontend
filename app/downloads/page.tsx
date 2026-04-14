@@ -1,6 +1,4 @@
 ﻿import type { Metadata } from "next";
-import Navbar from "@/components/organisms/Navbar";
-import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
@@ -89,92 +87,86 @@ const kategorien: Kategorie[] = [
 
 export default function DownloadsPage() {
   return (
-    <>
-      <Navbar />
+    <main id="main-content">
+      {/* Hero */}
+      <Section className="bg-blue">
+        <SectionLabel light>Verein</SectionLabel>
+        <Headline level="h1" light>
+          Downloads
+        </Headline>
+        <p className="text-red-tint text-body">
+          Satzung, Chronik und weitere Dokumente der Sportfreunde Urlau e.V. zum
+          Herunterladen.
+        </p>
+      </Section>
 
-      <main id="main-content">
-        {/* Hero */}
-        <Section className="bg-blue">
-          <SectionLabel light>Verein</SectionLabel>
-          <Headline level="h1" light>
-            Downloads
-          </Headline>
-          <p className="text-red-tint text-body">
-            Satzung, Chronik und weitere Dokumente der Sportfreunde Urlau e.V.
-            zum Herunterladen.
-          </p>
-        </Section>
-
-        {/* Document sections */}
-        <Section className="bg-surface border-t border-black/6">
-          <div className="flex flex-col gap-12">
-            {kategorien.map(({ id, title, subtitle, docs }) => (
-              <div key={id} id={id}>
-                <SectionLabel>{subtitle}</SectionLabel>
-                <Headline level="h2">{title}</Headline>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {docs.map(({ label, description, href, filename }) => (
-                    <a
-                      key={filename}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex flex-col justify-between gap-4 bg-white rounded-xl border border-black/6 px-5 py-5 hover:bg-surface-hover-warm hover:-translate-y-0.5 transition-all duration-150"
-                    >
-                      <div className="flex items-start gap-3">
-                        <div className="shrink-0 w-10 h-10 rounded-lg bg-red-accent/8 flex items-center justify-center mt-0.5">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.75"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="w-5 h-5 text-red-accent"
-                            aria-hidden="true"
-                          >
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                            <polyline points="14 2 14 8 20 8" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div className="font-semibold text-body-sm text-foreground group-hover:text-red-accent transition-colors duration-150 leading-snug">
-                            {label}
-                          </div>
-                          <div className="text-label text-muted mt-1 leading-snug">
-                            {description}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-1.5 text-label font-semibold text-red-accent self-end">
+      {/* Document sections */}
+      <Section className="bg-surface border-t border-black/6">
+        <div className="flex flex-col gap-12">
+          {kategorien.map(({ id, title, subtitle, docs }) => (
+            <div key={id} id={id}>
+              <SectionLabel>{subtitle}</SectionLabel>
+              <Headline level="h2">{title}</Headline>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {docs.map(({ label, description, href, filename }) => (
+                  <a
+                    key={filename}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col justify-between gap-4 bg-white rounded-xl border border-black/6 px-5 py-5 hover:bg-surface-hover-warm hover:-translate-y-0.5 transition-all duration-150"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="shrink-0 w-10 h-10 rounded-lg bg-red-accent/8 flex items-center justify-center mt-0.5">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="1.75"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="w-3.5 h-3.5"
+                          className="w-5 h-5 text-red-accent"
                           aria-hidden="true"
                         >
-                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                          <polyline points="7 10 12 15 17 10" />
-                          <line x1="12" y1="15" x2="12" y2="3" />
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                          <polyline points="14 2 14 8 20 8" />
                         </svg>
-                        PDF herunterladen
                       </div>
-                    </a>
-                  ))}
-                </div>
+                      <div>
+                        <div className="font-semibold text-body-sm text-foreground group-hover:text-red-accent transition-colors duration-150 leading-snug">
+                          {label}
+                        </div>
+                        <div className="text-label text-muted mt-1 leading-snug">
+                          {description}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 text-label font-semibold text-red-accent self-end">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="w-3.5 h-3.5"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                      PDF herunterladen
+                    </div>
+                  </a>
+                ))}
               </div>
-            ))}
-          </div>
-        </Section>
-      </main>
-
-      <Footer />
-    </>
+            </div>
+          ))}
+        </div>
+      </Section>
+    </main>
   );
 }

@@ -3,6 +3,8 @@ import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Footer from "@/components/organisms/Footer";
+import Navbar from "@/components/organisms/Navbar";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -34,7 +36,11 @@ export default function RootLayout({
       <body
         className={`${dmSans.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col`}
       >
-        {children}
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
         <Analytics />
         <SpeedInsights />
       </body>

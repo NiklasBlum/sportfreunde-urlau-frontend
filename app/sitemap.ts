@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { abteilungen } from "@/data/abteilungen";
+import { getEvents } from "@/lib/cms/getEvents";
 import { getRadsportDamenEvents } from "@/lib/cms/getRadsportDamenEvents";
 import { getSportmaedelsEvents } from "@/lib/cms/getSportmaedelsEvents";
 
@@ -64,10 +65,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const [radsportDamenEvents, sportmaedelsEvents] = await Promise.all([
+  const [events, radsportDamenEvents, sportmaedelsEvents] = await Promise.all([
+    getEvents(),
     getRadsportDamenEvents(),
     getSportmaedelsEvents(),
   ]);
+
+  const eventRoutes: MetadataRoute.Sitemap = events
+    .filter((e) => e.slug)
+    .map((e) => ({
+      url: `${BASE_URL}/veranstaltungen/${e.slug}`,
+      lastModified: new Date(e.date),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
+    }));
 
   const radsportDamenEventRoutes: MetadataRoute.Sitemap = radsportDamenEvents
     .filter((e) => e.slug)
@@ -90,6 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticRoutes,
     ...abteilungRoutes,
+    ...eventRoutes,
     ...radsportDamenEventRoutes,
     ...sportmaedelsEventRoutes,
   ];

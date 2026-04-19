@@ -1,8 +1,8 @@
 ﻿import type { Metadata } from "next";
-import Footer from "@/components/organisms/Footer";
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
+import Image from "next/image";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
 import { EmailLink } from "@/components/atoms/EmailLink";
 
@@ -32,6 +32,9 @@ const mannschaften = [
     name: "Herren I",
     liga: "Kreisliga A Gr. 1 Allgäu",
     href: "https://www.mytischtennis.de/click-tt/TTBW/25--26/ligen/Erwachsene_Kreisliga_A_Gr._1/gruppe/494832/mannschaft/2960448/Erwachsene/spielerbilanzen/gesamt",
+    image: "/abteilungen/tt_erste.webp",
+    alt: "Herren I Mannschaft",
+    description: "Erste Herrenmannschaft",
   },
   {
     name: "Herren II",
@@ -55,15 +58,28 @@ export default function TischtennisPage() {
     <>
       {/* Hero */}
       <Section className="bg-blue">
-        <SectionLabel light>Abteilung</SectionLabel>
-        <Headline level="h1" light>
-          Tischtennis
-        </Headline>
-
-        <p className="text-red-tint text-body">
-          Wettkampfsport und Freizeitspiel für jedes Alter – von den Bambinis
-          bis zu den Aktiven.
-        </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <SectionLabel light>Abteilung</SectionLabel>
+            <Headline level="h1" light>
+              Tischtennis
+            </Headline>
+            <p className="text-red-tint text-body max-w-130">
+              Wettkampfsport und Freizeitspiel für jedes Alter – von den
+              Bambinis bis zu den Aktiven.
+            </p>
+          </div>
+          <div className="relative w-full max-w-90 aspect-square rounded-2xl overflow-hidden hidden lg:block ml-auto">
+            <Image
+              src="/abteilungen/tt_erste.webp"
+              alt="Mittwochsmädels"
+              fill
+              className="object-contain"
+              sizes="(max-width: 1200px) 50vw, 600px"
+              priority
+            />
+          </div>
+        </div>
       </Section>
 
       {/* Training & Contact */}
@@ -126,7 +142,7 @@ export default function TischtennisPage() {
         <Headline level="h2"> Mannschaften</Headline>
 
         <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8">
-          {mannschaften.map(({ name, liga, href }) => (
+          {mannschaften.map(({ name, liga, href, image, alt, description }) => (
             <a
               key={name}
               href={href}
@@ -134,12 +150,15 @@ export default function TischtennisPage() {
               rel="noopener noreferrer"
               className="flex items-center justify-between bg-white px-6 py-4 no-underline group hover:bg-surface-hover transition-colors duration-150"
             >
-              <div>
-                <span className="font-semibold text-body-sm text-foreground group-hover:text-red-accent transition-colors">
-                  {name}
-                </span>
-                <span className="ml-3 text-body-xs text-muted">{liga}</span>
+              <div className="flex items-center gap-4">
+                <div>
+                  <span className="font-semibold text-body-sm text-foreground group-hover:text-red-accent transition-colors">
+                    {name}
+                  </span>
+                  <span className="ms-4 text-body-xs text-muted">{liga}</span>
+                </div>
               </div>
+
               <span className="text-red-accent text-label font-semibold tracking-wide opacity-0 group-hover:opacity-100 transition-opacity">
                 Spielplan →
               </span>

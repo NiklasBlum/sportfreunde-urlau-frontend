@@ -3,10 +3,10 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { urlFor } from "@/lib/cms/client";
-import { GalleryImage } from "./ImageGallery";
+import { CmsImage } from "@/lib/cms/types/cmsImage";
 
 interface ImageGalleryModalProps {
-  image: GalleryImage;
+  image: CmsImage;
   imageIndex: number;
   totalImages: number;
   fallbackAlt: string;

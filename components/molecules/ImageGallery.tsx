@@ -4,41 +4,43 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { urlFor } from "@/lib/cms/client";
 import ImageGalleryModal from "./ImageGalleryModal";
-
-export interface GalleryImage {
-  _key: string;
-  asset: { _ref: string; _type: "reference" };
-  alt: string | null;
-  dimensions: { width: number; height: number } | null;
-}
+import { CmsImage } from "@/lib/cms/types/cmsImage";
 
 interface ImageGalleryProps {
-  images: GalleryImage[];
+  images: CmsImage[];
   fallbackAlt: string;
   /** Number of columns at the `lg` breakpoint. Defaults to 3. */
   columns?: 3 | 4;
+  className?: string;
 }
 
 export default function ImageGallery({
   images,
   fallbackAlt,
   columns = 3,
+  className,
 }: ImageGalleryProps) {
   const [selectedImageKey, setSelectedImageKey] = useState<string | null>(null);
-  const selectedImage = images.find((img) => img._key === selectedImageKey);
-  const selectedImageIndex = images.findIndex(
+  const displayedImages = images.filter(
+    (img) => !!img?.asset && !!img.asset._ref,
+  );
+
+  const selectedImage = displayedImages.find(
+    (img) => img._key === selectedImageKey,
+  );
+  const selectedImageIndex = displayedImages.findIndex(
     (img) => img._key === selectedImageKey,
   );
 
   const goToPrevious = () => {
     if (selectedImageIndex > 0) {
-      setSelectedImageKey(images[selectedImageIndex - 1]._key);
+      setSelectedImageKey(displayedImages[selectedImageIndex - 1]._key);
     }
   };
 
   const goToNext = () => {
-    if (selectedImageIndex < images.length - 1) {
-      setSelectedImageKey(images[selectedImageIndex + 1]._key);
+    if (selectedImageIndex < displayedImages.length - 1) {
+      setSelectedImageKey(displayedImages[selectedImageIndex + 1]._key);
     }
   };
 
@@ -62,7 +64,7 @@ export default function ImageGallery({
     }
   };
 
-  if (images.length === 0) return null;
+  if (displayedImages.length === 0) return null;
 
   const colClass =
     columns === 4
@@ -76,8 +78,8 @@ export default function ImageGallery({
 
   return (
     <>
-      <div className={`${colClass} gap-4`}>
-        {images.map((image) => (
+      <div className={`${colClass} gap-4 ${className}`}>
+        {displayedImages.map((image) => (
           <div
             role="button"
             key={image._key}
@@ -101,7 +103,7 @@ export default function ImageGallery({
         <ImageGalleryModal
           image={selectedImage}
           imageIndex={selectedImageIndex}
-          totalImages={images.length}
+          totalImages={displayedImages.length}
           fallbackAlt={fallbackAlt}
           onClose={handleCloseModal}
           onPrevious={goToPrevious}

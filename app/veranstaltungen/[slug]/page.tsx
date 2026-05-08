@@ -1,8 +1,10 @@
 import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
+import RichText from "@/components/atoms/RichText";
 import { notFound } from "next/navigation";
 import { getEventBySlug } from "@/lib/cms/getEvents";
+import ImageGallery from "@/components/molecules/ImageGallery";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -22,6 +24,9 @@ export default async function EventPage({ params }: Props) {
       })
     : "";
 
+  const hasRichDescription =
+    Array.isArray(event.richText) && event.richText.length > 0;
+
   return (
     <>
       {/* Hero */}
@@ -29,33 +34,33 @@ export default async function EventPage({ params }: Props) {
         <SectionLabel light>{event.tag ?? "Veranstaltung"}</SectionLabel>
 
         <Headline level="h1" light>
-          {event.title}
+          {event.title} {formattedDate ? `- ${formattedDate}` : null}
         </Headline>
 
         {event.info ? (
           <p className="text-red-tint text-body">{event.info}</p>
         ) : null}
-
-        {formattedDate ? (
-          <p className="text-body font-semibold text-red-accent mt-2">
-            {formattedDate}
-          </p>
-        ) : null}
       </Section>
 
-      {/* Content */}
       <Section>
         <article className="prose prose-sm">
-          {event.description ? (
-            <div className="text-body whitespace-pre-line">
-              {event.description}
-            </div>
+          {hasRichDescription ? (
+            <RichText value={event.richText} />
           ) : (
             <p className="text-body">
               Keine ausführliche Beschreibung vorhanden.
             </p>
           )}
         </article>
+
+        {/* Content */}
+        {event.images && event.images.length > 0 ? (
+          <ImageGallery
+            className="mt-5"
+            images={event.images}
+            fallbackAlt={event.title}
+          />
+        ) : null}
       </Section>
     </>
   );

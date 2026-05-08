@@ -1,4 +1,6 @@
 import { client } from "./client";
+import { CmsImage } from "./types/cmsImage";
+import { CmsRichText } from "./types/cmsRichText";
 
 export interface EventPreview {
   _id: string;
@@ -10,7 +12,11 @@ export interface EventPreview {
 }
 
 export interface Event extends EventPreview {
-  description: string | null;
+  richText: CmsRichText | null;
+}
+
+export interface EventWithImages extends Event {
+  images?: CmsImage[];
 }
 
 export async function getEvents(): Promise<EventPreview[]> {
@@ -26,7 +32,9 @@ export async function getEvents(): Promise<EventPreview[]> {
   );
 }
 
-export async function getEventBySlug(slug: string): Promise<Event | null> {
+export async function getEventBySlug(
+  slug: string,
+): Promise<EventWithImages | null> {
   if (!slug) return null;
 
   return client.fetch(
@@ -36,8 +44,14 @@ export async function getEventBySlug(slug: string): Promise<Event | null> {
       info,
       date,
       tag,
-      description,
-      "slug": slug.current
+      richText,
+      "slug": slug.current,
+      images[]{
+        _key,
+        alt,
+        "asset": {"_ref": asset._ref},
+        "dimensions": asset->metadata.dimensions
+      }
     }`,
     { slug },
   );

@@ -33,5 +33,41 @@ export const Headline: React.FC<HeadlineProps> = ({
       </h2>
     );
 
+  if (level === "h3")
+    return (
+      <h3
+        className={`font-serif text-[clamp(1.25rem,2.1vw,1.6rem)] font-bold leading-[1.2] mb-3 whitespace-normal hyphens-auto ${light ? "text-white" : "text-black"} ${className}`}
+      >
+        {children}
+      </h3>
+    );
+
+  if (level === "h4")
+    return (
+      <h4
+        className={`font-serif text-[clamp(1.1rem,1.8vw,1.35rem)] font-bold leading-tight mb-3 whitespace-normal hyphens-auto ${light ? "text-white" : "text-black"} ${className}`}
+      >
+        {children}
+      </h4>
+    );
+
+  if (level === "h5")
+    return (
+      <h5
+        className={`font-serif text-[clamp(1rem,1.5vw,1.15rem)] font-bold leading-[1.3] mb-2 whitespace-normal hyphens-auto ${light ? "text-white" : "text-black"} ${className}`}
+      >
+        {children}
+      </h5>
+    );
+
+  if (level === "h6")
+    return (
+      <h6
+        className={`font-serif text-[clamp(0.9rem,1.2vw,1rem)] font-bold leading-[1.35] mb-2 whitespace-normal hyphens-auto ${light ? "text-white" : "text-black"} ${className}`}
+      >
+        {children}
+      </h6>
+    );
+
   return <Tag className={className}>{children}</Tag>;
 };

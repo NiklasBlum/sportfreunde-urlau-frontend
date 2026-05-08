@@ -17,14 +17,23 @@ export default function WeatherForecast({
       <p className="mt-2">
         Für die aktuelle Wettervorhersage{" "}
         <Link
-          href="http://wetterstationen.meteomedia.de/station=109440&wahl=vorhersage"
+          href="https://www.wetteronline.de/wetter/leutkirch/urlau"
           target="_blank"
           rel="noopener noreferrer"
           className="font-semibold underline hover:text-amber-700"
         >
           hier klicken
+        </Link>{" "}
+        (Alternativ:{" "}
+        <Link
+          href="https://www.schweizerbauer.ch/wetter"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold underline hover:text-amber-700"
+        >
+          Schweizerbauer
         </Link>
-        .
+        )
       </p>
     </Card>
   );

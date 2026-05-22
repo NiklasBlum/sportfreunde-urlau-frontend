@@ -29,6 +29,10 @@ const navItems = [
     label: "Veranstaltungen",
     href: "/veranstaltungen",
   },
+  {
+    label: "News & Berichte",
+    href: "/news-berichte",
+  },
 ];
 
 export default function Navbar() {

@@ -4,7 +4,7 @@ import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import RichText from "@/components/atoms/RichText";
 import { notFound } from "next/navigation";
-import { getEventBySlug } from "@/lib/cms/getEvents";
+import { getNewsReportBySlug } from "@/lib/cms/getNewsReports";
 import ImageGallery from "@/components/molecules/ImageGallery";
 
 interface Props {
@@ -13,24 +13,24 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const event = await getEventBySlug(slug);
+  const report = await getNewsReportBySlug(slug);
 
-  if (!event) return {};
+  if (!report) return {};
 
   return {
-    title: `${event.title} – Sportfreunde Urlau e.V.`,
-    description: event.info ?? undefined,
+    title: `${report.title} – Sportfreunde Urlau e.V.`,
+    description: report.info ?? undefined,
   };
 }
 
-export default async function EventPage({ params }: Props) {
+export default async function NewsReportPage({ params }: Props) {
   const { slug } = await params;
-  const event = await getEventBySlug(slug);
+  const report = await getNewsReportBySlug(slug);
 
-  if (!event) return notFound();
+  if (!report) return notFound();
 
-  const formattedDate = event.date
-    ? new Date(event.date).toLocaleDateString("de-DE", {
+  const formattedDate = report.date
+    ? new Date(report.date).toLocaleDateString("de-DE", {
         day: "2-digit",
         month: "long",
         year: "numeric",
@@ -38,33 +38,31 @@ export default async function EventPage({ params }: Props) {
     : "";
 
   const hasRichDescription =
-    Array.isArray(event.richText) && event.richText.length > 0;
+    Array.isArray(report.richText) && report.richText.length > 0;
 
   return (
     <>
-      {/* Hero */}
       <Section className="bg-blue">
-        <SectionLabel light>{event.tag ?? "Veranstaltung"}</SectionLabel>
+        {report.tag && <SectionLabel light>{report.tag}</SectionLabel>}
 
         <Headline level="h1" light>
-          {event.title} {formattedDate ? `- ${formattedDate}` : null}
+          {report.title} {formattedDate ? `- ${formattedDate}` : null}
         </Headline>
 
-        {event.info ? (
-          <p className="text-red-tint text-body">{event.info}</p>
+        {report.info ? (
+          <p className="text-red-tint text-body">{report.info}</p>
         ) : null}
       </Section>
 
       <Section>
         {hasRichDescription && (
           <article className="prose prose-sm mb-5">
-            {<RichText value={event.richText} />}
+            <RichText value={report.richText} />
           </article>
         )}
 
-        {/* Content */}
-        {event.images && event.images.length > 0 && (
-          <ImageGallery images={event.images} fallbackAlt={event.title} />
+        {report.images && report.images.length > 0 && (
+          <ImageGallery images={report.images} fallbackAlt={report.title} />
         )}
       </Section>
     </>

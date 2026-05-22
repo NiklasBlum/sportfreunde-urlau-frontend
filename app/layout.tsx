@@ -37,7 +37,7 @@ export default function RootLayout({
         className={`${dmSans.variable} ${playfairDisplay.variable} antialiased min-h-screen flex flex-col`}
       >
         <Navbar />
-        <main id="main-content" className="flex-1">
+        <main id="main-content" className="flex flex-1 flex-col">
           {children}
         </main>
         <Footer />

@@ -4,6 +4,8 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import EventList from "@/components/molecules/EventList";
+import { getMittwochmaedelsEvents } from "@/lib/cms/getMittwochmaedelsEvents";
 
 export const metadata: Metadata = {
   title: "Mittwochsmädels – Sportfreunde Urlau e.V.",
@@ -22,7 +24,9 @@ const indoor = ["Volleyball", "Badminton", "Tischtennis"];
 const indoorEinleitung =
   "Den Hallensport-Abend leiten wir mit Zirkeltraining, Steppen, Flexibar oder Gymnastik ein. Danach gibt es Spiel und Spaß mit:";
 
-export default function MittwochsmaedelsPage() {
+export default async function MittwochsmaedelsPage() {
+  const events = await getMittwochmaedelsEvents();
+
   return (
     <>
       {/* Hero */}
@@ -95,14 +99,32 @@ export default function MittwochsmaedelsPage() {
         </div>
       </Section>
 
+      {/* Events */}
+      {events.length > 0 && (
+        <Section className="bg-surface border-t border-b border-black/6">
+          <SectionLabel>Rückblick</SectionLabel>
+          <Headline level="h2">Aktuelle Berichte</Headline>
+
+          <EventList
+            items={events.map(({ _id, date, headline, description, slug }) => ({
+              id: _id,
+              href: `/abteilungen/mittwochs-maedels/${slug}`,
+              date,
+              headline,
+              description,
+            }))}
+          />
+        </Section>
+      )}
+
       {/* Übungszeiten & Kontakt */}
-      <Section className="bg-surface border-t border-b border-black/6">
+      <Section className="bg-background border-t border-b border-black/6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Übungszeiten */}
           <div>
             <SectionLabel>Übungszeiten</SectionLabel>
             <Headline level="h2">Trainingszeiten</Headline>
-            <div className="bg-background rounded-xl p-6 border border-black/6">
+            <div className="bg-surface rounded-xl p-6 border border-black/6">
               <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                 Ganzjährig
               </div>
@@ -120,7 +142,7 @@ export default function MittwochsmaedelsPage() {
           <div>
             <SectionLabel>Kontakt</SectionLabel>
             <Headline level="h2">Abteilungsleiterin</Headline>
-            <div className="bg-background rounded-xl p-6 border border-black/6 flex items-center gap-4">
+            <div className="bg-surface rounded-xl p-6 border border-black/6 flex items-center gap-4">
               <div className="w-14 h-14 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.5rem] shrink-0">
                 💃
               </div>

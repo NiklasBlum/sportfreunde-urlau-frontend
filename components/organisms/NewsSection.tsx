@@ -1,42 +1,71 @@
-﻿import SectionLabel from "@/components/atoms/SectionLabel";
-import NewsCard from "@/components/molecules/NewsCard";
-import Section from "../atoms/Section";
-import { Headline } from "../atoms/Headline";
+import Link from "next/link";
+import SectionLabel from "@/components/atoms/SectionLabel";
+import EventCard from "@/components/molecules/EventCard";
+import Section from "@/components/atoms/Section";
+import { Headline } from "@/components/atoms/Headline";
+import { getNewsReports } from "@/lib/cms/getNewsReports";
 
-const newsItems = [
-  {
-    icon: "⛷️",
-    meta: "Langlauf · Januar 2026",
-    title: "Erfolgreiche Langlauf-Saison 2025/26",
-    text: "Unsere Langlauf-Abteilung blickt auf eine tolle Saison zurück mit zahlreichen Ausfahrten im Allgäu.",
-  },
-  {
-    icon: "🏓",
-    meta: "Tischtennis · Februar 2026",
-    title: "Neue Trainingszeiten ab März",
-    text: "Die Tischtennisabteilung gibt neue Trainingszeiten bekannt. Interessierte sind herzlich eingeladen.",
-  },
-  {
-    icon: "👨‍👩‍👧",
-    meta: "Kinderturnen · März 2026",
-    title: "Anmeldung Kinderturnen Frühjahr",
-    text: "Ab sofort können Kinder ab 3 Jahren für das Kinderturnen im Frühjahr angemeldet werden.",
-  },
-];
+interface NewsSectionProps {
+  limit?: number;
+  isOverviewPage?: boolean;
+}
 
-export default function NewsSection() {
+export default async function NewsSection({
+  limit = 6,
+  isOverviewPage = false,
+}: NewsSectionProps) {
+  const news = await getNewsReports();
+  const latestNews = limit > 0 ? news.slice(0, limit) : news;
+  const sectionClassName = isOverviewPage
+    ? "flex-1"
+    : "bg-surface border-t border-b border-black/6";
+
+  if (latestNews.length === 0) return null;
+
   return (
-    <Section id="news" className="bg-surface">
-      <SectionLabel>Neuigkeiten</SectionLabel>
-      <Headline level="h2">Aktuelles aus dem Verein</Headline>
+    <Section id="news-berichte" className={sectionClassName}>
+      {!isOverviewPage && (
+        <>
+          <div className="flex items-end justify-between gap-4 mb-3">
+            <div>
+              <SectionLabel>Aktuelles</SectionLabel>
+              <Headline level="h2">News & Berichte</Headline>
+            </div>
 
-      <p className="text-muted text-body max-w-135 mb-11">
-        Neuigkeiten, Berichte und Ankündigungen der Sportfreunde Urlau.
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[1.4rem]">
-        {newsItems.map((n) => (
-          <NewsCard key={n.title} {...n} />
-        ))}
+            <Link
+              href="/news-berichte"
+              className="text-red-accent font-semibold hover:underline underline-offset-2 transition-colors duration-150"
+            >
+              Alle News & Berichte
+            </Link>
+          </div>
+
+          <p className="text-muted text-body mb-8">
+            Neuigkeiten und Berichte der Sportfreunde Urlau e.V.
+          </p>
+        </>
+      )}
+
+      <div className="flex flex-col gap-px bg-black/6 rounded-xl overflow-hidden border border-black/8">
+        {latestNews.map((item) => {
+          const date = item.date ? new Date(item.date) : null;
+          const day = date ? String(date.getDate()).padStart(2, "0") : "--";
+          const month = date
+            ? date.toLocaleString("de-DE", { month: "short" })
+            : "---";
+
+          return (
+            <EventCard
+              key={item._id}
+              day={day}
+              month={month}
+              title={item.title}
+              info={item.info ?? ""}
+              tag={item.tag}
+              href={item.slug ? `/news-berichte/${item.slug}` : undefined}
+            />
+          );
+        })}
       </div>
     </Section>
   );

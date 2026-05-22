@@ -3,6 +3,8 @@ import SectionLabel from "@/components/atoms/SectionLabel";
 import Section from "@/components/atoms/Section";
 import { Headline } from "@/components/atoms/Headline";
 import AbteilungLinkSection from "@/components/molecules/AbteilungLinkSection";
+import EventList from "@/components/molecules/EventList";
+import { getPianoEvents } from "@/lib/cms/getPianoEvents";
 
 export const metadata: Metadata = {
   title: "Piano – Sportfreunde Urlau e.V.",
@@ -24,7 +26,9 @@ const team = [
   { name: "Marga Zindstein", role: "Übungsleiterin" },
 ];
 
-export default function PianoPage() {
+export default async function PianoPage() {
+  const events = await getPianoEvents();
+
   return (
     <>
       {/* Hero */}
@@ -101,14 +105,32 @@ export default function PianoPage() {
         </div>
       </Section>
 
+      {/* Events */}
+      {events.length > 0 && (
+        <Section className="bg-background border-t border-b border-black/6">
+          <SectionLabel>Rückblick</SectionLabel>
+          <Headline level="h2">Aktuelle Berichte</Headline>
+
+          <EventList
+            items={events.map(({ _id, date, headline, description, slug }) => ({
+              id: _id,
+              href: `/abteilungen/piano/${slug}`,
+              date,
+              headline,
+              description,
+            }))}
+          />
+        </Section>
+      )}
+
       {/* Übungszeiten & Kontakt */}
-      <Section>
+      <Section className="bg-surface border-t border-b border-black/6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Übungszeiten */}
           <div>
             <SectionLabel>Übungszeiten</SectionLabel>
             <Headline level="h2">Trainingszeiten</Headline>
-            <div className="bg-surface rounded-xl p-6 border border-black/6">
+            <div className="bg-background rounded-xl p-6 border border-black/6">
               <div className="font-serif font-bold text-red-dark text-[1.05rem] mb-4">
                 Ganzjährig
               </div>
@@ -133,7 +155,7 @@ export default function PianoPage() {
               {team.map(({ name, role }) => (
                 <div
                   key={name}
-                  className="bg-surface rounded-xl p-5 border border-black/6 flex items-center gap-4"
+                  className="bg-background rounded-xl p-5 border border-black/6 flex items-center gap-4"
                 >
                   <div className="w-12 h-12 rounded-full bg-red-dark/10 flex items-center justify-center text-[1.3rem] shrink-0">
                     🤸🏻

@@ -241,11 +241,7 @@ export default async function RadsportDamenPage() {
             items={events.map((event) => ({
               id: event._id,
               href: `/abteilungen/radsport-damen/${event.slug}`,
-              dateLabel: new Date(event.date).toLocaleDateString("de-DE", {
-                day: "2-digit",
-                month: "2-digit",
-                year: "numeric",
-              }),
+              date: event.date,
               headline: event.headline,
               description: event.description ?? undefined,
             }))}

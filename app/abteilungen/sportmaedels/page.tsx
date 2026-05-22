@@ -52,15 +52,6 @@ const team = [
   { role: "Kostüme", name: "Moni" },
 ];
 
-function formatMonthYear(isoDate: string): string {
-  const date = new Date(isoDate);
-
-  return new Intl.DateTimeFormat("de-DE", {
-    month: "short",
-    year: "numeric",
-  }).format(date);
-}
-
 export default async function SportmaedelsPage() {
   const recentEvents = await getSportmaedelsEvents();
 
@@ -128,7 +119,7 @@ export default async function SportmaedelsPage() {
             ({ _id, date, headline, description, slug }) => ({
               id: _id,
               href: `/abteilungen/sportmaedels/${slug}`,
-              dateLabel: formatMonthYear(date),
+              date,
               headline,
               description,
             }),

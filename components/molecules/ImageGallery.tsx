@@ -66,25 +66,32 @@ export default function ImageGallery({
 
   if (displayedImages.length === 0) return null;
 
+  const isSingleImage = displayedImages.length === 1;
+
   const colClass =
     columns === 4
       ? "columns-2 sm:columns-3 lg:columns-4"
       : "columns-1 sm:columns-2 lg:columns-3";
 
-  const sizes =
-    columns === 4
+  const sizes = isSingleImage
+    ? "(max-width: 640px) 72vw, (max-width: 1024px) 56vw, 420px"
+    : columns === 4
       ? "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
       : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px";
 
+  const containerClass = isSingleImage
+    ? `flex justify-center ${className ?? ""}`
+    : `${colClass} gap-4 ${className ?? ""}`;
+
   return (
     <>
-      <div className={`${colClass} gap-4 ${className}`}>
+      <div className={containerClass}>
         {displayedImages.map((image) => (
           <div
             role="button"
             key={image._key}
             onClick={() => setSelectedImageKey(image._key)}
-            className="break-inside-avoid mb-4 rounded-xl overflow-hidden border border-black/8 bg-black/5 cursor-pointer transition-transform hover:scale-105 focus-visible:ring-3 focus-visible:ring-[--color-accent] p-0"
+            className={`break-inside-avoid mb-4 rounded-xl overflow-hidden border border-black/8 bg-black/5 cursor-pointer transition-transform hover:scale-105 focus-visible:ring-3 focus-visible:ring-[--color-accent] p-0 ${isSingleImage ? "w-full max-w-lg" : ""}`}
             aria-label={`Open full-size image: ${image.alt ?? fallbackAlt}`}
           >
             <Image

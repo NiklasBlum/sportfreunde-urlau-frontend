@@ -8,7 +8,7 @@ interface EventCardProps {
   month: string;
   title: string;
   info: string;
-  tag: string;
+  tag?: string | null;
   href?: string;
 }
 
@@ -40,9 +40,11 @@ export default function EventCard({
         <div className="font-semibold text-body-sm mb-0.75">{title}</div>
         <div className="text-label text-muted">{info}</div>
       </div>
-      <div className="hidden sm:block">
-        <Tag>{tag}</Tag>
-      </div>
+      {tag && (
+        <div className="hidden sm:block">
+          <Tag>{tag}</Tag>
+        </div>
+      )}
     </>
   );
 

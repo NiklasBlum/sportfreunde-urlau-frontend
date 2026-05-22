@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { abteilungen } from "@/data/abteilungen";
 import { getEvents } from "@/lib/cms/getEvents";
+import { getMittwochmaedelsEvents } from "@/lib/cms/getMittwochmaedelsEvents";
+import { getNewsReports } from "@/lib/cms/getNewsReports";
+import { getPianoEvents } from "@/lib/cms/getPianoEvents";
 import { getRadsportDamenEvents } from "@/lib/cms/getRadsportDamenEvents";
 import { getSportmaedelsEvents } from "@/lib/cms/getSportmaedelsEvents";
 
@@ -65,8 +68,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  const [events, radsportDamenEvents, sportmaedelsEvents] = await Promise.all([
+  const [
+    events,
+    mittwochmaedelsEvents,
+    newsReports,
+    pianoEvents,
+    radsportDamenEvents,
+    sportmaedelsEvents,
+  ] = await Promise.all([
     getEvents(),
+    getMittwochmaedelsEvents(),
+    getNewsReports(),
+    getPianoEvents(),
     getRadsportDamenEvents(),
     getSportmaedelsEvents(),
   ]);
@@ -78,6 +91,34 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(e.date),
       changeFrequency: "yearly" as const,
       priority: 0.6,
+    }));
+
+  const mittwochmaedelsEventRoutes: MetadataRoute.Sitemap =
+    mittwochmaedelsEvents
+      .filter((e) => e.slug)
+      .map((e) => ({
+        url: `${BASE_URL}/abteilungen/mittwochs-maedels/${e.slug}`,
+        lastModified: new Date(e.date),
+        changeFrequency: "yearly",
+        priority: 0.5,
+      }));
+
+  const newsReportRoutes: MetadataRoute.Sitemap = newsReports
+    .filter((n) => n.slug)
+    .map((n) => ({
+      url: `${BASE_URL}/news-berichte/${n.slug}`,
+      lastModified: new Date(n.date),
+      changeFrequency: "yearly",
+      priority: 0.5,
+    }));
+
+  const pianoEventRoutes: MetadataRoute.Sitemap = pianoEvents
+    .filter((e) => e.slug)
+    .map((e) => ({
+      url: `${BASE_URL}/abteilungen/piano/${e.slug}`,
+      lastModified: new Date(e.date),
+      changeFrequency: "yearly",
+      priority: 0.5,
     }));
 
   const radsportDamenEventRoutes: MetadataRoute.Sitemap = radsportDamenEvents
@@ -102,6 +143,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticRoutes,
     ...abteilungRoutes,
     ...eventRoutes,
+    ...mittwochmaedelsEventRoutes,
+    ...newsReportRoutes,
+    ...pianoEventRoutes,
     ...radsportDamenEventRoutes,
     ...sportmaedelsEventRoutes,
   ];

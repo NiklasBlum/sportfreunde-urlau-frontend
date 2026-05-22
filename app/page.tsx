@@ -1,6 +1,7 @@
 import HeroSection from "@/components/organisms/HeroSection";
 import AbteilungenSection from "@/components/organisms/AbteilungenSection";
 import EventSection from "@/components/organisms/EventSection";
+import NewsSection from "@/components/organisms/NewsSection";
 import WelcomeSection from "@/components/organisms/WelcomeSection";
 
 export default function Home() {
@@ -12,10 +13,9 @@ export default function Home() {
 
       <AbteilungenSection />
 
-      <EventSection />
+      <EventSection limit={6} />
 
-      {/* TODO: maybe implement later */}
-      {/* <NewsSection /> */}
+      <NewsSection />
     </main>
   );
 }

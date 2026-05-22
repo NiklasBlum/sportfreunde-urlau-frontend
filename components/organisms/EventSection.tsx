@@ -1,8 +1,14 @@
-﻿import SectionLabel from "@/components/atoms/SectionLabel";
+﻿import Link from "next/link";
+import SectionLabel from "@/components/atoms/SectionLabel";
 import EventCard from "@/components/molecules/EventCard";
 import Section from "../atoms/Section";
 import { Headline } from "../atoms/Headline";
 import { EventPreview, getEvents } from "@/lib/cms/getEvents";
+
+interface EventSectionProps {
+  limit?: number;
+  isOverviewPage?: boolean;
+}
 
 function groupByYear(events: EventPreview[]) {
   return events.reduce((map, e) => {
@@ -14,22 +20,43 @@ function groupByYear(events: EventPreview[]) {
   }, new Map<number, EventPreview[]>());
 }
 
-export default async function EventSection() {
+export default async function EventSection({
+  limit = 0,
+  isOverviewPage = false,
+}: EventSectionProps) {
   const events = await getEvents();
+  const latestEvents = limit > 0 ? events.slice(0, limit) : events;
 
-  const byYear = groupByYear(events);
+  const byYear = groupByYear(latestEvents);
   const years = Array.from(byYear.keys()).sort((a, b) => b - a);
 
+  if (latestEvents.length === 0) return null;
+
   return (
-    <Section id="termine">
-      <SectionLabel>Organisation</SectionLabel>
+    <Section id="termine" className={isOverviewPage ? "flex-1" : undefined}>
+      {!isOverviewPage && (
+        <>
+          <div className="flex items-end justify-between gap-4 mb-3">
+            <div>
+              <SectionLabel>Organisation</SectionLabel>
 
-      <Headline level="h2">Termine &amp; Veranstaltungen</Headline>
+              <Headline level="h2">Termine &amp; Veranstaltungen</Headline>
+            </div>
 
-      <p className="text-muted text-body mb-11">
-        Was ist bei den Sportfreunden Urlau geplant? Hier findet ihr alle
-        wichtigen Termine.
-      </p>
+            <Link
+              href="/veranstaltungen"
+              className="text-red-accent font-semibold hover:underline underline-offset-2 transition-colors duration-150"
+            >
+              Alle Termine
+            </Link>
+          </div>
+
+          <p className="text-muted text-body mb-11">
+            Was ist bei den Sportfreunden Urlau geplant? Hier findet ihr alle
+            wichtigen Termine.
+          </p>
+        </>
+      )}
 
       {years.map((year, i) => {
         const yearEvents = (byYear.get(year) ?? []).sort(

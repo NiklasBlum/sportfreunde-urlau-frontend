@@ -16,17 +16,17 @@ export default function VeranstaltungenPage() {
     <main id="main-content" className="flex flex-1 flex-col">
       {/* Hero */}
       <Section className="bg-blue">
-        <SectionLabel light>Überblick</SectionLabel>
+        <SectionLabel light>Organisation</SectionLabel>
         <Headline level="h1" light>
-          Veranstaltungen
+          Termine & Veranstaltungen
         </Headline>
         <p className="text-red-tint text-body">
-          Alle wichtigen Veranstaltungen und Termine der Sportfreunde Urlau e.V.
-          auf einen Blick.
+          Was ist bei den Sportfreunden Urlau geplant? Hier findet ihr alle
+          wichtigen Termine.
         </p>
       </Section>
 
-      <EventSection />
+      <EventSection isOverviewPage={true} />
     </main>
   );
 }
